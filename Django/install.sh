@@ -19,7 +19,7 @@ if [ ! -d "$project" ]; then
 fi
 
 # DONT FORGET TO LAUNCH THE SERVER
-if false; then
+if true; then
   pg_ctl -l /tmp/pg_log start
 fi
 set +e

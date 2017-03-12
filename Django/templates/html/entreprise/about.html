@@ -1,0 +1,108 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>À propos de nous</title>
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    </head>
+    <!-- Did you try yakasserole.fr/ing1 ? There is some bonus points for h3ckers -->
+    <body>
+        <div id="page">
+            <header id="header">
+                <div id="header-inner"> 
+                    <div id="logo">
+                      <a href="index.html"><img src="{%static 'img/logo.png' %}" style="width:150px;height:150px"></img></a>
+                    </div>
+                    <div id="top-nav">
+                      <ul class="nav nav-tabs">
+                        <li><a href="../">Accueil</a></li>
+                        <li><a href="about">À Propos</a></li>
+                        <li><a href="location">Nous localiser</a></li>
+                        <li><a href="contact">Nous contacter</a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle"
+                            data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">Premium<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Compte premium</a></li>
+                            <li><a href="#">Nos recettes</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </header>
+            <div class="feature">
+              <div class="feature-inner">
+                <h1>À propos de nous</h1>
+              </div>
+            </div>
+
+            <div id="content">
+              <div id="content-inner">  
+                <main id="contentbar">
+                <div class="article">
+                  <p>
+                  <img src="{% static 'img/frog.jpg' %}" style="display: block;margin-left: auto;
+                  margin-right: auto;width:500px;margin-bottom:20px"/>
+                  </br>
+                  YaKasserole est originaire de Toulouse (31) et possède donc son siège social dans le centre-ville. La plupart des salariés de la société travaillent sur ce site. Nous possédons néanmoins un certains nombres de locaux répartis dans plusieurs villes pour organiser les ateliers culinaires.</br>
+                  </br>
+                  Liste  de nos locaux à ce jour :</br>
+                  • Local YaKasserole quartier Compans (métro Compans Caffarelli, 31000 Toulouse)</br>
+                  • Local YaKasserole quartier du Marais (métro Saint-Paul, 75004 Paris)</br>
+                  • Local YaKasserole quartier Rihour (métro Rihour, 59800 Lille)</br>
+                  • Local YaKasserole quartier Saint-Genès (métro Navarre, 33000 Bordeaux)</br>
+
+                  </p>
+                </div>
+                </main>
+                <div class="clr"></div>
+              </div>
+            </div>
+
+            <div id="footerblurb">
+              <h1 style="margin:10px">Ils témoignent…</h1>
+              <div id="footerblurb-inner">
+                <div class="column">
+                  <blockquote>
+                    <p><i>Depuis que j'utilise YaKasserole, ma vie a changé.</i></p>
+                    <footer><h2>— Jean Bon</h2></footer>
+                  </blockquote>
+                </div>
+                <div class="column">
+                  <blockquote>
+                    <p><i>YaKasserole m'a ouvert l'appetit et fait découvrir de nouvelles saveurs.</i></p>
+                    <footer><h2>— Aubin Marie</h2></footer>
+                  </blockquote>
+                </div>
+                <div class="column">
+                  <blockquote>
+                    <p><i>Je n'ai plus jamais manqué de PAIC Citron.</i></p>
+                    <footer><h2>— Aude Wesel</h2></footer>
+                  </blockquote>
+                </div>
+                <div class="clr"></div>
+              </div>
+            </div>
+            <footer id="footer">
+              <div id="footer-inner">
+                <p>&copy; Copyright <a href="/">YaKasserole 2017</a></p>
+                <div class="clr"></div>
+              </div>
+            </footer>
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>
+</html>

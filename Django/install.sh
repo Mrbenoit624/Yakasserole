@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# DONT FORGET TO LAUNCH THE SERVER
+pg_ctl -l /tmp/pg_log start
+
 set -e
 project=YaKasserole
 
@@ -18,10 +22,6 @@ if [ ! -d "$project" ]; then
   python manage.py startapp polls
 fi
 
-# DONT FORGET TO LAUNCH THE SERVER
-if true; then
-  pg_ctl -l /tmp/pg_log start
-fi
 set +e
 psql postgres -f setup_user.sql
 set -e
@@ -33,3 +33,4 @@ python manage.py migrate
 
 #enter admin for user 
 python manage.py createsuperuser
+killall /usr/bin/postgres

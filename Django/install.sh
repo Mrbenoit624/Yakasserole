@@ -1,5 +1,12 @@
 #!/bin/bash
-
+# if error occur active this one
+if false;then
+  sudo mkdir /run/postgresql
+  sudo chown $USER:users /run/postgresql/
+  chmod +x /run/postgresql/
+  pg_ctl -l /tmp/pg_log start
+  ln -s /run/postgresql/.s.PGSQL.5432 /tmp/.s.PGSQL.5432
+fi
 # DONT FORGET TO LAUNCH THE SERVER
 pg_ctl -l /tmp/pg_log start
 

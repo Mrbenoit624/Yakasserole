@@ -8,22 +8,22 @@
     <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="107" y="127" w="673" h="239" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::TextInput" x="390" y="209" w="171" h="-1" measuredW="45" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>adresse%20électronique/text>
+        <text>adresse%20électronique</text>
       </controlProperties>
     </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="342" y="212" w="48" h="-1" measuredW="34" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>adresse%20électronique/text>
+        <text>adresse%20électronique</text>
       </controlProperties>
     </control>
     <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="310" y="260" w="65" h="-1" measuredW="59" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <textmot%20de%20passe%3A</text>
+        <text>mot%20de%20passe%3A</text>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="390" y="257" w="171" h="-1" measuredW="71" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
-        <textmot%20de%20passe</text>
+        <text>mot%20de%20passe</text>
       </controlProperties>
     </control>
     <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="405" y="173" w="130" h="-1" measuredW="62" measuredH="21" zOrder="6" locked="false" isInGroup="-1">

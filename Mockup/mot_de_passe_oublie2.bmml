@@ -44,12 +44,12 @@
     </control>
     <control controlID="13" controlTypeID="com.balsamiq.mockups::TextInput" x="390" y="238" w="171" h="-1" measuredW="71" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <textmot de passe</text>
+        <text>mot de passe</text>
       </controlProperties>
     </control>
     <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="327" y="241" w="63" h="-1" measuredW="59" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <textmot de passe%3A</text>
+        <text>mot de passe%3A</text>
       </controlProperties>
     </control>
     <control controlID="15" controlTypeID="com.balsamiq.mockups::TextInput" x="390" y="280" w="171" h="-1" measuredW="98" measuredH="27" zOrder="10" locked="false" isInGroup="-1">

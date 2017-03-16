@@ -2,7 +2,7 @@
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Atelier%201%0Ahttp%3A//yakasserole.fr/</text>
+        <text>Atelier%201%0Ahttps%3A//yakasserole.fr/</text>
       </controlProperties>
     </control>
     <control controlID="12" controlTypeID="com.balsamiq.mockups::Icon" x="77" y="323" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="1" locked="false" isInGroup="-1">

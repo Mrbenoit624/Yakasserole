@@ -2,7 +2,7 @@
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nouvelle%20recette%0Ahttp%3A//yakasserole.fr/</text>
+        <text>Nouvelle%20recette%0Ahttps%3A//yakasserole.fr/</text>
       </controlProperties>
     </control>
     <control controlID="30" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="866" y="75" w="-1" h="353" measuredW="16" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
@@ -40,12 +40,12 @@
     </control>
     <control controlID="60" controlTypeID="com.balsamiq.mockups::TextInput" x="193" y="160" w="-1" h="-1" measuredW="142" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>temps%20de%20pr%E9paration</text>
+        <text>Temps%20de%20pr%E9paration</text>
       </controlProperties>
     </control>
     <control controlID="61" controlTypeID="com.balsamiq.mockups::TextInput" x="677" y="160" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>temps%20de%20cuisson</text>
+        <text>Temps%20de%20cuisson</text>
       </controlProperties>
     </control>
     <control controlID="62" controlTypeID="com.balsamiq.mockups::TextArea" x="193" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="10" locked="false" isInGroup="-1">
@@ -55,12 +55,12 @@
     </control>
     <control controlID="63" controlTypeID="com.balsamiq.mockups::TextArea" x="350" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Electromenager%20nec%E9ssaires</text>
+        <text>Appareils électroménagers%20néc%E9ssaires</text>
       </controlProperties>
     </control>
     <control controlID="64" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="390" w="130" h="-1" measuredW="123" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nombre%20de%20portion</text>
+        <text>Nombre%20de%20portions</text>
       </controlProperties>
     </control>
     <control controlID="65" controlTypeID="com.balsamiq.mockups::Icon" x="61" y="286" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="13" locked="false" isInGroup="-1">
@@ -95,12 +95,12 @@
     </control>
     <control controlID="72" controlTypeID="com.balsamiq.mockups::TextArea" x="677" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Remarquies</text>
+        <text>Remarques</text>
       </controlProperties>
     </control>
     <control controlID="73" controlTypeID="com.balsamiq.mockups::TextInput" x="352" y="160" w="-1" h="-1" measuredW="47" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>couts</text>
+        <text>Coûts</text>
       </controlProperties>
     </control>
     <control controlID="74" controlTypeID="com.balsamiq.mockups::Link" x="866" y="399" w="-1" h="-1" measuredW="10" measuredH="19" zOrder="21" locked="false" isInGroup="-1">

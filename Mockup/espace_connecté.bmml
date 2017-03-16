@@ -2,7 +2,7 @@
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Espace%20Conect%E9%0Ahttp%3A//yakasserole.fr/</text>
+        <text>Espace%20Conect%E9%0Ahttps%3A//yakasserole.fr/</text>
       </controlProperties>
     </control>
     <control controlID="14" controlTypeID="com.balsamiq.mockups::MenuBar" x="0" y="68" w="887" h="29" measuredW="306" measuredH="29" zOrder="1" locked="false" isInGroup="-1">

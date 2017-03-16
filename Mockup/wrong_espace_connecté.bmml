@@ -8,12 +8,12 @@
     <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="107" y="127" w="673" h="239" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::TextInput" x="390" y="209" w="171" h="-1" measuredW="45" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <textadresse%20électronique/text>
+        <text>adresse%20électronique/text>
       </controlProperties>
     </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="342" y="212" w="48" h="-1" measuredW="34" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
-        <textadresse%20électronique/text>
+        <text>adresse%20électronique/text>
       </controlProperties>
     </control>
     <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="310" y="260" w="65" h="-1" measuredW="59" measuredH="21" zOrder="4" locked="false" isInGroup="-1">

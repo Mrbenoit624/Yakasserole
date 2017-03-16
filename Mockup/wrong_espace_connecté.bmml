@@ -18,12 +18,12 @@
     </control>
     <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="310" y="260" w="65" h="-1" measuredW="59" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <textmot de passe%3A</text>
+        <textmot%20de%20passe%3A</text>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="390" y="257" w="171" h="-1" measuredW="71" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
-        <textmot de passe</text>
+        <textmot%20de%20passe</text>
       </controlProperties>
     </control>
     <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="405" y="173" w="130" h="-1" measuredW="62" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
@@ -40,7 +40,7 @@
     </control>
     <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="588" y="260" w="-1" h="-1" measuredW="97" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>mauvais%20mot de passe</text>
+        <text>mauvais%20mot%20de%20passe</text>
       </controlProperties>
     </control>
     <control controlID="10" controlTypeID="com.balsamiq.mockups::Link" x="502" y="174" w="-1" h="-1" measuredW="54" measuredH="19" zOrder="9" locked="false" isInGroup="-1">

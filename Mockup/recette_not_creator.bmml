@@ -60,7 +60,7 @@
     </control>
     <control controlID="71" controlTypeID="com.balsamiq.mockups::TextArea" x="513" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Ingr%E9dients%0A-%20element%201%0A-%20element%202%0A-%20element%203</text>
+        <text>Ingr%E9dients%0A-%20ingrédient%201%0A-%20ingrédient%202%0A-%20ingrédient%203</text>
       </controlProperties>
     </control>
     <control controlID="72" controlTypeID="com.balsamiq.mockups::TextArea" x="677" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="13" locked="false" isInGroup="-1">
@@ -100,7 +100,7 @@
     </control>
     <control controlID="80" controlTypeID="com.balsamiq.mockups::Label" x="677" y="163" w="-1" h="-1" measuredW="127" measuredH="21" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>temps%20de%20cuisson%3A%204h</text>
+        <text>Temps%20de%20cuisson%3A%204h</text>
       </controlProperties>
     </control>
     <control controlID="81" controlTypeID="com.balsamiq.mockups::Link" x="866" y="156" w="-1" h="-1" measuredW="10" measuredH="19" zOrder="21" locked="false" isInGroup="-1">

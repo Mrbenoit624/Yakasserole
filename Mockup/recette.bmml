@@ -30,7 +30,7 @@
     </control>
     <control controlID="63" controlTypeID="com.balsamiq.mockups::TextArea" x="350" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Appareils électroménagers%20nec%E9ssaires%0A-%20Électro%201%0A-%20Électro%202%0A-%20Électro%203</text>
+        <text>Appareils électroménagers%20nec%E9ssaires%0A-%20appareil%201%0A-%20appareil%202%0A-%20appareil%203</text>
       </controlProperties>
     </control>
     <control controlID="65" controlTypeID="com.balsamiq.mockups::Icon" x="61" y="286" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="7" locked="false" isInGroup="-1">
@@ -60,7 +60,7 @@
     </control>
     <control controlID="71" controlTypeID="com.balsamiq.mockups::TextArea" x="513" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Ingr%E9dients%0A-%20element%201%0A-%20element%202%0A-%20element%203</text>
+        <text>Ingr%E9dients%0A-%20ingrédient%201%0A-%20ingrédient%202%0A-%20ingrédient%203</text>
       </controlProperties>
     </control>
     <control controlID="72" controlTypeID="com.balsamiq.mockups::TextArea" x="677" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="13" locked="false" isInGroup="-1">

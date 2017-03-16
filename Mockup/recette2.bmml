@@ -47,12 +47,12 @@
     </control>
     <control controlID="81" controlTypeID="com.balsamiq.mockups::TextArea" x="138" y="158" w="710" h="83" measuredW="200" measuredH="140" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Descrition%20de%20l%27%E9tape</text>
+        <text>Description%20de%20l%27%E9tape</text>
       </controlProperties>
     </control>
     <control controlID="82" controlTypeID="com.balsamiq.mockups::TextArea" x="139" y="296" w="710" h="83" measuredW="200" measuredH="140" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Descrition%20de%20l%27%E9tape</text>
+        <text>Description%20de%20l%27%E9tape</text>
       </controlProperties>
     </control>
   </controls>

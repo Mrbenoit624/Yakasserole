@@ -8,22 +8,22 @@
     <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="107" y="127" w="714" h="292" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::TextInput" x="387" y="260" w="171" h="-1" measuredW="45" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>email</text>
+        <textadresse%20électronique/text>
       </controlProperties>
     </control>
     <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="339" y="263" w="48" h="-1" measuredW="34" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>email%3A</text>
+        <textadresse%20électronique/text>
       </controlProperties>
     </control>
     <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="313" y="302" w="59" h="-1" measuredW="59" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>password%3A</text>
+        <textmot de passe%3A</text>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="387" y="302" w="171" h="-1" measuredW="71" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>password</text>
+        <textmot de passe</text>
       </controlProperties>
     </control>
     <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="484" y="157" w="130" h="-1" measuredW="55" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
@@ -47,12 +47,12 @@
     </control>
     <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="285" y="344" w="-1" h="-1" measuredW="87" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>new%20password%3A</text>
+        <text>nouveau%20mot de passe%3A</text>
       </controlProperties>
     </control>
     <control controlID="12" controlTypeID="com.balsamiq.mockups::TextInput" x="387" y="341" w="171" h="-1" measuredW="71" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>password</text>
+        <textmot de passe</text>
       </controlProperties>
     </control>
     <control controlID="15" controlTypeID="com.balsamiq.mockups::Label" x="339" y="228" w="39" h="-1" measuredW="29" measuredH="21" zOrder="11" locked="false" isInGroup="-1">

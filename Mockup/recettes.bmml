@@ -173,7 +173,7 @@
       <controlProperties>
         <href>add_recettes%26bm%3Badd_recettes.bmml%26bm%3Badd_recettes.bmml%26bm%3Badd_recettes.bmml</href>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22694%2C391%2C840%2C418%22%20href%3D%22add_recettes.bmml%22%20alt%3D%22add_recettes%22%20id%3D%2258%22/%3E</map>
-        <text>Ajouter%20une%20recettes</text>
+        <text>Ajouter%20une%20recette</text>
       </controlProperties>
     </control>
   </controls>

@@ -102,12 +102,5 @@
         <text>Date%20%3A%2020/10/2020</text>
       </controlProperties>
     </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="507" y="212" w="-1" h="-1" measuredW="70" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
-      <controlProperties>
-        <href>modifier%20atelier%26bm%3Bmodifier%20atelier.bmml%26bm%3Bmodifier%20atelier.bmml%26bm%3Bmodifier%20atelier.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22507%2C212%2C577%2C239%22%20href%3D%22modifier%2520atelier.bmml%22%20alt%3D%22modifier%20atelier%22%20id%3D%2242%22/%3E</map>
-        <text>Modifier</text>
-      </controlProperties>
-    </control>
   </controls>
 </mockup>

@@ -12,9 +12,9 @@
     </control>
     <control controlID="35" controlTypeID="com.balsamiq.mockups::Icon" x="18" y="93" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
+        <href>recettes%26bm%3Brecettes.bmml%26bm%3Brecettes.bmml%26bm%3Brecettes.bmml</href>
         <icon>reply-all%7Cmedium</icon>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2218%2C93%2C50%2C125%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2235%22/%3E</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2218%2C93%2C50%2C125%22%20href%3D%22recettes.bmml%22%20alt%3D%22recettes%22%20id%3D%2235%22/%3E</map>
       </controlProperties>
     </control>
     <control controlID="53" controlTypeID="com.balsamiq.mockups::Icon" x="83" y="184" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="6" locked="false" isInGroup="-1">

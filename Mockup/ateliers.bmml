@@ -97,5 +97,12 @@
         <text>Les%20ateliers</text>
       </controlProperties>
     </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Button" x="719" y="391" w="-1" h="-1" measuredW="125" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>add_atelier%26bm%3Badd_atelier.bmml%26bm%3Badd_atelier.bmml%26bm%3Badd_atelier.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22719%2C391%2C844%2C418%22%20href%3D%22add_atelier.bmml%22%20alt%3D%22add_atelier%22%20id%3D%2244%22/%3E</map>
+        <text>Ajouter%20un%20atelier</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>

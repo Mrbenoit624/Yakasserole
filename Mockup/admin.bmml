@@ -1,0 +1,23 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="887" measuredH="457" mockupW="887" mockupH="457">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Admin%0Ahttp%3A//yakasserole.fr/admin</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="866" y="75" w="-1" h="353" measuredW="16" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <value>0</value>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Canvas" x="58" y="105" w="770" h="289" measuredW="100" measuredH="70" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::DataGrid" x="83" y="131" w="720" h="113" measuredW="272" measuredH="113" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hLines>true</hLines>
+        <rowHeight>46</rowHeight>
+        <text>Authentification/Autorisation%0AGroupes%2C%20Add%2C%20Change%0AUtilisateur%2C%20Add%2C%20Change</text>
+        <vLines>false</vLines>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

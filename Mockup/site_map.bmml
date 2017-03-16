@@ -1,0 +1,9 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1983" measuredH="935" mockupW="1738" mockupH="910">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::SiteMap" x="245" y="25" w="-1" h="-1" measuredW="1738" measuredH="910" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Yakkasserole%0A-Accueil%0A-About%0A-Compte%0A--Inscription%0A--Conexion%0A---%20Espace%20connect%E9%0A----%20Recettes%0A-----%20Recette%0A------%20Modifier%20Recette%0A-----%20Ajouter%20une%20recette%0A----%20Ateliers%0A-----%20Atelier%0A------%20Commentaires%0A------%20Ajouter%20commentaire%0A------%20Modifier%20Atelier%0A------%20S%27inscrire%20Atelier%0A-------%20Payer%20Atelier%0A-----%20Ajouter%20un%20atelier%0A-%20Admin%0A--%20gestion%20groupes%0A--%20gestion%20utilisateur%0A--%20gestion%20droits</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

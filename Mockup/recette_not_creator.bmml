@@ -110,12 +110,5 @@
         <text>%27</text>
       </controlProperties>
     </control>
-    <control controlID="82" controlTypeID="com.balsamiq.mockups::Button" x="763" y="387" w="-1" h="-1" measuredW="70" measuredH="27" zOrder="22" locked="false" isInGroup="-1">
-      <controlProperties>
-        <href>add_recettes%26bm%3Badd_recettes.bmml%26bm%3Badd_recettes.bmml%26bm%3Badd_recettes.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22763%2C387%2C833%2C414%22%20href%3D%22add_recettes.bmml%22%20alt%3D%22add_recettes%22%20id%3D%2282%22/%3E</map>
-        <text>Modifier</text>
-      </controlProperties>
-    </control>
   </controls>
 </mockup>

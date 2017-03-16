@@ -1,0 +1,28 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="887" measuredH="457" mockupW="887" mockupH="457">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Espace%20Conect%E9%0Ahttp%3A//yakasserole.fr/</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::MenuBar" x="0" y="68" w="887" h="29" measuredW="306" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>%2C%2Cateliers%26bm%3Bateliers.bmml%26bm%3Bateliers.bmml%26bm%3Bateliers.bmml%2Crecettes%26bm%3Brecettes.bmml%26bm%3Brecettes.bmml%26bm%3Brecettes.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22170%2C78%2C224%2C91%22%20href%3D%22ateliers.bmml%22%20alt%3D%22ateliers%22%20id%3D%2214%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22233%2C78%2C297%2C91%22%20href%3D%22recettes.bmml%22%20alt%3D%22recettes%22%20id%3D%2214%22/%3E</map>
+        <text>Accueil%2C%20Mon%20compte%2C%20Ateliers%2C%20Recettes</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Link" x="812" y="73" w="-1" h="-1" measuredW="69" measuredH="19" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>connexion_espace_connect%E9%26bm%3Bconnexion_espace_connect%E9.bmml%26bm%3Bconnexion_espace_connect%E9.bmml%26bm%3Bconnexion_espace_connect%E9.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22812%2C73%2C881%2C92%22%20href%3D%22connexion_espace_connect%25C3%25A9.bmml%22%20alt%3D%22connexion_espace_connect%E9%22%20id%3D%2216%22/%3E</map>
+        <text>Deconexion</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::SearchBox" x="641" y="70" w="-1" h="-1" measuredW="121" measuredH="25" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>rechercher%3A%20filtre</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

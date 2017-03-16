@@ -31,9 +31,7 @@
     </control>
     <control controlID="77" controlTypeID="com.balsamiq.mockups::Icon" x="51" y="168" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
-        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
         <icon>birthday-cake%7Cxlarge</icon>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2251%2C168%2C115%2C232%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2277%22/%3E</map>
       </controlProperties>
     </control>
     <control controlID="78" controlTypeID="com.balsamiq.mockups::FieldSet" x="29" y="273" w="829" h="121" measuredW="200" measuredH="170" zOrder="6" locked="false" isInGroup="-1">
@@ -43,7 +41,6 @@
     </control>
     <control controlID="80" controlTypeID="com.balsamiq.mockups::Icon" x="51" y="301" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
-        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
         <icon>birthday-cake%7Cxlarge</icon>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2251%2C301%2C115%2C365%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2280%22/%3E</map>
       </controlProperties>

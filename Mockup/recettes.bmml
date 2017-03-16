@@ -2,105 +2,178 @@
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nouvelle%20recette%0Ahttp%3A//yakasserole.fr/</text>
+        <text>Recettes%0Ahttp%3A//yakasserole.fr/</text>
       </controlProperties>
     </control>
-    <control controlID="30" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="866" y="75" w="-1" h="353" measuredW="16" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::FieldSet" x="15" y="119" w="829" h="121" measuredW="200" measuredH="170" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Recette%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Icon" x="151" y="112" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Icon" x="174" y="112" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Icon" x="197" y="112" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Icon" x="221" y="112" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Icon" x="243" y="112" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star-half-o%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Label" x="156" y="161" w="-1" h="-1" measuredW="147" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Description%20de%20la%20recette</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="866" y="75" w="-1" h="353" measuredW="16" measuredH="100" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <value>0</value>
       </controlProperties>
     </control>
-    <control controlID="35" controlTypeID="com.balsamiq.mockups::Icon" x="18" y="93" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Icon" x="37" y="147" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
-        <icon>reply-all%7Cmedium</icon>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2218%2C93%2C50%2C125%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2235%22/%3E</map>
-      </controlProperties>
-    </control>
-    <control controlID="53" controlTypeID="com.balsamiq.mockups::Icon" x="83" y="184" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="4" locked="false" isInGroup="-1">
-      <controlProperties>
+        <href>recette%26bm%3Brecette.bmml%26bm%3Brecette.bmml%26bm%3Brecette.bmml</href>
         <icon>birthday-cake%7Cxlarge</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2237%2C147%2C101%2C211%22%20href%3D%22recette.bmml%22%20alt%3D%22recette%22%20id%3D%2231%22/%3E</map>
       </controlProperties>
     </control>
-    <control controlID="57" controlTypeID="com.balsamiq.mockups::Canvas" x="50" y="156" w="130" h="120" measuredW="100" measuredH="70" zOrder="3" locked="false" isInGroup="-1"/>
-    <control controlID="62" controlTypeID="com.balsamiq.mockups::TextArea" x="193" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::FieldSet" x="15" y="261" w="829" h="121" measuredW="200" measuredH="170" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Ustensiles%20n%E9cessaires%0A-%20ustensile%201%0A-%20ustensile%202%0A-%20ustensile%203</text>
+        <text>Recette%202</text>
       </controlProperties>
     </control>
-    <control controlID="63" controlTypeID="com.balsamiq.mockups::TextArea" x="350" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Icon" x="151" y="254" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Electromenager%20nec%E9ssaires%0A-%20Electro%201%0A-%20Electro%202%0A-%20Electro%203</text>
+        <icon>star%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="65" controlTypeID="com.balsamiq.mockups::Icon" x="61" y="286" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Icon" x="174" y="254" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <icon>star-o%7Cxsmall</icon>
+        <icon>star%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="66" controlTypeID="com.balsamiq.mockups::Icon" x="84" y="286" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Icon" x="197" y="254" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
-        <icon>star-o%7Cxsmall</icon>
+        <icon>star%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="67" controlTypeID="com.balsamiq.mockups::Icon" x="107" y="286" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="9" locked="false" isInGroup="-1">
-      <controlProperties>
-        <icon>star-o%7Cxsmall</icon>
-      </controlProperties>
-    </control>
-    <control controlID="68" controlTypeID="com.balsamiq.mockups::Icon" x="131" y="286" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Icon" x="221" y="254" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
         <icon>star-o%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="69" controlTypeID="com.balsamiq.mockups::Icon" x="153" y="286" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Icon" x="243" y="254" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
         <icon>star-o%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="71" controlTypeID="com.balsamiq.mockups::TextArea" x="513" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="156" y="303" w="-1" h="-1" measuredW="147" measuredH="21" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Ingr%E9dients%0A-%20element%201%0A-%20element%202%0A-%20element%203</text>
+        <text>Description%20de%20la%20recette</text>
       </controlProperties>
     </control>
-    <control controlID="72" controlTypeID="com.balsamiq.mockups::TextArea" x="677" y="197" w="142" h="168" measuredW="200" measuredH="140" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Icon" x="37" y="289" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Remarquies</text>
+        <href>recette%26bm%3Brecette.bmml%26bm%3Brecette.bmml%26bm%3Brecette.bmml</href>
+        <icon>birthday-cake%7Cxlarge</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2237%2C289%2C101%2C353%22%20href%3D%22recette.bmml%22%20alt%3D%22recette%22%20id%3D%2242%22/%3E</map>
       </controlProperties>
     </control>
-    <control controlID="74" controlTypeID="com.balsamiq.mockups::Link" x="866" y="399" w="-1" h="-1" measuredW="10" measuredH="19" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Label" x="376" y="89" w="-1" h="-1" measuredW="76" measuredH="21" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>%27</text>
+        <text>Les%20recettes</text>
       </controlProperties>
     </control>
-    <control controlID="75" controlTypeID="com.balsamiq.mockups::Label" x="64" y="314" w="-1" h="-1" measuredW="107" measuredH="21" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Icon" x="736" y="110" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nom%20de%20la%20recette</text>
+        <icon>star%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="76" controlTypeID="com.balsamiq.mockups::Label" x="61" y="344" w="-1" h="-1" measuredW="30" measuredH="21" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Icon" x="759" y="110" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Type</text>
+        <icon>star%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="77" controlTypeID="com.balsamiq.mockups::Label" x="61" y="378" w="-1" h="-1" measuredW="109" measuredH="21" zOrder="17" locked="false" isInGroup="-1">
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Icon" x="782" y="110" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nombre%20de%20portion</text>
+        <icon>star%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="78" controlTypeID="com.balsamiq.mockups::Label" x="193" y="163" w="-1" h="-1" measuredW="151" measuredH="21" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Icon" x="806" y="110" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Temps%20de%20pr%E9paration%3A%203h</text>
+        <icon>star%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="79" controlTypeID="com.balsamiq.mockups::Label" x="350" y="163" w="-1" h="-1" measuredW="64" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Icon" x="828" y="110" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="23" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>couts%3A%2030%24</text>
+        <icon>star-half-o%7Cxsmall</icon>
       </controlProperties>
     </control>
-    <control controlID="80" controlTypeID="com.balsamiq.mockups::Label" x="677" y="163" w="-1" h="-1" measuredW="127" measuredH="21" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Icon" x="736" y="252" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>temps%20de%20cuisson%3A%204h</text>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Icon" x="759" y="252" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Icon" x="782" y="252" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Icon" x="806" y="252" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star-o%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Icon" x="828" y="252" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star-o%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="101" y="110" w="-1" h="-1" measuredW="44" measuredH="21" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Qualit%E9</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="101" y="252" w="-1" h="-1" measuredW="44" measuredH="21" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Qualit%E9</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Label" x="676" y="108" w="-1" h="-1" measuredW="53" measuredH="21" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Difficult%E9</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Label" x="676" y="250" w="-1" h="-1" measuredW="53" measuredH="21" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Difficult%E9</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Button" x="694" y="391" w="-1" h="-1" measuredW="146" measuredH="27" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>add_recettes%26bm%3Badd_recettes.bmml%26bm%3Badd_recettes.bmml%26bm%3Badd_recettes.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22694%2C391%2C840%2C418%22%20href%3D%22add_recettes.bmml%22%20alt%3D%22add_recettes%22%20id%3D%2258%22/%3E</map>
+        <text>Ajouter%20une%20recettes</text>
       </controlProperties>
     </control>
   </controls>

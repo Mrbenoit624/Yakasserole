@@ -18,8 +18,8 @@
     </control>
     <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="418" y="312" w="-1" h="-1" measuredW="87" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <href>wrong_espace_connect%E9%26bm%3Bwrong_espace_connect%E9.bmml%26bm%3Bwrong_espace_connect%E9.bmml%26bm%3Bwrong_espace_connect%E9.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22418%2C312%2C505%2C339%22%20href%3D%22wrong_espace_connect%25C3%25A9.bmml%22%20alt%3D%22wrong_espace_connect%E9%22%20id%3D%228%22/%3E</map>
+        <href>espace_connect%E9%26bm%3Bespace_connect%E9.bmml%26bm%3Bespace_connect%E9.bmml%26bm%3Bespace_connect%E9.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22418%2C312%2C505%2C339%22%20href%3D%22espace_connect%25C3%25A9.bmml%22%20alt%3D%22espace_connect%E9%22%20id%3D%228%22/%3E</map>
         <text>R%E9cup%E9rer</text>
       </controlProperties>
     </control>

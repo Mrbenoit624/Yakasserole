@@ -60,6 +60,8 @@
     </control>
     <control controlID="37" controlTypeID="com.balsamiq.mockups::Button" x="686" y="275" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
+        <href>Achat%26bm%3BAchat.bmml%26bm%3BAchat.bmml%26bm%3BAchat.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22686%2C275%2C763%2C302%22%20href%3D%22Achat.bmml%22%20alt%3D%22Achat%22%20id%3D%2237%22/%3E</map>
         <text>S%27inscrire</text>
       </controlProperties>
     </control>

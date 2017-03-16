@@ -1,0 +1,62 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="887" measuredH="457" mockupW="887" mockupH="457">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>recette%0Ahttp%3A//yakasserole.fr/</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="866" y="75" w="-1" h="353" measuredW="16" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <value>14</value>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Icon" x="18" y="93" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
+        <icon>reply-all%7Cmedium</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2218%2C93%2C50%2C125%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2235%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::Link" x="866" y="86" w="-1" h="-1" measuredW="10" measuredH="19" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>recette%26bm%3Brecette.bmml%26bm%3Brecette.bmml%26bm%3Brecette.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22866%2C86%2C876%2C105%22%20href%3D%22recette.bmml%22%20alt%3D%22recette%22%20id%3D%2274%22/%3E</map>
+        <text>%27</text>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::FieldSet" x="29" y="140" w="829" h="121" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Etape%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::Icon" x="51" y="168" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
+        <icon>birthday-cake%7Cxlarge</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2251%2C168%2C115%2C232%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2277%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::FieldSet" x="29" y="273" w="829" h="121" measuredW="200" measuredH="170" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Etape%202</text>
+      </controlProperties>
+    </control>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::Icon" x="51" y="301" w="-1" h="-1" measuredW="64" measuredH="64" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
+        <icon>birthday-cake%7Cxlarge</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2251%2C301%2C115%2C365%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2280%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::TextArea" x="138" y="158" w="710" h="83" measuredW="200" measuredH="140" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Descrition%20de%20l%27%E9tape</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::TextArea" x="139" y="296" w="710" h="83" measuredW="200" measuredH="140" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Descrition%20de%20l%27%E9tape</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

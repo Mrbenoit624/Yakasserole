@@ -1,0 +1,46 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="887" measuredH="457" mockupW="887" mockupH="457">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//yakasserole.fr/</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="107" y="127" w="673" h="249" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TextInput" x="390" y="224" w="171" h="-1" measuredW="45" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>email</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="342" y="227" w="48" h="-1" measuredW="34" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>email%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="418" y="277" w="-1" h="-1" measuredW="87" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>mot_de_passe_oublie2%26bm%3Bmot_de_passe_oublie2.bmml%26bm%3Bmot_de_passe_oublie2.bmml%26bm%3Bmot_de_passe_oublie2.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22418%2C277%2C505%2C304%22%20href%3D%22mot_de_passe_oublie2.bmml%22%20alt%3D%22mot_de_passe_oublie2%22%20id%3D%228%22/%3E</map>
+        <text>R%E9cup%E9rer</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Link" x="491" y="174" w="-1" h="-1" measuredW="54" measuredH="19" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>s_inscrire_espace_connect%E9%26bm%3Bs_inscrire_espace_connect%E9.bmml%26bm%3Bs_inscrire_espace_connect%E9.bmml%26bm%3Bs_inscrire_espace_connect%E9.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22491%2C174%2C545%2C193%22%20href%3D%22s_inscrire_espace_connect%25C3%25A9.bmml%22%20alt%3D%22s_inscrire_espace_connect%E9%22%20id%3D%2210%22/%3E</map>
+        <text>s%27inscrire</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="390" y="174" w="-1" h="-1" measuredW="62" measuredH="19" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>connexion_espace_connect%E9%26bm%3Bconnexion_espace_connect%E9.bmml%26bm%3Bconnexion_espace_connect%E9.bmml%26bm%3Bconnexion_espace_connect%E9.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22390%2C174%2C452%2C193%22%20href%3D%22connexion_espace_connect%25C3%25A9.bmml%22%20alt%3D%22connexion_espace_connect%E9%22%20id%3D%2211%22/%3E</map>
+        <text>Connexion</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="385" y="147" w="-1" h="-1" measuredW="173" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Recuperer%20son%20mot%20de%20passe</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

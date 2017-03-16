@@ -1,0 +1,109 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="887" measuredH="457" mockupW="887" mockupH="457">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="887" h="457" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Atelier%201%0Ahttp%3A//yakasserole.fr/</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Icon" x="77" y="323" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Icon" x="100" y="323" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Icon" x="123" y="323" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Icon" x="147" y="323" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Icon" x="169" y="323" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>star-half-o%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="866" y="75" w="-1" h="353" measuredW="16" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <value>0</value>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Icon" x="69" y="161" w="-1" h="-1" measuredW="128" measuredH="128" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>cutlery%7Cxxlarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::Canvas" x="50" y="148" w="167" h="154" measuredW="100" measuredH="70" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Label" x="110" y="302" w="-1" h="-1" measuredW="47" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Atelier%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Icon" x="18" y="93" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
+        <icon>reply-all%7Cmedium</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2218%2C93%2C50%2C125%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2235%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Label" x="59" y="99" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Retour%20%E0%20l%27atelier</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Button" x="695" y="289" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>S%27inscrire</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::TextInput" x="359" y="169" w="177" h="-1" measuredW="61" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pr%E9nom</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="273" y="172" w="113" h="-1" measuredW="61" measuredH="21" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1er%20inscrit%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::TextInput" x="595" y="169" w="177" h="-1" measuredW="41" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nom</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Label" x="69" y="349" w="-1" h="-1" measuredW="126" measuredH="21" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>10%20places%20disponibles</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="624" y="253" w="-1" h="-1" measuredW="148" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>atelier_inscrition_quat%26bm%3Batelier_inscrition_quat.bmml%26bm%3Batelier_inscrition_quat.bmml%26bm%3Batelier_inscrition_quat.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22624%2C253%2C772%2C280%22%20href%3D%22atelier_inscrition_quat.bmml%22%20alt%3D%22atelier_inscrition_quat%22%20id%3D%2243%22/%3E</map>
+        <text>Ajout%20d%27une%20personne</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::TextInput" x="359" y="211" w="177" h="-1" measuredW="61" measuredH="27" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pr%E9nom</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Label" x="273" y="214" w="113" h="-1" measuredW="77" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>2eme%20inscrit%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::TextInput" x="595" y="211" w="177" h="-1" measuredW="41" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nom</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

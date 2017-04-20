@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+#EMAIL_FILE_PATH = '/tmp/'
+#EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+#EMAIL_HOST = 'mail.example.com'
+#EMAIL_PORT = 465
+
 
 # Application definition
 

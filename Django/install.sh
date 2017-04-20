@@ -1,11 +1,11 @@
 #!/bin/bash
 # if error occur active this one
-if false;then
-  sudo mkdir /run/postgresql
+if true;then
+  sudo mkdir /run/postgresql 2> /dev/null
   sudo chown $USER:users /run/postgresql/
   chmod +x /run/postgresql/
   pg_ctl -l /tmp/pg_log start
-  ln -s /run/postgresql/.s.PGSQL.5432 /tmp/.s.PGSQL.5432
+  ln -s /run/postgresql/.s.PGSQL.5432 /tmp/.s.PGSQL.5432 2> /dev/null
 fi
 # DONT FORGET TO LAUNCH THE SERVER
 pg_ctl -l /tmp/pg_log start
@@ -40,4 +40,7 @@ python manage.py migrate
 
 #enter admin for user 
 python manage.py createsuperuser
+
+python manage.py shell < ../group.py
+
 killall /usr/bin/postgres

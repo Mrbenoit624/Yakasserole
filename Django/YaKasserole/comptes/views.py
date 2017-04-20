@@ -1,8 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
-from .forms import ConnectForm
+from django.template import RequestContext
+from django.shortcuts import render_to_response
+from django.contrib.auth.models import Group
+from . forms import *
 
 def connect(request):
     # if this is a POST request we need to process the form data
@@ -17,6 +20,34 @@ def connect(request):
             if user is not None:
 #              login(request, user)
               return HttpResponse('Login success')
+            else:
+              return render(request, 'comptes/connect.html', {'form': form,
+                                                              'password': 'wrong' })
     else:
       form = ConnectForm()
     return render(request, 'comptes/connect.html', {'form': form})
+
+def profile(request):
+    if request.user.is_authenticated:
+        return HttpResponse('Your profile will be here one day');
+    else:
+        return HttpResponse('Fuck You');
+
+
+def inscription(request):
+    if request.method == 'POST':
+        form = InscriptionForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(
+                    username = form.cleaned_data['username'],
+                    password = form.cleaned_data['password'],
+                    email = form.cleaned_data['email'],
+                    first_name = form.cleaned_data['first_name'],
+                    last_name = form.cleaned_data['last_name']
+                    )
+            group = Group.objects.get(name='client')
+            group.user_set.add(user)
+            user = authenticate(username=user.username, password=user.password)
+            return profile(request)
+    form = InscriptionForm()
+    return render(request, 'registration/register.html', {'form': form});

@@ -1,7 +1,10 @@
 
-from django.conf.urls import url
-from.import views
+from django.conf.urls import *
+from django.contrib.auth.urls import *
+from . import views
 
 urlpatterns = [
-    url(r'^$', views.connect, name='connect'),
+    url('^', include('django.contrib.auth.urls')),
+    url('^profile', views.profile, name='profile'),
+    url(r'^register/$', views.inscription, name='inscription')
 ]

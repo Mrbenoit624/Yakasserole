@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^entreprise/', include('entreprise.urls')),
-    url(r'^comptes/', include('comptes.urls')),
+    url(r'^accounts/', include('comptes.urls')),
 ]

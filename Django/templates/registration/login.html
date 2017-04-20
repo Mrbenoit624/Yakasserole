@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% if form.errors %}
+<p>Mauvais mot de passe ou utilisateur veuillez recommencer</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Vous essayez de vous connecter avec un autre compte que le votre ou vous
+    essayez d'acceder à une page dont vous n'avez pas les accés</p>
+    {% else %}
+    <p>Veuillez vous connectez afin d'acceder à votre profile</p>
+    {% endif %}
+{% endif %}
+
+<p><a href="#">Inscription</a></p>
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<div>
+  <label>Utilisateur: </label>{{ form.username }}
+  <!--<td>{{ form.username.label_tag }}</td>-->
+</div>
+<div>
+  <label>Mot de passe: </label>{{ form.password }}
+    <!--<td>{{ form.password.label_tag }}</td>-->
+</div>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+{% endblock %}

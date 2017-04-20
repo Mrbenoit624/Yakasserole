@@ -5,10 +5,10 @@
         <text>Achat%0Ahttps%3A//yakasserole.fr/</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="182" y="88" w="458" h="314" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="356" y="114" w="-1" h="-1" measuredW="110" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="183" y="95" w="458" h="314" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="356" y="114" w="-1" h="-1" measuredW="136" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Récapitulatif%20de%20l'achat</text>
+        <text>R%E9capitulatif%20de%20l%27achat</text>
       </controlProperties>
     </control>
     <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="516" y="294" w="-1" h="-1" measuredW="103" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
@@ -16,9 +16,9 @@
         <text>montant%20total%3A%20%24%24</text>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Label" x="198" y="141" w="-1" h="-1" measuredW="94" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Label" x="198" y="141" w="-1" h="-1" measuredW="118" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Descriptif%20de%20l'achat</text>
+        <text>Descriptif%20de%20l%27achat</text>
       </controlProperties>
     </control>
     <control controlID="14" controlTypeID="com.balsamiq.mockups::DataGrid" x="299" y="169" w="320" h="118" measuredW="132" measuredH="111" zOrder="5" locked="false" isInGroup="-1">
@@ -26,7 +26,7 @@
         <text>Achat%20%5E%2C%20Montant%20%5Ev%0AAchat%201%2C%20%24%24%0AAchat%202%2C%20%24%24%0AAchat%203%2C%20%24%24%0A%7B65L%2C%200R%7D</text>
       </controlProperties>
     </control>
-    <control controlID="15" controlTypeID="com.balsamiq.mockups::Label" x="196" y="319" w="-1" h="-1" measuredW="65" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Label" x="196" y="319" w="-1" h="-1" measuredW="73" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Carte%20bleue%3A</text>
       </controlProperties>
@@ -48,8 +48,16 @@
     </control>
     <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="565" y="367" w="-1" h="-1" measuredW="63" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
+        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22565%2C367%2C628%2C394%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2219%22/%3E</map>
         <text>Valider</text>
       </controlProperties>
     </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Label" x="386" y="346" w="-1" h="-1" measuredW="91" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Date%20expiration%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::DateChooser" x="485" y="345" w="-1" h="-1" measuredW="90" measuredH="25" zOrder="12" locked="false" isInGroup="-1"/>
   </controls>
 </mockup>

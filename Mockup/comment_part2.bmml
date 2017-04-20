@@ -82,6 +82,8 @@
     </control>
     <control controlID="29" controlTypeID="com.balsamiq.mockups::Button" x="731" y="394" w="-1" h="-1" measuredW="63" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
+        <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22731%2C394%2C794%2C421%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2229%22/%3E</map>
         <text>Valider</text>
       </controlProperties>
     </control>

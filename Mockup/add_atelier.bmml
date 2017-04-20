@@ -22,7 +22,7 @@
         <icon>birthday-cake%7Cxlarge</icon>
       </controlProperties>
     </control>
-    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="416" y="100" w="-1" h="-1" measuredW="92" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="416" y="100" w="-1" h="-1" measuredW="82" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Nouvel%20Atelier</text>
       </controlProperties>
@@ -73,24 +73,44 @@
         <text/>
       </controlProperties>
     </control>
-    <control controlID="83" controlTypeID="com.balsamiq.mockups::Label" x="622" y="138" w="-1" h="-1" measuredW="79" measuredH="21" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Label" x="622" y="138" w="-1" h="-1" measuredW="67" measuredH="21" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Commentaire</text>
+        <text>Description</text>
       </controlProperties>
     </control>
-    <control controlID="84" controlTypeID="com.balsamiq.mockups::TextArea" x="485" y="158" w="366" h="128" measuredW="200" measuredH="140" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::TextArea" x="485" y="158" w="366" h="192" measuredW="200" measuredH="140" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>commentaire</text>
+        <text>Description</text>
       </controlProperties>
     </control>
-    <control controlID="85" controlTypeID="com.balsamiq.mockups::Button" x="732" y="301" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Button" x="732" y="372" w="-1" h="-1" measuredW="119" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
         <href>comment_part1%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml%26bm%3Bcomment_part1.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22732%2C301%2C851%2C328%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2285%22/%3E</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22732%2C372%2C851%2C399%22%20href%3D%22comment_part1.bmml%22%20alt%3D%22comment_part1%22%20id%3D%2285%22/%3E</map>
         <text>Ajout%20de%20l%27atelier</text>
       </controlProperties>
     </control>
     <control controlID="86" controlTypeID="com.balsamiq.mockups::DateChooser" x="340" y="257" w="-1" h="-1" measuredW="90" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%20%20/%20%20/%20%20%20%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Label" x="210" y="296" w="-1" h="-1" measuredW="95" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Date%20ouverture%20%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::DateChooser" x="340" y="295" w="-1" h="-1" measuredW="90" measuredH="25" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%20%20/%20%20/%20%20%20%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::Label" x="210" y="329" w="-1" h="-1" measuredW="117" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>D%E9lai%20non-premium%20%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::DateChooser" x="340" y="328" w="-1" h="-1" measuredW="90" measuredH="25" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%20%20/%20%20/%20%20%20%20</text>
       </controlProperties>

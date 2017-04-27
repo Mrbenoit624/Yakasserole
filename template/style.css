@@ -95,3 +95,13 @@ html, #page { padding:0; margin:0;}
             
             /* Clear both sides to assist with div alignment  */
             .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+
+            /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+            .full {
+                background: url('https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg') no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                background-size: cover;
+                -o-background-size: cover;
+            }

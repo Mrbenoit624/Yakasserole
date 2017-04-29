@@ -1,7 +1,8 @@
-{% load static %} 
-<!DOCTYPE html>
-<html>
-  <head lang="fr">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<head lang="fr">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta charset="utf-8">
@@ -11,68 +12,65 @@
     <meta name="author" content="">
     <title>YaKasserole</title>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  </head>
-  <body>
-    <header id="header">
-      <div id="logo">
-        <a href="index.html"><img src="{% static 'img/logo.png' %}" style="width:150px;height:150px"></img></a>
-      </div>
-      <div id="top-nav">
-        <ul class="nav nav-tabs">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="entreprise/about">À Propos</a></li>
-          <li><a href="entreprise/location">Nous localiser</a></li>
-          <li><a href="entreprise/contact">Nous contacter</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true" aria-expanded="false">Premium<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Compte premium</a></li>
-              <li><a href="#">Nos recettes</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <div class="feature-inner">
-      <h1>Bienvenue sur le site de YaKasserole !</h1>
-    </div>
+</head>
 
-    <div class="article">
-      <p>
-      <img src="{%static 'img/tomatoes.jpg' %}" style="float: left;width:200px;margin-right:20px"/>
-      YaKasserole propose des ateliers cuisine.
-      Contactez-nous et réservez un atelier pour apprendre la cuisine.</br>
-      Devenez un as de la cuisine et impressionez votre famille et vos amis !</br>
-      </p>
-      <p>
-      <img src="{%static 'img/pot.jpg' %}" style="float: right;width:300px;margin-left:20px"/>
-      Avec gluten ou sans, végétarien ou non, il y en a pour tous les goûts !</br>
-      Nos chefs vous feront découvrir toutes les subtilités de la cuisine, sans modération. Nous attendons votre coup de téléphone !</br>
-      </p> 
-    </div>
-    <div>
-      <h1 style="margin:10px">Ils témoignent…</h1>
-      <blockquote>
-        <p><i>Depuis que j'utilise YaKasserole, ma vie a changé.</i></p>
-        <footer><h2>— Jean Bon</h2></footer>
-      </blockquote>
-      <blockquote>
-        <p><i>YaKasserole m'a ouvert l'appetit et fait découvrir de nouvelles saveurs.</i></p>
-        <footer><h2>— Aubin Marie</h2></footer>
-      </blockquote>
-      <blockquote>
-        <p><i>Je n'ai plus jamais manqué de PAIC Citron.</i></p>
-        <footer><h2>— Aude Wesel</h2></footer>
-      </blockquote>
-    </div>
-    <footer id="footer">
-      <p>&copy; Copyright <a href="/">YaKasserole 2017</a></p>
-    </footer>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  </body>
-</html>
+        <div class="feature">
+          <div class="feature-inner">
+            <h1>Bienvenue sur le site de YaKasserole !</h1>
+          </div>
+        </div>
+
+        <div id="content">
+          <div id="content-inner">  
+            <main id="contentbar">
+              <div class="article">
+                <p>
+                  <img src="{%static 'img/tomatoes.jpg' %}" style="float: left;width:200px;margin-right:20px"/>
+                  YaKasserole propose des ateliers cuisine.
+                  Contactez-nous et réservez un atelier pour apprendre la cuisine.</br>
+                  Devenez un as de la cuisine et impressionez votre famille et vos amis !</br>
+                  </br>
+                  </br>
+                  </br>
+                  </br>
+                  </br>
+                </p>
+                  </br>
+                  <hr/>
+                  </br>
+                <p>
+                  <img src="{%static 'img/pot.jpg' %}" style="float: right;width:300px;margin-left:20px"/>
+                  Avec gluten ou sans, végétarien ou non, il y en a pour tous les goûts !</br>
+                  Nos chefs vous feront découvrir toutes les subtilités de la cuisine, sans modération. Nous attendons votre coup de téléphone !</br>
+                </p> 
+              </div>
+            </main>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div id="footerblurb">
+          <h1 style="margin:10px">Ils témoignent…</h1>
+          <div id="footerblurb-inner">
+            <div class="column">
+              <blockquote>
+                <p><i>Depuis que j'utilise YaKasserole, ma vie a changé.</i></p>
+                <footer><h2>— Jean Bon</h2></footer>
+              </blockquote>
+            </div>
+            <div class="column">
+              <blockquote>
+                <p><i>YaKasserole m'a ouvert l'appetit et fait découvrir de nouvelles saveurs.</i></p>
+                <footer><h2>— Aubin Marie</h2></footer>
+              </blockquote>
+            </div>
+            <div class="column">
+              <blockquote>
+                <p><i>Je n'ai plus jamais manqué de PAIC Citron.</i></p>
+                <footer><h2>— Aude Wesel</h2></footer>
+              </blockquote>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+{% endblock %}

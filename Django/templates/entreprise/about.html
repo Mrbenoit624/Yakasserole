@@ -1,6 +1,6 @@
-{% load static %} 
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %} 
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -13,33 +13,6 @@
         <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     </head>
     <!-- Did you try yakasserole.fr/ing1 ? There is some bonus points for h3ckers -->
-    <body>
-        <div id="page">
-            <header id="header">
-                <div id="header-inner"> 
-                    <div id="logo">
-                      <a href="index.html"><img src="{%static 'img/logo.png' %}" style="width:150px;height:150px"></img></a>
-                    </div>
-                    <div id="top-nav">
-                      <ul class="nav nav-tabs">
-                        <li><a href="../">Accueil</a></li>
-                        <li><a href="about">À Propos</a></li>
-                        <li><a href="location">Nous localiser</a></li>
-                        <li><a href="contact">Nous contacter</a></li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="false">Premium<span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Compte premium</a></li>
-                            <li><a href="#">Nos recettes</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="clr"></div>
-                </div>
-            </header>
             <div class="feature">
               <div class="feature-inner">
                 <h1>À propos de nous</h1>
@@ -93,16 +66,4 @@
                 <div class="clr"></div>
               </div>
             </div>
-            <footer id="footer">
-              <div id="footer-inner">
-                <p>&copy; Copyright <a href="/">YaKasserole 2017</a></p>
-                <div class="clr"></div>
-              </div>
-            </footer>
-        </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    </body>
-</html>
+{% endblock %}

@@ -12,7 +12,7 @@
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Connexion" />
-    {% if password == "wrong password" %}
+    {% if password == "wrong" %}
       <div>
         Wrong Password
       </div>

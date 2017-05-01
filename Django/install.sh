@@ -1,6 +1,6 @@
 #!/bin/bash
 # if error occur active this one
-if false;then
+if true;then
   sudo mkdir /run/postgresql 2> /dev/null
   sudo chown $USER:users /run/postgresql/
   chmod +x /run/postgresql/
@@ -23,13 +23,13 @@ else
 fi
 pip install --user -e django/
 
-apps=(community recette atelier)
+apps=('community' 'recette' 'atelier')
 
 if [ ! -d "$project" ]; then
   ~/.local/bin/django-admin startproject "$project"
   cd "$project"
   find . -name 'migrations' -exec rm -rf {} \;
-  for i in apps; do
+  for i in "${apps[@]}"; do
     python manage.py startapp $i
   done
 fi
@@ -39,7 +39,10 @@ psql postgres -f setup_user.sql
 set -e
 
 cd "$project"
-python manage.py makemigrations
+for i in "${apps[@]}"; do
+  python manage.py makemigrations $i
+  python manage.py migrate $i
+done
 python manage.py migrate
 
 #enter admin for user

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from community import Commentaire
+from community.models import Commentaire
 import datetime
 
 class Theme(models.Model):
@@ -64,3 +64,7 @@ class ateliers_commentaires(models.Model):
 class ateliers_lieux(models.Model):
     ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)
     lieux = models.ForeignKey(Lieu, on_delete=models.CASCADE)
+
+class Chef(models.Model):
+    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)

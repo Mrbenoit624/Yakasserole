@@ -1,10 +1,4 @@
 {% load static %}
-<?php
-  $bg = array('bg-01.jpg', 'bg-02.jpg', 'bg-03.jpg'); // array of filenames
-
-  $i = rand(0, count($bg)-1); // generate random number size of the array
-  $selectedBg = "$bg[$i]"; // set variable equal to which random filename was chosen
-  ?>
 
 <!DOCTYPE html>
   <body>
@@ -29,8 +23,7 @@
                       <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand.logo" href="/">
-                      <img alt="Brand" src="{% static 'img/logo.png' %}" style="width:75px;                                                                                                                                                 
-										height:75px">
+                      <img alt="Brand" src="{% static 'img/logo.png' %}">
                     </a>
                   </div>
                   <!-- Collect the nav links, forms, and other content for toggling -->

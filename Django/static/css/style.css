@@ -142,7 +142,9 @@ button {
     background-image: url("../img/bg-02.jpg");
 
     /* Set a specific height */
-    height: 750px;
+    max-width: 100%;
+    height: auto;
+    display: block;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;

@@ -4,6 +4,7 @@
 {% block content %}
 
 <head lang="fr">
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta charset="utf-8">
@@ -12,7 +13,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Connexion</title>
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
 <div class="feature">
@@ -49,8 +49,8 @@
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-<p><a href="http://127.0.0.1:8080/accounts/register/">Je n'ai pas de compte</a></p>
+<p><a href="/accounts/register/">Je n'ai pas de compte</a></p>
 <p><a href="{% url 'password_reset' %}">J'ai oublié mon mot de passe</a></p>
-<p><a href="http://127.0.0.1:8080/admin/">Je suis un administrateur</a></p>
+<p><a href="/admin/">Je suis un administrateur</a></p>
 
 {% endblock %}

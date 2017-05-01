@@ -1,31 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %} 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>À propos de nous</title>
-        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    </head>
-    <!-- Did you try yakasserole.fr/ing1 ? There is some bonus points for h3ckers -->
-            <div class="feature">
-              <div class="feature-inner">
-                <h1>À propos de nous</h1>
-              </div>
-            </div>
+<head>
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>À propos de nous</title>
+</head>
+<!-- Did you try yakasserole.fr/ing1 ? There is some bonus points for h3ckers -->
+<div class="feature">
+  <div class="feature-inner">
+    <h1>À propos de nous</h1>
+  </div>
+</div>
 
-            <div id="content">
-              <div id="content-inner">  
-                <main id="contentbar">
-                <div class="article">
-                  <p>
-                  <img src="{% static 'img/frog.jpg' %}" style="display: block;margin-left: auto;
-                  margin-right: auto;width:500px;margin-bottom:20px"/>
+<div id="content">
+  <div id="content-inner">  
+    <main id="contentbar">
+      <div class="article">
+        <p>
+          <img src="{% static 'img/frog.jpg' %}" style="display: block;margin-left: auto;
+                                                        margin-right: auto;width:500px;margin-bottom:20px"/>
                   </br>
                   YaKasserole est originaire de Toulouse (31) et possède donc son siège social dans le centre-ville. La plupart des salariés de la société travaillent sur ce site. Nous possédons néanmoins un certains nombres de locaux répartis dans plusieurs villes pour organiser les ateliers culinaires.</br>
                   </br>
@@ -35,35 +35,35 @@
                   • Local YaKasserole quartier Rihour (métro Rihour, 59800 Lille)</br>
                   • Local YaKasserole quartier Saint-Genès (métro Navarre, 33000 Bordeaux)</br>
 
-                  </p>
-                </div>
-                </main>
-                <div class="clr"></div>
-              </div>
-            </div>
+        </p>
+      </div>
+    </main>
+    <div class="clr"></div>
+  </div>
+</div>
 
-            <div id="footerblurb">
-              <h1 style="margin:10px">Ils témoignent…</h1>
-              <div id="footerblurb-inner">
-                <div class="column">
-                  <blockquote>
-                    <p><i>Depuis que j'utilise YaKasserole, ma vie a changé.</i></p>
-                    <footer><h2>— Jean Bon</h2></footer>
-                  </blockquote>
-                </div>
-                <div class="column">
-                  <blockquote>
-                    <p><i>YaKasserole m'a ouvert l'appetit et fait découvrir de nouvelles saveurs.</i></p>
-                    <footer><h2>— Aubin Marie</h2></footer>
-                  </blockquote>
-                </div>
-                <div class="column">
-                  <blockquote>
-                    <p><i>Je n'ai plus jamais manqué de PAIC Citron.</i></p>
-                    <footer><h2>— Aude Wesel</h2></footer>
-                  </blockquote>
-                </div>
-                <div class="clr"></div>
-              </div>
-            </div>
+<div id="footerblurb">
+  <h1 style="margin:10px">Ils témoignent…</h1>
+  <div id="footerblurb-inner">
+    <div class="column">
+      <blockquote>
+        <p><i>Depuis que j'utilise YaKasserole, ma vie a changé.</i></p>
+        <footer><h2>— Jean Bon</h2></footer>
+      </blockquote>
+    </div>
+    <div class="column">
+      <blockquote>
+        <p><i>YaKasserole m'a ouvert l'appetit et fait découvrir de nouvelles saveurs.</i></p>
+        <footer><h2>— Aubin Marie</h2></footer>
+      </blockquote>
+    </div>
+    <div class="column">
+      <blockquote>
+        <p><i>Je n'ai plus jamais manqué de PAIC Citron.</i></p>
+        <footer><h2>— Aude Wesel</h2></footer>
+      </blockquote>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
 {% endblock %}

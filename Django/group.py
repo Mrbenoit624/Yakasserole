@@ -16,7 +16,7 @@ rdu_g, created = Group.objects.get_or_create(
         name='Responsable des utilisateurs')
 
 chef_g, created = Group.objects.get_or_create(
-        name='Responsable des utilisateurs')
+        name='Chef cuisinier')
 
 ############################### PERMISSION ####################################
 

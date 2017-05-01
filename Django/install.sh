@@ -38,7 +38,7 @@ python manage.py makemigrations polls
 python manage.py sqlmigrate polls 0001
 python manage.py migrate
 
-#enter admin for user 
+#enter admin for user
 python manage.py createsuperuser
 
 python manage.py shell < ../group.py

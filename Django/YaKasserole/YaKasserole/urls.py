@@ -20,7 +20,6 @@ from.import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^polls/', include('polls.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^entreprise/', include('entreprise.urls')),
     url(r'^accounts/', include('comptes.urls')),

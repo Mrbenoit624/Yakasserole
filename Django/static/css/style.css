@@ -111,6 +111,10 @@ h1, h2, h3, h4, h5, h6 {color:darkgreen;}
    border-color: transparent;
 }
 
+#navigation,.navbar .navbar-default{
+    background-image: url("../img/navbar.jpeg");
+}
+
 .navbar li { color: #000 } 
 
 /* Form */

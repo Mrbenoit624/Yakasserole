@@ -148,9 +148,7 @@ button {
                 background:transparent;
             }*/
 
-.parallax {
-    /* The image used */
-    background-image: url("../img/bg-02.jpg");
+.parallax, .parallax2 {
 
     /* Set a specific height */
     max-width: 100%;
@@ -165,20 +163,14 @@ button {
     opacity:0.9;
 }
 
+.parallax {
+    /* The image used */
+    background-image: url("../img/bg-02.jpg");
+}
+
 .parallax2
 {
     /* The image used */
-    background-image: url("../img/bg-03.jpg");
+    background-image: url("../img/bg-01.jpg");
 
-    /* Set a specific height */
-    max-width: 100%;
-    height: auto;
-    display: block;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity:0.8;
 }

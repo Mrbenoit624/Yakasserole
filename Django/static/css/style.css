@@ -104,14 +104,15 @@ h1, h2, h3, h4, h5, h6 {color:darkgreen;}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: #5F7534;
 }
-
+/*
 .navbar {
    background-color: transparent;
    background: transparent;
    border-color: transparent;
-}
+}*/
 
-#navigation,.navbar .navbar-default{
+#navigation,.navbar .navbar-default
+{
     background-image: url("../img/navbar.jpeg");
 }
 

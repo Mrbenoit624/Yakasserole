@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {color:darkgreen;}
 
 /* navbar */
 
-.navbar-default {
+/*.navbar-default {
     background-color: #001919;
     border-color: #082b2b;
 }
@@ -54,6 +54,7 @@ h1, h2, h3, h4, h5, h6 {color:darkgreen;}
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
+
     color: #859e55;
     background-color: #082b2b;
 }
@@ -98,8 +99,13 @@ h1, h2, h3, h4, h5, h6 {color:darkgreen;}
         color: #859e55;
         background-color: #082b2b;
     }
+}*/
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #FFFF00;
+    color: #FFC0CB;
 }
-/*
+
 .navbar {
    background-color: transparent;
    background: transparent;
@@ -107,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {color:darkgreen;}
 }
 
 .navbar li { color: #000 } 
-*/
+
 /* Form */
 form {
     margin: 0 auto;

@@ -1,16 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+import datetime
 
-
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
 
 class Types(models.Model):
     Name = models.CharField(max_length=65)
@@ -33,14 +25,14 @@ class Theme(models.Model):
 class Commentaire(models.Model):
     Titre = models.CharField(max_length=65)
     Messages = models.TextField()
-    user_id = models.ForeignKey('auth.User', unique=True, on_delete=models.CASCADE)
+    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
 
 class Recette(models.Model):
     Titre = models.CharField(max_length=65)
     Type_id = models.ForeignKey(Types, on_delete=models.CASCADE)
-    Temps_preparation = models.DateTimeField()
-    Temps_cuisson = models.DateTimeField()
+    Temps_preparation = models.DateTimeField(default=timezone.now)
+    Temps_cuisson = models.DateTimeField(default=timezone.now)
     Ustensiles = models.ManyToManyField(
         Ustensile,
         through='Recettes_Ustensiles',
@@ -51,8 +43,8 @@ class Recette(models.Model):
         through='Recettes_Electromenager',
         through_fields=('recettes', 'elctromenagers'),
     )
-    Nombre_portions = models.IntegerField(default=0)
-    Difficulté = models.IntegerField(default=0)
+    Nombre_portions = models.PositiveIntegerField(default=0)
+    Difficulte = models.PositiveIntegerField(default=0)
     Cout = models.FloatField(default=0)
     Ingredients = models.ManyToManyField(
         Ingredient,
@@ -70,14 +62,14 @@ class Recette(models.Model):
         through='Recettes_Commentaires',
         through_fields=('recettes', 'commentaires'),
     )
-    Date = models.DateTimeField()
-    user_id = models.ForeignKey('auth.User', unique=True, on_delete=models.CASCADE)
+    Date = models.DateTimeField(default=timezone.now)
+    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
 class Lieu(models.Model):
     Nom = models.CharField(max_length=65)
     Adresse = models.CharField(max_length=65)
     Telephone = models.CharField(max_length=65)
-    CodePostal = models.IntegerField(default=0)
+    CodePostal = models.PositiveIntegerField(default=0)
     Ville = models.CharField(max_length=65)
 
 class Atelier(models.Model):
@@ -92,9 +84,10 @@ class Atelier(models.Model):
         through='Ateliers_themes',
         through_fields=('ateliers', 'themes'),
     )
-    Chef_id = models.ForeignKey('auth.User', unique=True, on_delete=models.CASCADE)
-    Date_inscription = models.DateTimeField()
-    Date_premium = models.DateTimeField()
+    Chef_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    Date_inscription = models.DateTimeField(default=timezone.now)
+    Date_premium = models.DateTimeField(default=timezone.now)
+    Places = models.PositiveIntegerField(default=0)
     Messages = models.TextField()
     Commentaires = models.ManyToManyField(
         Commentaire,
@@ -102,33 +95,28 @@ class Atelier(models.Model):
         through_fields=('ateliers', 'commentaires'),
     )
 
-#class inscription_log(models.Model):
-#    user_id = models.ForeignKey('auth.User', unique=True, on_delete=models.CASCADE)
-#    participants = models.ManyToManyField(
-#        'auth.User',
-#        through='paricipant_atelier',
-#        through_fields=('users', 'inscription_logs'),
-#    )
-#    Date = models.DateTimeField()
+class inscription_log(models.Model):
+    user_id = models.ForeignKey(
+            'auth.User', on_delete=models.CASCADE,
+            related_name='fuck')
+    participants = models.ManyToManyField(
+        'auth.User',
+        through='paricipants_atelier',
+        through_fields=('inscription_logs', 'users')
+    )
+    Date = models.DateTimeField(default=timezone.now)
 
+class ateliers_themes(models.Model):
+    ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)
+    themes = models.ForeignKey(Theme, on_delete=models.CASCADE)
 
-#class paricipant_atelier(models.Model):
-#    users = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-#    inscription_logs = models.ForeignKey(inscription_log, on_delete=models.CASCADE)
+class paricipants_atelier(models.Model):
+    users = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    inscription_logs = models.ForeignKey(inscription_log, on_delete=models.CASCADE)
 
-#class Chef(models.Model):
-#    user_id = models.ForeignKey('auth.User', unique=True, on_delete=models.CASCADE)
-#    ateliers = models.ManyToManyField(
-#        Atelier,
-#        through='Ateliers_chefs',
-#        through_fields=('ateliers', 'chefs'),
-#    )
-#
-#
-#
-#class ateliers_chefs(models.Model):
-#    ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)
-#    chefs = models.ForeignKey(Chef, on_delete=models.CASCADE)
+class Chef(models.Model):
+    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)
 
 class recettes_ustensiles(models.Model):
     recettes = models.ForeignKey(Recette, on_delete=models.CASCADE)
@@ -154,9 +142,6 @@ class ateliers_lieux(models.Model):
     ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)
     lieux = models.ForeignKey(Lieu, on_delete=models.CASCADE)
 
-class ateliers_themes(models.Model):
-    ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)
-    themes = models.ForeignKey(Theme, on_delete=models.CASCADE)
 
 class ateliers_commentaires(models.Model):
     ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)

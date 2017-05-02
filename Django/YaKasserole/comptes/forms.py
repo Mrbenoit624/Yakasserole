@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 class ConnectForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=10)
+    email = forms.CharField(label='Email', max_length=10)
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
 
 class InscriptionForm(forms.Form):
@@ -24,7 +24,10 @@ class InscriptionForm(forms.Form):
             password = self.cleaned_data['password']
             passwordr = self.cleaned_data['passwordr']
             if password == passwordr:
-                return passwordr
+                if len(password) > 7:
+                    return passwordr
+                else:
+                   raise forms.ValidationError('password not secure.')
         raise forms.ValidationError('Passwords do not match.')
 
     def clean_username(self):
@@ -37,3 +40,11 @@ class InscriptionForm(forms.Form):
         except ObjectDoesNotExist:
             return username
         raise forms.ValidationError('Username is already taken.')
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        try:
+            User.objects.get(email=email)
+        except ObjectDoesNotExist:
+            return email
+        raise forms.ValidationError('emai is already used.')

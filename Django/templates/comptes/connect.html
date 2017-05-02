@@ -9,8 +9,8 @@
 </form>
 -->
 <form action="" method="post">
-    {% csrf_token %}
     {{ form }}
+    {% csrf_token %}
     <input type="submit" value="Connexion" />
     {% if password == "wrong" %}
       <div>

@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import Group
+from django.test.client import RequestFactory
 from . forms import *
 
 def connect(request):
@@ -18,7 +19,7 @@ def connect(request):
             password = request.POST['password']
             user = authenticate(username=username, password=password)
             if user is not None:
-#              login(request, user)
+              login(request, user)
               return HttpResponse('Login success')
             else:
               return render(request, 'comptes/connect.html', {'form': form,
@@ -47,7 +48,7 @@ def inscription(request):
                     )
             group = Group.objects.get(name='client')
             group.user_set.add(user)
-            user = authenticate(username=user.username, password=user.password)
+            login(request, user)
             return profile(request)
     form = InscriptionForm()
     return render(request, 'registration/register.html', {'form': form});

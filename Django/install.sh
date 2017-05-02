@@ -15,7 +15,6 @@ project=YaKasserole
 
 pip install --user psycopg2
 
-find "$project" -name 'migrations*' -exec rm -rf {} \;
 if [ -d django ];
 then
   cd django && git pull && cd -;
@@ -29,7 +28,9 @@ apps=('community' 'recette' 'atelier')
 if [ ! -d "$project" ]; then
   ~/.local/bin/django-admin startproject "$project"
   cd "$project"
+  set +e
   find . -name 'migrations' -exec rm -rf {} \;
+  set -e
   for i in "${apps[@]}"; do
     python manage.py startapp $i
   done

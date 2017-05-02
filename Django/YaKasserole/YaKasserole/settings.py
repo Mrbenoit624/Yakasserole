@@ -37,7 +37,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
+    'atelier.apps.AtelierConfig',
+    'community.apps.CommunityConfig',
+    'recette.apps.RecetteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

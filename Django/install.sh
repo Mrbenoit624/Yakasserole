@@ -15,6 +15,7 @@ project=YaKasserole
 
 pip install --user psycopg2
 
+find "$project" -name 'migrations*' -exec rm -rf {} \;
 if [ -d django ];
 then
   cd django && git pull && cd -;

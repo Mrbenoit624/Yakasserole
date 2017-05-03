@@ -4,7 +4,12 @@
 
 html, #page { padding:0; margin:0;}
 body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/2.0em Sans-Serif;} 
-h1, h2, h3, h4, h5, h6 {color:darkgreen;}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Corben', Georgia, Times, serif;
+}
+p, div {
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}
 #page { background:#fff;}
 #header, #footer, #top-nav, #content, #content #contentbar, #content #sidebar { margin:0; padding:0;}
 
@@ -97,12 +102,6 @@ button {
     color:#DAE9BC;
     font-size:32px;}
 
-/* Menu */
-#top-nav { margin:0 auto; padding:0px 0 0; height:37px; float:right;}
-#top-nav ul { list-style:none; padding:0; height:37px; float:left;}
-#top-nav ul li { margin:0; padding:0 0 0 8px; float:left;}
-#top-nav ul li a { display:block; margin:0; padding:8px 20px; color:green; text-decoration:none;}
-#top-nav ul li.active a, #top-nav ul li a:hover { color:#BCCE98;}
 
 /* Content */
 #content-inner { margin:0 auto; padding:10px 0; width:970px;background:#fff;}
@@ -129,24 +128,6 @@ button {
 
 /* Clear both sides to assist with div alignment  */
 .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
-
-/*.bg {
-                background: url('../img/pexels-photo-76093.jpeg') no-repeat center center;
-                position: fixed;
-                width: 100%;
-                height: 350px; /*same height as jumbotron */
-/*top:0;
-                left:0;
-                z-index: -1;
-            }
-
-            .jumbotron {
-                margin-bottom: 0px;
-                height: 350px;
-                color: white;
-                text-shadow: black 0.3em 0.3em 0.3em;
-                background:transparent;
-            }*/
 
 .parallax, .parallax2 {
 

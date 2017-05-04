@@ -1,32 +1,53 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}User Registration{% endblock %}
+{% block head %}User Registration{% endblock %}
 {% block content %}
 
-<div class="container-narrow">
-
-  <hr>
-
-  <div class="jumbotron">
-    <h1>Mon compte</h1>
-    <p class="lead">Bienvenue sur votre page de compte!</p>
+<div class="feature">
+  <div class="feature-inner">
+    <h1>Je souhaite créer un compte yakasserole</h1>
   </div>
+</div>
 
-  <hr>
-  
-  <div class="row-fluid marketing">
-    <div class="span6">
-      <h4>Bonjour {{user}}</h4>
-      <h4>Vous avez participé à: 12 ateliers</h4>
-      <h4>Vous avez publié: 7 recettes</h4>
-      <h4>Vous avez posté: 24 commentaires</h4>
-    </div>
+<form method="post" action=".">
+  <div class="form-group">
+    <label for="inputUsername">Utilisateur: </label>{{ form.username }}
+    <!--<td>{{
+      form.username.label_tag|add_class:"form-control"|attr:"id:inputUsername"
+      }} </td>-->
   </div>
-
-  <hr>
-
-  <div class="footer">
-    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  <div class="form-group">
+    <label for="inputEmail">Email: </label>{{ form.email }}
+    <!--<td>{{
+      form.email.label_tag|add_class:"form-control"|attr:"id:inputEmail"
+      }} </td>-->
   </div>
-  
-</div> <!-- /container -->
+  <div class="form-group">
+    <label for="inputFirstname">Prénom: </label>{{ form.first_name }}
+    <!--<td>{{
+      form.first_name.label_tag|add_class:"form-control"|attr:"id:inputFirstname"
+      }} </td>-->
+  </div>
+  <div class="form-group">
+    <label for="inputLastname">Nom: </label>{{ form.last_name }}
+    <!--<td>{{
+      form.last_name.label_tag|add_class:"form-control"|attr:"id:inputLastname"
+      }} </td>-->
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1">Mot de passe: </label>{{ form.password }}
+    <!--<td>{{
+      form.password.label_tag|add_class:"form-control"|attr:"id:inputPassword1"
+      }} </td>-->
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2">Mot de passe (confirmation): </label>{{ form.passwordr }}
+    <!--<td>{{
+      form.passwordr.label_tag|add_class:"form-control"|attr:"id:inputPassword2"
+      }} </td>-->
+  </div>
+  <button type="submit" class="btn btn-default" value="register">S'inscrire</button>
+  {% csrf_token %}
+</form>
 {% endblock %}

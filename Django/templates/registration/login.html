@@ -10,15 +10,15 @@
    <div class="jumbotron">
   
 {% if form.errors %}
-<h1>Mauvais mot de passe ou utilisateur, veuillez recommencer</h1>
+<h4>Mauvais mot de passe ou utilisateur, veuillez recommencer</h4>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <h1>Vous essayez de vous connecter avec un autre compte que le votre ou vous
-    essayez d'acceder à une page dont vous n'avez pas les accés</h1>
+    <h4>Vous essayez de vous connecter avec un autre compte que le votre ou vous
+    essayez d'acceder à une page dont vous n'avez pas les accés</h4>
     {% else %}
-    <h1>Veuillez vous connectez afin d'acceder à votre profile</h1>
+    <h4>Veuillez vous connectez afin d'acceder à votre profile</h4>
     {% endif %}
 {% endif %}
 

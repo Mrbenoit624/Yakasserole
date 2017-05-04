@@ -5,8 +5,17 @@
 
 {% block content %}
 
-<p>{% trans "Merci pour avoir passé du temps de qualité sur notre site web aujourd'hui." %}</p>
+<div class="container-narrow">
 
-<p><a href="{% url 'login' %}">{% trans 'Se connecter à nouveau' %}</a></p>
+  <hr>
+
+  <div class="jumbotron">
+    <h4>Merci pour avoir passé du temps de qualité sur notre site web aujourd'hui.</h4>
+    <p class="lead">Veuillez remplir ce formulaire:</p>
+  </div>
+
+  <hr>
+
+  <a class="btn btn-large btn-success" href="/accounts/login"><span class="glyphicon glyphicon-cutlery"></span> &nbsp; Se connecter à nouveau</a>
 
 {% endblock %}

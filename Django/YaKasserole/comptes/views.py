@@ -30,7 +30,7 @@ def connect(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        return render(request, 'registration/account.html', {'user': request.user.username});
+        return render(request, 'registration/account.html', {});#{'user': request.user.username});
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');
 

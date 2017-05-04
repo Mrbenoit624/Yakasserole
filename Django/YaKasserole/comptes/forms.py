@@ -6,8 +6,13 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 class ConnectForm(forms.Form):
-    email = forms.CharField(label='Email', max_length=10)
+    email = forms.EmailField(label='Email')
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        super(ConnectForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['password'].widget.attrs['class'] = 'form-control'
 
 class InscriptionForm(forms.Form):
     username = forms.CharField(label='Username', max_length=30)
@@ -48,3 +53,12 @@ class InscriptionForm(forms.Form):
         except ObjectDoesNotExist:
             return email
         raise forms.ValidationError('emai is already used.')
+
+    def __init__(self, *args, **kwargs):
+        super(InscriptionForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['password'].widget.attrs['class'] = 'form-control'
+        self.fields['passwordr'].widget.attrs['class'] = 'form-control'

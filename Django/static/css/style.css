@@ -3,16 +3,16 @@
 //netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js
 
 html, #page { padding:0; margin:0;}
-body {   
-    background: url(../img/restaurant.png) repeat 0 0;
-    padding-top: 20px;
-    padding-bottom: 40px;
+body {
+    background: #4878c4;
 }
 
 /* Custom container */
 .container-narrow {
+    background: url(../img/restaurant.png) repeat 0 0;
     margin: 0 auto;
-    max-width: 700px;
+    padding: 30px;
+    max-width: 900px;
 }
 .container-narrow > hr {
     margin: 30px 0;
@@ -27,9 +27,11 @@ body {
     font-size: 72px;
     line-height: 1;
 }
+
 .jumbotron h1 {
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */ background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */ background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */ background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 12+ */ background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */ background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
 }
+
 .jumbotron .btn {
     font-size: 21px;
     padding: 14px 24px;
@@ -39,6 +41,7 @@ body {
 .marketing {
     margin: 60px 0;
 }
+
 .marketing p + h4 {
     margin-top: 28px;
 }
@@ -50,10 +53,12 @@ body {
     .jumbotron h1 {
         font-size: 40px;
     }
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Corben', Georgia, Times, serif;
 }
+
 p, div {
     font-family: 'Nobile', Helvetica, Arial, sans-serif;
 }

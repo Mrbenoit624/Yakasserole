@@ -22,6 +22,7 @@ else
   git clone git://github.com/django/django.git
 fi
 pip install --user -e django/
+pip install --user -e django/ --upgrade django-widget-tweaks
 
 apps=('community' 'recette' 'atelier')
 

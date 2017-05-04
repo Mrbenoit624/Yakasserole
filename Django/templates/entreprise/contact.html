@@ -1,63 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <!-- Did you try yakasserole.fr/ing1 ? There is some bonus points for h3ckers -->
-            <div class="feature">
-                <div class="feature-inner">
-                <h1>Nous contacter</h1>
+<div class="container-narrow">
+
+  <hr>
+  
+  <div class="jumbotron">
+    <h1>Nous contacter</h1>
+    <p class="lead">Vous pouvez nous joindre à contact@yakasserole.fr</p>
+  </div>
+
+  <hr>
+            <div class="row-fluid marketing">
+                <div class="span6">  
+                  <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Address email</label>
+                          <input type="email" class="form-control"
+                                 id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="InputUsername"></label>
+                          <input type="text" class="form-control"
+                                 id="InputUsername" placeholder="Identifiant">
+                    </div>
+                    <textarea class="form-control" rows="6"></textarea>
+                    <div class="form-group">
+                      <label for="exampleInputFile">Fichier optionnel</label>
+                      <input type="file" id="exampleInputFile">
+                          <p class="help-block">Insérez ici un fichier étayant
+                          vos propos.</p>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Confirmer
+                      </label>
+                    </div>
+                      <button type="submit" class="btn btn-default">Envoyer</button>
+                  </form>
                 </div>
             </div>
-            <p>Vous pouvez nous joindre à contact@yakasserole.fr</p>
-            <div id="content">
-                <div id="content-inner">  
-                    <main id="contentbar">
-                        <div class="article">
-                            <form action="" method="post">
-                            <div>
-                                <label for="nom">Nom :</label>
-                                <input type="text" placeholder="Nom" id="nom" />
-                            </div>
-                            <div>
-                                <label for="email">Email :</label>
-                                <input type="email" placeholder="Email" id="email" />
-                            </div>
-                            <div>
-                                <label for="message">Message :</label>
-                                <textarea id="message"></textarea>
-                            </div>
-                            
-                            <div class="button">
-                                <button onclick="alert('CONCOURS : Tu peux passer au laboratoire des assistants pour réciter une recette de ta composition en alexandrin. Le gagnant sera récompensé :-)');" type="submit">Envoyer votre message</button>
-                            </div>
-                        </form>
-                        </div>
-                    </main>
-                    <div class="clr"></div>
-                </div>
+
+            <div class="footer">
+              <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
             </div>
+            
+</div>
         
-            <div id="footerblurb">
-                <h1 style="margin:10px">Ils témoignent…</h1>
-                <div id="footerblurb-inner">
-                    <div class="column">
-                        <blockquote>
-                            <p><i>Depuis que j'utilise YaKasserole, ma vie a changé.</i></p>
-                            <footer><h2>— Jean Bon</h2></footer>
-                        </blockquote>
-                    </div>
-                    <div class="column">
-                        <blockquote>
-                            <p><i>YaKasserole m'a ouvert l'appetit et fait découvrir de nouvelles saveurs.</i></p>
-                            <footer><h2>— Aubin Marie</h2></footer>
-                        </blockquote>
-                    </div>
-                    <div class="column">
-                        <blockquote>
-                            <p><i>Je n'ai plus jamais manqué de PAIC Citron.</i></p>
-                            <footer><h2>— Aude Wesel</h2></footer>
-                        </blockquote>
-                    </div>
-                    <div class="clr"></div>
-                </div>
-            </div>
 {% endblock %}

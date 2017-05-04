@@ -3,26 +3,27 @@
 
 {% block content %}
 
+<div class="container-narrow">
 
-<div class="feature">
-  <div class="feature-inner">
-    <h1>J'ai déjà un compte yakasserole</h1>
-  </div>
-</div>
+  <hr>
 
+   <div class="jumbotron">
+  
 {% if form.errors %}
-<p>Mauvais mot de passe ou utilisateur, veuillez recommencer</p>
+<h1>Mauvais mot de passe ou utilisateur, veuillez recommencer</h1>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Vous essayez de vous connecter avec un autre compte que le votre ou vous
-    essayez d'acceder à une page dont vous n'avez pas les accés</p>
+    <h1>Vous essayez de vous connecter avec un autre compte que le votre ou vous
+    essayez d'acceder à une page dont vous n'avez pas les accés</h1>
     {% else %}
-    <p>Veuillez vous connectez afin d'acceder à votre profile</p>
+    <h1>Veuillez vous connectez afin d'acceder à votre profile</h1>
     {% endif %}
 {% endif %}
 
+   </div>
+   <hr>
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 <div class="form-group">
@@ -40,8 +41,12 @@
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-<p><a href="/accounts/register/">Je n'ai pas de compte</a></p>
-<p><a href="{% url 'password_reset' %}">J'ai oublié mon mot de passe</a></p>
-<p><a href="/admin/">Je suis un administrateur</a></p>
+  <hr>
+
+<p><a class="btn btn-large btn-success" href="/accounts/register/">Je n'ai pas de compte</a></p>
+<p><a class="btn btn-large btn-success" href="{% url 'password_reset' %}">J'ai oublié mon mot de passe</a></p>
+<p><a class="btn btn-large btn-success" href="/admin/">Je suis un administrateur</a></p>
+
+</div>
 
 {% endblock %}

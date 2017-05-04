@@ -7,5 +7,4 @@ urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
     url('^profile', views.profile, name='profile'),
     url(r'^register/$', views.inscription, name='inscription')
-    url(r'^account/$', views.profile, name='compte')
 ]

@@ -47,4 +47,4 @@ class InscriptionForm(forms.Form):
             User.objects.get(email=email)
         except ObjectDoesNotExist:
             return email
-        raise forms.ValidationError('emai is already used.')
+        raise forms.ValidationError('email is already used.')

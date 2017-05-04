@@ -71,9 +71,12 @@
                        aria-expanded="false">Mon compte
                       <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                      {% if user.is_authenticated != 0 %}
                       <li><a href="/accounts/login">Se connecter</a></li>
                       <li><a href="/accounts/register ">S'inscrire</a></li>
+                      {% endif %}
                       {% if user.is_authenticated %}
+                      <li><a href="/accounts/account">Mon compte</a></li>
                       <li role="separator"
                           class="divider"></li>
                       <li><a href="/accounts/logout">Se déconnecter</a></li>

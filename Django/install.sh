@@ -41,7 +41,7 @@ if [ ! -d "$project" ]; then
 fi
 
 set +e
-psql -h localhost -f setup_user.sql
+psql -h localhost postgres -f setup_user.sql
 set -e
 
 cd "$project"

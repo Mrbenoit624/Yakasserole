@@ -1,6 +1,6 @@
 #!/bin/bash
 # if error occur active this one
-if true;then
+if false;then
   sudo mkdir /run/postgresql 2> /dev/null
   sudo chown $USER:users /run/postgresql/
   chmod +x /run/postgresql/
@@ -8,7 +8,9 @@ if true;then
   ln -s /run/postgresql/.s.PGSQL.5432 /tmp/.s.PGSQL.5432 2> /dev/null
 fi
 # DONT FORGET TO LAUNCH THE SERVER
-pg_ctl -l /tmp/pg_log start
+#pg_ctl -l /tmp/pg_log start
+postgres -D $PGDATA -k /tmp&
+postback=$!
 
 set -e
 project=YaKasserole
@@ -21,8 +23,9 @@ then
 else
   git clone git://github.com/django/django.git
 fi
+
+
 pip install --user -e django/
-#pip install --user -e django/ --upgrade django-widget-tweaks
 
 apps=('community' 'recette' 'atelier')
 
@@ -38,7 +41,7 @@ if [ ! -d "$project" ]; then
 fi
 
 set +e
-psql postgres -f setup_user.sql
+psql -h localhost -f setup_user.sql
 set -e
 
 cd "$project"
@@ -53,4 +56,4 @@ python manage.py createsuperuser
 
 python manage.py shell < ../group.py
 
-killall /usr/bin/postgres
+kill $postback

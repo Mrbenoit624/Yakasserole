@@ -1,4 +1,6 @@
 #!/bin/bash
-pg_ctl -l /tmp/pg_log start
+postgres -D $PGDATA -k /tmp -r .postgres.log&
+echo $! > .postgres.pid
 python YaKasserole/manage.py runserver 8080
-killall /usr/bin/postgres
+kill $(cat .postgres.pid)
+rm .postgres.pid

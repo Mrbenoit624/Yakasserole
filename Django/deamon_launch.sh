@@ -5,7 +5,7 @@ if [ $1 = "start" ]; then
   if [ -f .deamon_launch.pid ]; then
     echo "server already run"
   else
-    ./launch.sh& 2>&1 > .server.log
+    nohup ./launch.sh &> .server.log 2>&1&
     echo $! > .deamon_launch.pid
   fi
 elif [ $1 = "kill" ]; then

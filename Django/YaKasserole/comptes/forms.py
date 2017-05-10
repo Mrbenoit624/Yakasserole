@@ -6,8 +6,13 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 class ConnectForm(forms.Form):
-    email = forms.CharField(label='Email', max_length=10)
+    email = forms.EmailField(label='Email')
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        super(ConnectForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['password'].widget.attrs['class'] = 'form-control'
 
 class InscriptionForm(forms.Form):
     username = forms.CharField(label='Username', max_length=30)
@@ -27,19 +32,19 @@ class InscriptionForm(forms.Form):
                 if len(password) > 7:
                     return passwordr
                 else:
-                   raise forms.ValidationError('password not secure.')
-        raise forms.ValidationError('Passwords do not match.')
+                   raise forms.ValidationError('Ce mot de passe n\'est pas sécurisé.')
+        raise forms.ValidationError('La confirmation de mot de passe n\' est pas la même.')
 
     def clean_username(self):
         username = self.cleaned_data['username']
         if not re.search(r'^\w+$', username):
-            raise forms.ValidationError('Username can only contain\
-                                alphanumeric characters and the underscore.')
+            raise forms.ValidationError('Les logins ne peuvent contenir que\
+                                des caractères alpha-numériques et underscores')
         try:
             User.objects.get(username=username)
         except ObjectDoesNotExist:
             return username
-        raise forms.ValidationError('Username is already taken.')
+        raise forms.ValidationError('Ce login est déjà utilisé.')
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -47,4 +52,13 @@ class InscriptionForm(forms.Form):
             User.objects.get(email=email)
         except ObjectDoesNotExist:
             return email
-        raise forms.ValidationError('email is already used.')
+        raise forms.ValidationError('cet email est déjà utilisé.')
+
+    def __init__(self, *args, **kwargs):
+        super(InscriptionForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['password'].widget.attrs['class'] = 'form-control'
+        self.fields['passwordr'].widget.attrs['class'] = 'form-control'

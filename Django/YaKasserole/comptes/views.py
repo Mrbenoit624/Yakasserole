@@ -15,7 +15,8 @@ def connect(request):
         form = ConnectForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            username = request.POST['email']
+            #username = request.POST['email'] Before, next doesnt work
+            email = request.POST['email']
             password = request.POST['password']
             user = authenticate(email=email, password=password)
             if user is not None:

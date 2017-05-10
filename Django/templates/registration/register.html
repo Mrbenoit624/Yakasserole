@@ -16,44 +16,14 @@
     <hr>
 
 <form method="post" action=".">
-  <div class="form-group">
-    <label for="inputUsername">Utilisateur: </label>{{ form.username }}
-    <!--<td>{{
-      form.username.label_tag|add_class:"form-control"|attr:"id:inputUsername"
-      }} </td>-->
-  </div>
-  <div class="form-group">
-    <label for="inputEmail">Email: </label>{{ form.email }}
-    <!--<td>{{
-      form.email.label_tag|add_class:"form-control"|attr:"id:inputEmail"
-      }} </td>-->
-  </div>
-  <div class="form-group">
-    <label for="inputFirstname">Prénom: </label>{{ form.first_name }}
-    <!--<td>{{
-      form.first_name.label_tag|add_class:"form-control"|attr:"id:inputFirstname"
-      }} </td>-->
-  </div>
-  <div class="form-group">
-    <label for="inputLastname">Nom: </label>{{ form.last_name }}
-    <!--<td>{{
-      form.last_name.label_tag|add_class:"form-control"|attr:"id:inputLastname"
-      }} </td>-->
-  </div>
-  <div class="form-group">
-    <label for="inputPassword1">Mot de passe: </label>{{ form.password }}
-    <!--<td>{{
-      form.password.label_tag|add_class:"form-control"|attr:"id:inputPassword1"
-      }} </td>-->
-  </div>
-  <div class="form-group">
-    <label for="inputPassword2">Mot de passe (confirmation): </label>{{ form.passwordr }}
-    <!--<td>{{
-      form.passwordr.label_tag|add_class:"form-control"|attr:"id:inputPassword2"
-      }} </td>-->
-  </div>
-  <button type="submit" class="btn btn-default" value="register">S'inscrire</button>
-  {% csrf_token %}
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-default" value="register">S'inscrire</button>
 </form>
 
 <div class="footer">

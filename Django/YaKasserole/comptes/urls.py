@@ -7,5 +7,6 @@ urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
     url('^profile', views.profile, name='profile'),
     url(r'^register/$', views.inscription, name='inscription'),
-    url(r'^login/$', views.connect, name='connect'),
+    url('^connect/', views.connect, name='connect'),
+    url('^login/$', views.connect, name='connect'),
 ]

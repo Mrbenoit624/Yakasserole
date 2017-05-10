@@ -10,15 +10,20 @@ from . forms import *
 
 def connect(request):
     # if this is a POST request we need to process the form data
+    print("email:")
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
+        print("email:")
+        print(request.POST['email'])
         form = ConnectForm(request.POST)
+        print(form.is_valid)
         # check whether it's valid:
         if form.is_valid():
             #username = request.POST['email'] Before, next doesnt work
             email = request.POST['email']
             password = request.POST['password']
             user = authenticate(email=email, password=password)
+            print(user)
             if user is not None:
               login(request, user)
               return HttpResponse('Login success')
@@ -39,11 +44,11 @@ def profile(request):
 def inscription(request):
     if request.method == 'POST':
         form = InscriptionForm(request.POST)
+        print(form.is_valid)
         if form.is_valid():
             user = User.objects.create_user(
                     username = form.cleaned_data['username'],
                     password = form.cleaned_data['password'],
-                    email = form.cleaned_data['email'],
                     first_name = form.cleaned_data['first_name'],
                     last_name = form.cleaned_data['last_name']
                     )
@@ -51,5 +56,4 @@ def inscription(request):
             group.user_set.add(user)
             login(request, user)
             return profile(request)
-    form = InscriptionForm()
     return render(request, 'registration/register.html', {'form': form});

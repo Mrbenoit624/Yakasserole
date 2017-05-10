@@ -15,4 +15,6 @@ elif [ $1 = "kill" ]; then
   killall python
   rm .deamon_launch.pid
   rm .postgres.pid
+elif [ $1 = "status" ]; then
+  less +G .server.log
 fi

@@ -42,6 +42,7 @@ def profile(request):
 
 
 def inscription(request):
+    form = InscriptionForm()
     if request.method == 'POST':
         form = InscriptionForm(request.POST)
         print(form.is_valid)

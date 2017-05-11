@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+  <h1>Recette</h1>
+
+  <!-- TODO, make it dynamic -->
+  <div class="recipe-img">
+    <img src="photo-recette.jpg" alt="Photo de la recette">
+  </div>
+
+  <div class="prerequisites">
+    <h2>Prérequis</h2>
+    <div class="ingredients">
+      <h3>Ingrédients</h3>
+      <!-- TODO, make it dynamic -->
+      <ul>
+        <li>Pain</li>
+        <li>Pain beurré</li>
+        <li>Pain aux noix</li>
+        <ul>
+    </div>
+
+    <div class="utensils">
+      <h3>Ustensiles</h3>
+      <!-- TODO, make it dynamic -->
+      <ul>
+        <li>Moule</li>
+        <li>Cuillère</li>
+        <li>Stagiaire</li>
+      </ul>
+    </div>
+
+    <div class="cooking">
+      <h3>Cuisson</h3>
+      <!-- TODO, make it dynamic -->
+      <ul>
+        <li>Pour la pâte : 1 minute sur la poële</li>
+        <li>Au four : 50 minutes au four à 0°C</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="preparation">
+    <h2>Préparation</h2>
+    <!-- TODO, make it dynamic -->
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae condimentum eros. Fusce fringilla pretium justo vel aliquet. Morbi a tempus eros. Suspendisse potenti. Aliquam erat volutpat. Nulla luctus non massa id aliquam. Aliquam libero odio, finibus sed augue ac, efficitur fermentum elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras vel nisl vel neque porttitor pretium. Vivamus lobortis erat nec dui egestas vehicula. Ut a orci felis. Nam viverra gravida lacus, eget varius orci posuere sed. Vivamus semper nibh erat, eget vehicula felis auctor nec. Vivamus in est sodales, molestie quam vestibulum, auctor felis.
+  </div>
+
+  <div class="comments">
+    <h2>Commentaires</h2>
+    <!-- TODO, make it dynamic -->
+    <div class="comment">
+      <!-- TODO, make it dynamic -->
+      <div class="comment author">
+        Par Thomas Guerville le 0/0/0 à 0:0
+      </div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae condimentum eros. Fusce fringilla pretium justo vel aliquet. Morbi a tempus eros. Suspendisse potenti. Aliquam erat volutpat. Nulla luctus non massa id aliquam. Aliquam libero odio, finibus sed augue ac, efficitur fermentum elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras vel nisl vel neque porttitor pretium. Vivamus lobortis erat nec dui egestas vehicula. Ut a orci felis. Nam viverra gravida lacus, eget varius orci posuere sed. Vivamus semper nibh erat, eget vehicula felis auctor nec. Vivamus in est sodales, molestie quam vestibulum, auctor felis.
+    </div>
+    <div class="new comment">
+      <h2>Poster un commentaire</h2>
+      <form>
+        <div class="form-group">
+          <label for="InputNickname">Pseudonyme</label>
+          <input type="text" class="form-control"
+                 id="InputNickname" placeholder="Pseudonyme">
+        </div>
+        <textarea class="form-control" rows="6">Message</textarea>
+        <button type="submit" class="btn btn-default">Publier</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  </div>
+</div>
+
+{% endblock %}

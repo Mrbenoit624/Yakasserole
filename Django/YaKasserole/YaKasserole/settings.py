@@ -40,12 +40,20 @@ SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+#paiement sécurisé
+PAYMENT_HOST = 'localhost:8080'
+PAYMENT_USES_SSL = False
+PAYMENT_MODEL = 'comptes.Payment'
+PAYMENT_VARIANTS = {
+    'default': ('payments.dummy.DummyProvider', {})}
+
 # Application definition
 
 INSTALLED_APPS = [
     'atelier.apps.AtelierConfig',
     'community.apps.CommunityConfig',
     'recette.apps.RecetteConfig',
+    'comptes.apps.ComptesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +63,8 @@ INSTALLED_APPS = [
     # active https
     'djangosecure',
     'sslserver',
+    #paiement sécurisé
+    'payments',
 ]
 
 MIDDLEWARE = [

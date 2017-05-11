@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^register/$', views.inscription, name='inscription'),
     url('^connect/', views.connect, name='connect'),
     url('^login/$', views.connect, name='connect'),
+    url('^payments/', include('payments.urls')),
 ]

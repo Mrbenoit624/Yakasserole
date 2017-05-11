@@ -28,8 +28,13 @@ fi
 pip install --user -e django/
 pip install --user django-secure
 pip install --user django-sslserver
+pip install --user django-payments
 
-apps=('community' 'recette' 'atelier')
+to_modify=$(find ~/ -ipath '*payments/models.py*')
+sed -r 's/(from )(.*)( import reverse)/\1django.urls\3/' "$to_modify" > /tmp/tmp
+cat /tmp/tmp > "$to_modify"
+
+apps=('community' 'recette' 'atelier' 'comptes')
 
 if [ ! -d "$project" ]; then
   ~/.local/bin/django-admin startproject "$project"

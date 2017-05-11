@@ -26,6 +26,8 @@ fi
 
 
 pip install --user -e django/
+pip install --user django-secure
+pip install --user django-sslserver
 
 apps=('community' 'recette' 'atelier')
 

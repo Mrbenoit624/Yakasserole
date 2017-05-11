@@ -33,6 +33,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 #EMAIL_HOST = 'mail.example.com'
 #EMAIL_PORT = 465
 
+#Secure website
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -46,7 +52,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'widget-tweaks',
+    # active https
+    'djangosecure',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +66,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = [
+    # active https
+    'djangosecure.middleware.SecurityMiddleware',
+        ]
 
 ROOT_URLCONF = 'YaKasserole.urls'
 

@@ -15,6 +15,16 @@ elif [ $1 = "kill" ]; then
   killall python
   rm .deamon_launch.pid
   rm .postgres.pid
+
 elif [ $1 = "status" ]; then
-  less +G .server.log
+  while IFS='' read -r line;do
+    echo -e "$(sed -r 's/(.*200.*)/\\033\[32m\0\\e\[39m/' |
+    sed -r 's/(.*304.*)/\\033\[33m\0\\e[39m/' |
+    sed -r 's/(.*404.*)/\\033\[31m\0\\e[39m/') $line" ;
+  done < .server.log | less -R
+#  less -R +G +F .server.log
+elif [ $1 = "restart" ]; then
+  $0 kill
+  sleep 1s
+  $0 start
 fi

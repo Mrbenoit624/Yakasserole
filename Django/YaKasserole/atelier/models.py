@@ -26,7 +26,7 @@ class Atelier(models.Model):
         through='Ateliers_themes',
         through_fields=('ateliers', 'themes'),
     )
-    Chef_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    Chef = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     Date_inscription = models.DateTimeField(default=timezone.now)
     Date_premium = models.DateTimeField(default=timezone.now)
     Places = models.PositiveIntegerField(default=0)

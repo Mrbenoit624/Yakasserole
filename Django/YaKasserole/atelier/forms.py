@@ -10,21 +10,14 @@ class SubscribeAtelier(forms.Form):
         #FIXME: Filter the basic & premium users
         self.fields['participants'].widget.attrs['class'] = 'form-control'
 
-class CreateAtelier(forms.Form):
-    nom = forms.CharField(max_length=100)
-    date_inscription = forms.DateTimeField(default=timezone.now)
-    date_premium = forms.DateTimeField(default=timezone.now)
-    places = forms.PositiveIntegerField(default=0)
-    messages = forms.CharField(widget=forms.Textarea)
+class CreateAtelier(modelForm):
+    class Meta:
+        model = Atelier
 
     def __init__(self, *args, **kwargs):
         super(CreateAtelier, self).__init__(*args, **kwargs)
-        self.fields['lieux'] = forms.MultipleChoiceField(
-                choices=[(o.id, str(o)) for o in Lieu.objects.all()])
-        self.fields['themes'] = forms.MultipleChoiceField(
-                choices=[(o.id, str(o)) for o in Theme.objects.all()])
         #FIXME: Filter the chefs
-        self.fields['chef'] = forms.ChoiceField(
+        self.fields['Chef'] = forms.ChoiceField(
                 choices=[(o.id, str(o)) for o in auth.User.objects.all()])
         self.fields['nom'].widget.attrs['class'] = 'form-control'
         self.fields['date_inscription'].widget.attrs['class'] = 'form-control'

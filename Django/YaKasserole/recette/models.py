@@ -17,7 +17,8 @@ class Ingredient(models.Model):
     Name = models.CharField(max_length=65)
 
 class Etape(models.Model):
-    Name = models.CharField(max_length=65)
+    Titre = models.CharField(max_length=65)
+    Contenu = models.TextField(default='')
 
 class Recette(models.Model):
     Titre = models.CharField(max_length=65)
@@ -32,11 +33,11 @@ class Recette(models.Model):
     Electromenager = models.ManyToManyField(
         Electromenager,
         through='Recettes_Electromenager',
-        through_fields=('recettes', 'elctromenagers'),
+        through_fields=('recettes', 'electromenagers'),
     )
     Nombre_portions = models.PositiveIntegerField(default=0)
     Difficulte = models.PositiveIntegerField(default=0)
-    Cout = models.FloatField(default=0)
+    Cout = models.DecimalField(max_digits=8, decimal_places=2)
     Ingredients = models.ManyToManyField(
         Ingredient,
         through='Recettes_Ingredients',
@@ -47,7 +48,7 @@ class Recette(models.Model):
         through='Recettes_Etapes',
         through_fields=('recettes', 'etapes'),
     )
-    Remarques = models.CharField(max_length=255)
+    Remarques = models.TextField()
     Commentaires = models.ManyToManyField(
         Commentaire,
         through='Recettes_Commentaires',
@@ -56,6 +57,10 @@ class Recette(models.Model):
     Date = models.DateTimeField(default=timezone.now)
     user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
+    @property
+    def Cout(self):
+        return "%s€" % self.Cout
+
 
 class recettes_ustensiles(models.Model):
     recettes = models.ForeignKey(Recette, on_delete=models.CASCADE)
@@ -63,7 +68,7 @@ class recettes_ustensiles(models.Model):
 
 class recettes_electromenager(models.Model):
     recettes = models.ForeignKey(Recette, on_delete=models.CASCADE)
-    elctromenagers = models.ForeignKey(Electromenager, on_delete=models.CASCADE)
+    electromenagers = models.ForeignKey(Electromenager, on_delete=models.CASCADE)
 
 class recettes_ingredients(models.Model):
     recettes = models.ForeignKey(Recette, on_delete=models.CASCADE)

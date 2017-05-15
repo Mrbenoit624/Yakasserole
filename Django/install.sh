@@ -47,6 +47,7 @@ if [ ! -d "$project" ]; then
   done
 fi
 
+
 set +e
 psql -h localhost postgres -f setup_user.sql
 set -e
@@ -60,6 +61,9 @@ python manage.py migrate
 
 #enter admin for user
 python manage.py createsuperuser
+
+pip install --user pyaml
+python manage.py loaddata fixtures/recettes.yaml
 
 python manage.py shell < ../group.py
 

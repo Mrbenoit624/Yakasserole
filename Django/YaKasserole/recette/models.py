@@ -6,17 +6,21 @@ from community.models import Commentaire
 import datetime
 from decimal import Decimal
 
-class Types(models.Model):
+class Type(models.Model):
     Name = models.CharField(max_length=65)
+    def __str__(self): return self.Name
 
 class Ustensile(models.Model):
     Name = models.CharField(max_length=65)
+    def __str__(self): return self.Name
 
 class Electromenager(models.Model):
     Name = models.CharField(max_length=65)
+    def __str__(self): return self.Name
 
 class Ingredient(models.Model):
     Name = models.CharField(max_length=65)
+    def __str__(self): return self.Name
 
 class Etape(models.Model):
     Titre = models.CharField(max_length=65)
@@ -24,7 +28,7 @@ class Etape(models.Model):
 
 class Recette(models.Model):
     Titre = models.CharField(max_length=65)
-    Type = models.ForeignKey(Types, on_delete=models.CASCADE)
+    Type = models.ForeignKey(Type, on_delete=models.CASCADE)
     Temps_preparation = models.TimeField()
     Temps_cuisson = models.TimeField()
     Ustensiles = models.ManyToManyField(

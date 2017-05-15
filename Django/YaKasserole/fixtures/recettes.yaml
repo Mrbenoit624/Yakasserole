@@ -1,0 +1,36 @@
+- model: recette.Type
+  pk: 1
+  fields:
+    Name: Cassoulet
+- model: recette.Type
+  pk: 2
+  fields:
+    Name: Patisserie
+- model: recette.Type
+  pk: 3
+  fields:
+    Name: Hors d oeuvre
+- model: recette.Type
+  pk: 4
+  fields:
+    Name: Gratin
+
+- model: recette.Ustensile
+  pk: 1
+  fields:
+    Name: 'Cuillere'
+
+- model: recette.Electromenager
+  pk: 1
+  fields:
+    Name: Four
+
+- model: recette.Electromenager
+  pk: 2
+  fields:
+    Name: Micro-onde
+
+- model: recette.Ingredient
+  pk: 1
+  fields:
+    Name: Tomate

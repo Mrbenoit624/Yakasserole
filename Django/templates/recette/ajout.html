@@ -3,16 +3,6 @@
 
 {% block content %}
 
-{{ etapes_formset.media }}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="{% static 'jquery/jquery.formset.js' %}"></script>
-<script>
-    $('.etapes-formset').formset({
-        addText: 'Ajouter étape',
-        deleteText: 'Supprimer étape'
-    });
-</script>
-
 <div class="container-narrow">
   <h1>Nouvelle recette</h1>
 
@@ -21,9 +11,7 @@
       {{ form }}
       {% for etape_form in etapes_formset.forms %}
       <div class="etapes-formset">
-          {% for field in etape_form %}
-            {{ field }}
-          {% endfor %}
+        {{ etape_form.as_p }}
       </div>
       {% endfor %}
 
@@ -38,5 +26,14 @@
     <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
   </div>
 </div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static 'jquery/jquery.formset.js' %}"></script>
+<script>
+    $('.etapes-formset').formset({
+        addText: 'Ajouter étape',
+        deleteText: 'Supprimer étape'
+    });
+</script>
 
 {% endblock %}

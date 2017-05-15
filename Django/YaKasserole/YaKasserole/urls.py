@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
     url(r'^entreprise/', include('entreprise.urls')),
-#    url(r'^recettes/', include('recettes.urls')),
+    url(r'^recettes/', include('recette.urls')),
     url(r'^accounts/', include('comptes.urls')),
 ]

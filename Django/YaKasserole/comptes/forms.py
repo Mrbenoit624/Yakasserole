@@ -13,7 +13,7 @@ class ConnectForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(ConnectForm, self).__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password'].widget.attrs['class'] = 'form-control'
 
 class InscriptionForm(forms.Form):

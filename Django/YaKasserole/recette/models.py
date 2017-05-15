@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.core.validators import MinValueValidator
 from community.models import Commentaire
 import datetime
+from decimal import Decimal
 
 class Types(models.Model):
     Name = models.CharField(max_length=65)
@@ -22,9 +24,9 @@ class Etape(models.Model):
 
 class Recette(models.Model):
     Titre = models.CharField(max_length=65)
-    Type_id = models.ForeignKey(Types, on_delete=models.CASCADE)
-    Temps_preparation = models.DateTimeField(default=timezone.now)
-    Temps_cuisson = models.DateTimeField(default=timezone.now)
+    Type = models.ForeignKey(Types, on_delete=models.CASCADE)
+    Temps_preparation = models.TimeField()
+    Temps_cuisson = models.TimeField()
     Ustensiles = models.ManyToManyField(
         Ustensile,
         through='Recettes_Ustensiles',
@@ -37,7 +39,7 @@ class Recette(models.Model):
     )
     Nombre_portions = models.PositiveIntegerField(default=0)
     Difficulte = models.PositiveIntegerField(default=0)
-    Cout = models.DecimalField(max_digits=8, decimal_places=2)
+    Cout = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))], default=Decimal(1.00))
     Ingredients = models.ManyToManyField(
         Ingredient,
         through='Recettes_Ingredients',
@@ -55,11 +57,7 @@ class Recette(models.Model):
         through_fields=('recettes', 'commentaires'),
     )
     Date = models.DateTimeField(default=timezone.now)
-    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-
-    @property
-    def Cout(self):
-        return "%s€" % self.Cout
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
 
 class recettes_ustensiles(models.Model):

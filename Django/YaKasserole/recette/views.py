@@ -1,5 +1,8 @@
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+from django.http import Http404
 from django.shortcuts import render
+from django.template import loader
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.forms.formsets import formset_factory
@@ -26,3 +29,10 @@ def ajout_recette(request):
             return HttpResponseRedirect('/')
     return render(request, 'recette/ajout.html', {'form': form,
         'etapes_formset' : etapes_formset});
+
+def page(request, page):
+    try:
+        template = loader.get_template('recette/{}.html'.format(page))
+        return HttpResponse(template.render({}, request))
+    except:
+        raise Http404('Page not found {}'.format(page))

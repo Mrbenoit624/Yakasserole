@@ -28,7 +28,7 @@ class Etape(models.Model):
 
 class Recette(models.Model):
     Titre = models.CharField(max_length=65)
-    Type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    Type = models.ForeignKey(Type, on_delete=models.CASCADE, default="")
     Temps_preparation = models.TimeField()
     Temps_cuisson = models.TimeField()
     Ustensiles = models.ManyToManyField(

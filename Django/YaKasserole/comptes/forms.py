@@ -62,7 +62,7 @@ def payment_details(request, payment_id):
     return TemplateResponse(request, 'payment.html',
                             {'form': form, 'payment': payment})
 
-def PaymentForm(request):
+class PaymentForm(forms.Form):
     description = forms.CharField(label='description')
     total = forms.DecimalField(label='totale')
     tax = forms.DecimalField(label='taxe')

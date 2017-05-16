@@ -12,6 +12,8 @@ from payments import get_payment_model
 
 from . forms import *
 
+from pprint import pprint
+
 def connect(request):
     # if this is a POST request we need to process the form data
     print("email:")
@@ -80,4 +82,17 @@ def payment(request):
                     billing_country_code= form.cleaned_data['billing_country_code'],
                     billing_country_area= form.cleaned_data['billing_country_area'],
                     customer_ip_address=request.META.get('REMOTE_ADDR'))
+            payment.capture()
+            print(payment)
+            return HttpResponse('Paiement Enregistré')
+    return HttpResponse(render(request, 'comptes/payment.html', {'form': form}));
 
+def payment_details(request):
+    payment = get_object_or_404(get_payment_model(), id=1)
+    pprint(payment)
+    pprint(get_payment_model())
+    try:
+        form = payment.get_form(data=request.POST or None)
+    except RedirectNeeded as redirect_to:
+        return redirect(str(redirect_to))
+    return TemplateResponse(request, 'comptes/payment.html', {'form': form, 'payment': payment})

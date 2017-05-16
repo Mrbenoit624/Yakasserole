@@ -1,21 +1,10 @@
 #!/bin/bash
-# if error occur active this one
-if false;then
-  sudo mkdir /run/postgresql 2> /dev/null
-  sudo chown $USER:users /run/postgresql/
-  chmod +x /run/postgresql/
-  pg_ctl -l /tmp/pg_log start
-  ln -s /run/postgresql/.s.PGSQL.5432 /tmp/.s.PGSQL.5432 2> /dev/null
-fi
-# DONT FORGET TO LAUNCH THE SERVER
-#pg_ctl -l /tmp/pg_log start
+set +x
 postgres -D $PGDATA -k /tmp&
 postback=$!
 
 set -e
 project=YaKasserole
-
-pip install --user psycopg2
 
 if [ -d django ];
 then
@@ -24,35 +13,40 @@ else
   git clone git://github.com/django/django.git
 fi
 
-
+# Install django and his modules
 pip install --user -e django/
-pip install --user django-secure
-pip install --user django-sslserver
-pip install --user django-payments
+pip install --user -r REQUIREMENT.txt
 
-to_modify=$(find ~/ -ipath '*payments/models.py*')
+#Correct unstable versions
+to_modify="$HOME/.local/lib/python3.6/site-packages/payments/models.py"
+if [ ! -f "$to_modify" ]; then
+  to_modify="/usr/local/lib/python3.6/site-packages/payments/models.py"
+fi
+
 sed -r 's/(from )(.*)( import reverse)/\1django.urls\3/' "$to_modify" > /tmp/tmp
 cat /tmp/tmp > "$to_modify"
 
-apps=('community' 'recette' 'atelier' 'comptes')
+#Setup Users
+psql -h localhost postgres -f setup_user.sql
 
+#Install new project if it doesn't exist
 if [ ! -d "$project" ]; then
   ~/.local/bin/django-admin startproject "$project"
   cd "$project"
-  set +e
-  find . -name 'migrations' -exec rm -rf {} \;
-  set -e
-  for i in "${apps[@]}"; do
-    python manage.py startapp $i
-  done
 fi
 
-
-set +e
-psql -h localhost postgres -f setup_user.sql
-set -e
-
+#Install different app
+apps=('community' 'recette' 'atelier' 'comptes')
 cd "$project"
+set +e
+find . -name 'migrations' -exec rm -rf {} \;
+set -e
+for i in "${apps[@]}"; do
+  if [ ! -d "$i" ]; then
+    python manage.py startapp $i
+  fi
+done
+
 for i in "${apps[@]}"; do
   python manage.py makemigrations $i
   python manage.py migrate $i
@@ -60,11 +54,9 @@ done
 python manage.py migrate
 
 #enter admin for user
-python manage.py createsuperuser
-
-pip install --user pyaml
-python manage.py loaddata fixtures/recettes.yaml
-
 python manage.py shell < ../group.py
+
+#add default recettes
+python manage.py loaddata fixtures/recettes.yaml
 
 kill $postback

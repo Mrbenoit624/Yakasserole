@@ -45,7 +45,7 @@ PAYMENT_HOST = 'localhost:8080'
 PAYMENT_USES_SSL = False
 PAYMENT_MODEL = 'comptes.Payment'
 PAYMENT_VARIANTS = {
-    'default': ('payments.dummy.DummyProvider', {})}
+    'default': ('payments.dummy.DummyProvider', {'capture': False})}
 
 # Application definition
 

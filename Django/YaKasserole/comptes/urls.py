@@ -10,4 +10,5 @@ urlpatterns = [
     url('^connect/', views.connect, name='connect'),
     url('^login/$', views.connect, name='connect'),
     url('^payments/', include('payments.urls')),
+    url('^payments$', views.payment_details, name='payment_details'),
 ]

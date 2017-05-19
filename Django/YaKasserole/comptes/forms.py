@@ -65,7 +65,6 @@ def payment_details(request, payment_id):
 class PaymentForm(forms.Form):
     description = forms.CharField(label='description')
     total = forms.DecimalField(label='totale')
-    tax = forms.DecimalField(label='taxe')
     delivery = forms.DecimalField(label='delivery')
     billing_first_name = forms.CharField(label='prénom')
     billing_last_name = forms.CharField(label='Nom')

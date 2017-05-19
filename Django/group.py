@@ -14,7 +14,6 @@ if User.objects.filter(username=username).count()==0:
     print('Superuser created.');
 else:
     print('Superuser creation skipped.');
- #User.objects.create_superuser('', 'admin', 'admin1234')
 
 ################################# CONTEXT #####################################
 

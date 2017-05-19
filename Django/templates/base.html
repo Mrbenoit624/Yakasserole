@@ -52,7 +52,9 @@
                 <ul class="nav navbar-nav">
                   <li><a href="/entreprise/location">Nous localiser</a></li>
                   <li><a href="/entreprise/contact">Nous contacter</a></li>
+                  {% if user.is_authenticated %}
                   <li><a href="/entreprise/atelier">Nos ateliers</a></li>
+                  {% endif %}
                 </ul>
                 <form class="navbar-form navbar-left">
                   <div class="form-group">
@@ -87,6 +89,7 @@
                       </ul>
                     </li>
                   </ul>
+                  {% if user.is_authenticated %}
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                       <a href="#"
@@ -100,11 +103,12 @@
                         <li><a href="">Mes recettes</a></li>
                         <!-- TODO, add a link here ^ -->
                         <li><a href="/recette/ajout">
-                            Ajouter unerecette</a>
+                            Ajouter une recette</a>
                         </li>
                       </ul>
                     </li>
                   </ul>
+                  {% endif %}
                   <!-- TODO, remove this menu for the defense -->
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

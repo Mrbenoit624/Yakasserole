@@ -81,6 +81,9 @@
                         <li><a href="/accounts/register">S'inscrire</a></li>
                         {% endif %}
                         {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                        <li><a href="/admin/">Panel administrateur</a></li>
+                        {% endif %}
                         <li><a href="/accounts/profile">Mon compte</a></li>
                         <li role="separator"
                             class="divider"></li>

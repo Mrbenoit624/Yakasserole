@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+
+  <hr>
+
+  <div class="jumbotron">
+    <h1>Ajouter un atelier Yakasseroles</h1>
+  </div>
+
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span6">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputname">nom</label>
+          <input type="email" class="form-control" id="exampleInputname"
+                 placeholder="Nom">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputlieu">lieu</label>
+                    <input type="email" class="form-control"
+                           id="exampleInputlieu"
+                           placeholder="Lieu">
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleInputtheme">Thème</label>
+                    <input type="email" class="form-control"
+                           id="exampleInputtheme"
+                           placeholder="Thème">
+        </div>
+        
+        <div class="container">
+          <div class="row">
+            <div class='col-sm-6'>
+              <div class="form-group">
+                <div class='input-group date'
+                     id='datetimepicker1'>
+                  <input type='text'
+                         class="form-control" />
+                  <span class="input-group-addon">
+                    <span class="glyphicon
+                                 glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              $(function () {
+              $('#datetimepicker1').datetimepicker();
+              });
+            </script>
+          </div>
+        </div>
+        
+        <div class="container">
+          <div class="row">
+            <div class='col-sm-6'>
+              <div class="form-group">
+                <div class='input-group date'
+                     id='datetimepicker1'>
+                  <input type='text'
+                         class="form-control" />
+                  <span class="input-group-addon">
+                    <span class="glyphicon
+                                 glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              $(function () {
+              $('#datetimepicker1').datetimepicker();
+              });
+            </script>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleInputdélai">délai</label>
+              <input type="password" class="form-control"
+                     id="exampleInputdélai" placeholder="Délai">
+        </div>
+        
+        <textarea class="form-control" rows="3">description</textarea>
+      </form>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  </div>
+  
+</div> <!-- /container -->
+{% endblock %}

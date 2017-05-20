@@ -6,13 +6,13 @@ from django.contrib.auth.models import User
 class SubscribeAtelier(ModelForm):
     class Meta:
         model = inscription_log
-        exclude = ['user']
+        exclude = ['user', 'Date']
 
     def __init__(self, *args, **kwargs):
         super(SubscribeAtelier, self).__init__(*args, **kwargs)
+        self.fields['participants'].queryset = User.objects.filter(groups__name__in=['client', 'premium'])
         self.fields['atelier'].widget.attrs['class'] = 'form-control'
         self.fields['participants'].widget.attrs['class'] = 'form-control'
-        self.fields['Date'].widget.attrs['class'] = 'form-control'
 
 class CreateAtelier(ModelForm):
     class Meta:
@@ -21,7 +21,7 @@ class CreateAtelier(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CreateAtelier, self).__init__(*args, **kwargs)
-        #FIXME: Filter the chefs
+        self.fields['Chef'].queryset = User.objects.filter(groups__name='Chef cuisinier')
         self.fields['Nom'].widget.attrs['class'] = 'form-control'
         self.fields['Date_inscription'].widget.attrs['class'] = 'form-control'
         self.fields['Date_premium'].widget.attrs['class'] = 'form-control'

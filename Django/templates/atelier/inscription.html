@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+
+  <hr>
+
+  <div class="jumbotron">
+    <h1>Ceci est inscription atelier</h1>
+  </div>
+
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span6">
+      <form method="post" action="{% url 'inscription' %}">
+        {% csrf_token %}
+        {{ form }}
+
+        <button type="submit" class="btn btn-default">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  </div>
+  
+</div> <!-- /container -->
+{% endblock %}

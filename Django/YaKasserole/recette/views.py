@@ -14,7 +14,7 @@ from . forms import *
 @login_required
 def ajout_recette(request):
     form = AddRecette()
-    EtapesFormSet = formset_factory(AddEtape, extra=2, min_num=1)
+    EtapesFormSet = formset_factory(AddEtape, min_num=1)
     etapes_formset = EtapesFormSet()
     if request.method == 'POST':
         form = AddRecette(request.POST)

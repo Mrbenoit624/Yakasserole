@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+
+  <hr>
+
+  <div class="jumbotron">
+    <h1>Les ateliers Yakasseroles</h1>
+    <p class="lead">Les ateliers Yakasseroles sont l'opportunité de s'améliorer
+    dans ses compétences et de se rapprocher de sa famille et de ses amis, venez
+    participer à un atelier dés aujourd'hui!</p>
+      <a class="btn btn-large btn-success"
+      href="/enterprise/addatelier"><span class="glyphicon
+      glyphicon-cutlery"></span> &nbsp; Ajouter un atelier</a>
+  </div>
+
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span6">
+      <h4>Nom d'atelier 1</h4>
+      <p>
+        description atelier alléchante.
+      </p>
+      <h4>Nom d'atelier 2</h4>
+      <p>
+        description atelier alléchante.
+      </p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  </div>
+  
+</div> <!-- /container -->
+{% endblock %}

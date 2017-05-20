@@ -10,7 +10,10 @@ password = "admin1234"
 email = ""
 
 if User.objects.filter(username=username).count()==0:
-    User.objects.create_superuser(username, email, password);
+    user = User.objects.create_superuser(username, email, password);
+    user.first_name = "Jean"
+    user.last_name = "Roger"
+    user.save()
     print('Superuser created.');
 else:
     print('Superuser creation skipped.');

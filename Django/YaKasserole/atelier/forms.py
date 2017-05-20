@@ -1,29 +1,32 @@
 from django import forms
-from django.atelier import models
+from .models import Atelier, inscription_log
+from django.forms import ModelForm
 from django.contrib.auth.models import User
 
-class SubscribeAtelier(forms.Form):
+class SubscribeAtelier(ModelForm):
+    class Meta:
+        model = inscription_log
+        exclude = ['user']
+
     def __init__(self, *args, **kwargs):
         super(SubscribeAtelier, self).__init__(*args, **kwargs)
-        self.fields['participants'] = forms.MultipleChoiceField(
-                choices=[(o.id, str(o)) for o in auth.User.objects.all()])
-        #FIXME: Filter the basic & premium users
+        self.fields['atelier'].widget.attrs['class'] = 'form-control'
         self.fields['participants'].widget.attrs['class'] = 'form-control'
+        self.fields['Date'].widget.attrs['class'] = 'form-control'
 
-class CreateAtelier(modelForm):
+class CreateAtelier(ModelForm):
     class Meta:
         model = Atelier
+        exclude = ['Commentaires']
 
     def __init__(self, *args, **kwargs):
         super(CreateAtelier, self).__init__(*args, **kwargs)
         #FIXME: Filter the chefs
-        self.fields['Chef'] = forms.ChoiceField(
-                choices=[(o.id, str(o)) for o in auth.User.objects.all()])
-        self.fields['nom'].widget.attrs['class'] = 'form-control'
-        self.fields['date_inscription'].widget.attrs['class'] = 'form-control'
-        self.fields['date_premium'].widget.attrs['class'] = 'form-control'
-        self.fields['places'].widget.attrs['class'] = 'form-control'
-        self.fields['messages'].widget.attrs['class'] = 'form-control'
-        self.fields['lieux'].widget.attrs['class'] = 'form-control'
-        self.fields['themes'].widget.attrs['class'] = 'form-control'
-        self.fields['chef'].widget.attrs['class'] = 'form-control'
+        self.fields['Nom'].widget.attrs['class'] = 'form-control'
+        self.fields['Date_inscription'].widget.attrs['class'] = 'form-control'
+        self.fields['Date_premium'].widget.attrs['class'] = 'form-control'
+        self.fields['Places'].widget.attrs['class'] = 'form-control'
+        self.fields['Messages'].widget.attrs['class'] = 'form-control'
+        self.fields['Lieux'].widget.attrs['class'] = 'form-control'
+        self.fields['Themes'].widget.attrs['class'] = 'form-control'
+        self.fields['Chef'].widget.attrs['class'] = 'form-control'

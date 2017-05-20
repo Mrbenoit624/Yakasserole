@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
-    url('^ajout', views.ajout_recette, name='ajout'),
-    url(r'^([a-z-]+)$', views.page, name='page'),
+    url('^ajout', views.ajout_atelier, name='ajout'),
+    url('^inscription', views.inscription_atelier, name='inscription'),
 ]

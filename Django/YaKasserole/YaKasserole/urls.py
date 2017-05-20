@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^entreprise/', include('entreprise.urls')),
     url(r'^recette/', include('recette.urls')),
+    url(r'^atelier/', include('atelier.urls')),
     url(r'^accounts/', include('comptes.urls')),
 ]

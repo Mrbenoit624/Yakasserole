@@ -42,19 +42,20 @@ class ateliers_themes(models.Model):
     themes = models.ForeignKey(Theme, on_delete=models.CASCADE)
 
 class inscription_log(models.Model):
-    user_id = models.ForeignKey(
+    atelier = models.ForeignKey(Atelier, on_delete=models.CASCADE)
+    user = models.ForeignKey(
             'auth.User', on_delete=models.CASCADE,
             related_name='logs'
     )
     participants = models.ManyToManyField(
         'auth.User',
         through='paricipants_atelier',
-        through_fields=('inscription_logs', 'users')
+        through_fields=('inscription_logs', 'user')
     )
     Date = models.DateTimeField(default=timezone.now)
 
 class paricipants_atelier(models.Model):
-    users = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     inscription_logs = models.ForeignKey(inscription_log, on_delete=models.CASCADE)
 
 class ateliers_commentaires(models.Model):
@@ -66,5 +67,5 @@ class ateliers_lieux(models.Model):
     lieux = models.ForeignKey(Lieu, on_delete=models.CASCADE)
 
 class Chef(models.Model):
-    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)

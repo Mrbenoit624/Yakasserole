@@ -7,43 +7,45 @@
 
   <hr>
 
-   <div class="jumbotron">
-  
-{% if form.errors %}
-<h4>Mauvais mot de passe ou utilisateur, veuillez recommencer</h4>
-{% endif %}
-
-{% if next %}
+  <div class="jumbotron">
+    
+    {% if form.errors %}
+    <h4>Mauvais mot de passe ou utilisateur, veuillez recommencer</h4>
+    {% endif %}
+    
+    {% if next %}
     {% if user.is_authenticated %}
     <h4>Vous essayez de vous connecter avec un autre compte que le votre ou vous
-    essayez d'acceder à une page dont vous n'avez pas les accés</h4>
+      essayez d'acceder à une page dont vous n'avez pas les accés</h4>
     {% else %}
     <h4>Veuillez vous connectez afin d'acceder à votre profile</h4>
     {% endif %}
-{% endif %}
+    {% endif %}
 
-   </div>
-   <hr>
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-{% for field in form %}
-<div class="form-group">
-    {{ field.label_tag }}
-    {{ field }}
-</div>
-{% endfor %}
-<button type="submit" class="btn btn-default" value="login">Se connecter</button>
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
-
+  </div>
   <hr>
+  <div class="row-fluid marketing">
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+      </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-default" value="login">Se connecter</button>
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
 
-<p><a class="btn btn-large btn-success" href="/accounts/register/">Je n'ai pas de compte</a></p>
-<p><a class="btn btn-large btn-success" href="{% url 'password_reset' %}">J'ai oublié mon mot de passe</a></p>
+    <hr>
+    <hr>
 
-<div class="footer">
-  <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
-</div>
+    <p><a class="btn btn-large btn-success" href="/accounts/register/">Je n'ai pas de compte</a></p>
+    <p><a class="btn btn-large btn-success" href="{% url 'password_reset' %}">J'ai oublié mon mot de passe</a></p>
+  </div>
+  <div class="footer">
+    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  </div>
 
 </div>
 

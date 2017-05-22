@@ -64,3 +64,12 @@ rda_g.permissions.add(rda_p)
 rdu_g.permissions.add(rdu_p)
 chef_g.permissions.add(chef_p)
 
+############################# ADDING USERS ####################################
+
+
+############################# CUISTOTS ########################################
+user = User.objects.create_user('dummy_cuistot', 'cuistot@yakasserole.fr', 'cuistot1234')
+user.first_name = "Cuisse"
+user.last_name = "Tot"
+user.save()
+chef_g.user_set.add(user)

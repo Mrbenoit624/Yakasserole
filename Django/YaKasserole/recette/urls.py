@@ -3,7 +3,6 @@ from django.contrib.auth.urls import *
 from . import views
 
 urlpatterns = [
-    url('^', include('django.contrib.auth.urls')),
     url('^ajout', views.ajout_recette, name='ajout'),
     url(r'^([a-z-]+)$', views.page, name='page'),
 ]

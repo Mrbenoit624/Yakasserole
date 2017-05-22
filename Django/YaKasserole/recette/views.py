@@ -26,7 +26,7 @@ def ajout_recette(request):
                 etape_save = etape_form.save()
                 recette_save.Etapes.add(etape_form)
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/ajout')
     return render(request, 'recette/ajout.html', {'form': form,
         'etapes_formset' : etapes_formset});
 

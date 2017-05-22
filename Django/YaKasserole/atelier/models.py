@@ -6,6 +6,7 @@ import datetime
 
 class Theme(models.Model):
     Name = models.CharField(max_length=65)
+    def __str__(self): return self.Name
 
 class Lieu(models.Model):
     Nom = models.CharField(max_length=65)
@@ -13,6 +14,7 @@ class Lieu(models.Model):
     Telephone = models.CharField(max_length=65)
     CodePostal = models.PositiveIntegerField(default=0)
     Ville = models.CharField(max_length=65)
+    def __str__(self): return self.Nom
 
 class Atelier(models.Model):
     Nom = models.CharField(max_length=65)
@@ -36,6 +38,7 @@ class Atelier(models.Model):
         through='Ateliers_commentaires',
         through_fields=('ateliers', 'commentaires'),
     )
+    def __str__(self): return self.Nom
 
 class ateliers_themes(models.Model):
     ateliers = models.ForeignKey(Atelier, on_delete=models.CASCADE)

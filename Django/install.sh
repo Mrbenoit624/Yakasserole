@@ -58,5 +58,6 @@ python manage.py shell < ../group.py
 
 #add default recettes
 python manage.py loaddata fixtures/recettes.yaml
+python manage.py loaddata fixtures/ateliers.yaml
 
 kill $postback

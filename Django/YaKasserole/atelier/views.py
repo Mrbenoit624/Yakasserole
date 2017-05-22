@@ -10,7 +10,7 @@ from django.views.generic.list import ListView
 
 from django.contrib.auth.decorators import login_required
 
-from .models import Atelier
+from .models import Atelier, ateliers_lieux, ateliers_themes, paricipants_atelier
 from .forms import *
 
 @login_required
@@ -19,7 +19,14 @@ def ajout_atelier(request):
     if request.method == 'POST':
         form = CreateAtelier(request.POST)
         if form.is_valid():
-            form.save()
+            saved_form = form.save(commit=False)
+            saved_form.save()
+            for lieu in form.cleaned_data.get('Lieux'):
+                atelier_lieu = ateliers_lieux(ateliers=saved_form, lieux=lieu)
+                atelier_lieu.save()
+            for theme in form.cleaned_data.get('Themes'):
+                atelier_theme = ateliers_themes(ateliers=saved_form, themes=theme)
+                atelier_theme.save()
             return HttpResponseRedirect('/')
     return render(request, 'atelier/ajout.html', {'form': form});
 
@@ -28,9 +35,13 @@ def inscription_atelier(request):
     form = SubscribeAtelier()
     if request.method == 'POST':
         form = SubscribeAtelier(request.POST)
+        form.instance.user = request.user
         if form.is_valid():
-            form.user = request.user.id
-            form.save()
+            saved_form = form.save(commit=False)
+            saved_form.save()
+            for participant in form.cleaned_data.get('participants'):
+                participant_atelier = paricipants_atelier(user=participant, inscription_logs=saved_form)
+                participant_atelier.save()
             return HttpResponseRedirect('/')
     return render(request, 'atelier/inscription.html', {'form': form});
 

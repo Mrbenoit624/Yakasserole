@@ -12,6 +12,7 @@ class AddRecette(ModelForm):
         super(AddRecette, self).__init__(*args, **kwargs)
         self.fields['Titre'].widget.attrs['class'] = 'form-control'
         self.fields['Type'].widget.attrs['class'] = 'form-control'
+        #self.fields['Temps_preparation'].widget = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
         self.fields['Temps_preparation'].widget.attrs['class'] = 'form-control'
         self.fields['Temps_cuisson'].widget.attrs['class'] = 'form-control'
         self.fields['Ustensiles'].widget.attrs['class'] = 'form-control'

@@ -3,6 +3,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User;
 
+############################# ADDING USERS ####################################
+
 ############################ CREATE SUPER USER ################################
 
 username = "admin"
@@ -17,6 +19,14 @@ if User.objects.filter(username=username).count()==0:
     print('Superuser created.');
 else:
     print('Superuser creation skipped.');
+
+############################# CUISTOTS ########################################
+
+user = User.objects.create_user('dummy_cuistot', 'cuistot@yakasserole.fr', 'cuistot1234')
+user.first_name = "Cuisse"
+user.last_name = "Tot"
+user.save()
+
 
 ################################# CONTEXT #####################################
 
@@ -64,12 +74,6 @@ rda_g.permissions.add(rda_p)
 rdu_g.permissions.add(rdu_p)
 chef_g.permissions.add(chef_p)
 
-############################# ADDING USERS ####################################
+############################# ADDING TO GROUPS ################################
 
-
-############################# CUISTOTS ########################################
-user = User.objects.create_user('dummy_cuistot', 'cuistot@yakasserole.fr', 'cuistot1234')
-user.first_name = "Cuisse"
-user.last_name = "Tot"
-user.save()
 chef_g.user_set.add(user)

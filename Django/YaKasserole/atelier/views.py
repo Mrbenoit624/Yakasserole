@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 
@@ -27,8 +28,15 @@ def ajout_atelier(request):
             for theme in form.cleaned_data.get('Themes'):
                 atelier_theme = ateliers_themes(ateliers=saved_form, themes=theme)
                 atelier_theme.save()
-            return HttpResponseRedirect('/')
+            return reponse_ajout(request, saved_form.id)
     return render(request, 'atelier/ajout.html', {'form': form});
+
+def get_atelier_model(atelier_id):
+    return Atelier.objects.filter(id=atelier_id)
+
+@login_required
+def reponse_ajout(request, atelier_id):
+    return HttpResponse(get_object_or_404(get_atelier_model(atelier_id)))
 
 @login_required
 def inscription_atelier(request):

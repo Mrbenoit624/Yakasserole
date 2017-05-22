@@ -1,0 +1,13 @@
+- model: atelier.Theme
+  pk: 1
+  fields:
+    Name: Enfantin
+
+- model: atelier.Lieu
+  pk: 1
+  fields:
+    Nom: Site Toulouse
+    Adresse: Addr
+    Telephone: 04
+    CodePostal: 04
+    Ville: Toulouse

@@ -84,12 +84,8 @@ def payment(request):
                     billing_country_code= form.cleaned_data['billing_country_code'],
                     billing_country_area= form.cleaned_data['billing_country_area'],
                     customer_ip_address=request.META.get('REMOTE_ADDR'))
-            print(payment)
-            print(payment)
-            print(payment)
             payment.change_status(PaymentStatus.PREAUTH, "only god")
             payment.capture()
-            print(payment)
             return redirect(process_data, token = payment.token)
             #return HttpResponse(render(request,
             #    'comptes/payments/process/'+ payment.token, {}))
@@ -98,11 +94,7 @@ def payment(request):
     return HttpResponse(render(request, 'comptes/payment.html', {'form': form}))
 
 def payment_details(request, payment_id):
-    print("Putain pourquoi tu me parles d'iterable merde!!!!!!!")
-    print(payment_id)
     payment = get_object_or_404(get_payment_model(), id=payment_id)
-    pprint(payment)
-    pprint(get_payment_model())
     try:
         form = payment.get_form(data=request.POST or None)
     except RedirectNeeded as redirect_to:

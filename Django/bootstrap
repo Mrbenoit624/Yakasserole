@@ -1,6 +1,6 @@
 #!/bin/bash
 set +x
-postgres -D $PGDATA -k /tmp&
+postgres -D $PGDATA -k /tmp 2>/dev/null&
 postback=$!
 
 set -e
@@ -8,14 +8,16 @@ project=YaKasserole
 
 if [ -d django ];
 then
+  echo -e '\e[1;36mmise à jour de Django:\e[0m'
   cd django && git pull && cd -;
 else
+  echo -e '\e[1;32mInstallation de Django:\e[0m'
   git clone git://github.com/django/django.git
 fi
 
 # Install django and his modules
-pip install --user -e django/
-pip install --user -r REQUIREMENT.txt
+pip install --user -e django/ >/dev/null
+pip install --user -r setup/REQUIREMENT.txt >/dev/null
 
 #Correct unstable versions
 to_modify="$HOME/.local/lib/python3.6/site-packages/payments/models.py"
@@ -27,7 +29,7 @@ sed -r 's/(from )(.*)( import reverse)/\1django.urls\3/' "$to_modify" > /tmp/tmp
 cat /tmp/tmp > "$to_modify"
 
 #Setup Users
-psql -h localhost postgres -f setup_user.sql
+psql -h localhost postgres -f setup/setup_user.sql
 
 #Install new project if it doesn't exist
 if [ ! -d "$project" ]; then
@@ -39,7 +41,7 @@ fi
 apps=('community' 'recette' 'atelier' 'comptes')
 cd "$project"
 set +e
-find . -name 'migrations' -exec rm -rf {} \;
+find . -name 'migrations' -exec rm -rf {} \; 2>/dev/null
 set -e
 for i in "${apps[@]}"; do
   if [ ! -d "$i" ]; then
@@ -54,10 +56,14 @@ done
 python manage.py migrate
 
 #enter admin for user
-python manage.py shell < ../group.py
+echo -e '\e[1;36mInitialisation des utilisateurs et des groupes:\e[0m'
+python manage.py shell < ../setup/group.py
 
 #add default recettes
-python manage.py loaddata fixtures/recettes.yaml
-python manage.py loaddata fixtures/ateliers.yaml
+echo -e '\e[1;36mchargement des outils de recette de base:\e[0m'
+python manage.py loaddata ../setup/fixtures/recettes.yaml
+echo -e '\e[1;36mchargement des outils de ateliers de base:\e[0m'
+python manage.py loaddata ../setup/fixtures/ateliers.yaml
 
 kill $postback
+

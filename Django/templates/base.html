@@ -16,15 +16,14 @@
   <meta name="author" content="">
   <title>YaKasserole</title>
   <!--[if gte IE 9]>                                                                                                                                                                                               
-      <style type="text/css">
-        .gradient 
-        {                                                                                                                                                                                                
-        filter: none;
-        }                                                                                                                                                                                                          
-      </style>
-      <![endif]-->
-</head>
-<body>
+  <style type="text/css">
+    .gradient 
+    {                                                                                                                                                                                                
+    filter: none;
+    }                                                                                                                                                                                                          
+  </style>
+  <![endif]-->
+    </head>
   <div id="page">
     <header id="header">
       <div class="parallax">
@@ -64,7 +63,7 @@
                   </div>
                   <button type="Submit" 0 class="btn btn-default">Recherche</button>
                 </form>
-
+                
                 <div class="btn-group pull-right">
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -132,14 +131,18 @@
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
+        </div>
+      </div>
     </header>
-    {% block content %}
-    {% endblock %}
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'css/jquery.backstretch.min.js' %}"></script>
-    <script src="{% static 'css/custom.js'%}"></script>
+  </div>
+<body>
+  {% block content %}
+  {% endblock %}  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'css/jquery.backstretch.min.js' %}"></script>
+  <script src="{% static 'css/custom.js'%}"></script>
 </body>
 </html>

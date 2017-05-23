@@ -9,12 +9,13 @@ from django.forms.formsets import formset_factory
 from django.utils import timezone
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 
 from . models import recettes_ustensiles, recettes_electromenager, recettes_ingredients, recettes_etapes
 
 from . forms import *
 
-@login_required
+@permission_required('auth.cpr')
 def ajout_recette(request):
     form = AddRecette()
     EtapesFormSet = formset_factory(AddEtape, min_num=1)

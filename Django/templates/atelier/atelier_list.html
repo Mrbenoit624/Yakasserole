@@ -21,14 +21,9 @@
 
   <div class="row-fluid marketing">
     <div class="span6">
-      <h4>Nom d'atelier 1</h4>
-      <p>
-        description atelier alléchante.
-      </p>
-      <h4>Nom d'atelier 2</h4>
-      <p>
-        description atelier alléchante.
-      </p>
+      {% for i in model %}
+        {{ i }}
+      {% endfor %}
     </div>
   </div>
 

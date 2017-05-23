@@ -10,11 +10,12 @@ from django.views.generic.list import ListView
 from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 
 from .models import Atelier, ateliers_lieux, ateliers_themes, paricipants_atelier
 from .forms import *
 
-@login_required
+@permission_required('auth.cpa')
 def ajout_atelier(request):
     form = CreateAtelier()
     if request.method == 'POST':

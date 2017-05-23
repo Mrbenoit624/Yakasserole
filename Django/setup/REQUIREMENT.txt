@@ -2,4 +2,8 @@ psycopg2
 django-secure
 django-sslserver
 django-payments
+django-snippets
+django-snippet
+django-extra
+django-form-utils
 pyaml

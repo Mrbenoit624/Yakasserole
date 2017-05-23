@@ -134,6 +134,10 @@ if Permission.objects.filter(codename='cpr').count()==0:
     cpr_p = Permission.objects.create(codename='cpr',
         name='creation de page recette',
         content_type=ct)
+    client_g.permissions.add(cpr_p)
+    rda_g.permissions.add(cpr_p)
+    rdu_g.permissions.add(cpr_p)
+    chef_g.permissions.add(cpr_p)
     print('    - creation de page recette... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
 else:
     print('    - creation de page recette... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
@@ -182,4 +186,4 @@ else:
 
 ############################# ADDING TO GROUPS ################################
 if cuist:
-    chef_g.user_set.add(user)
+    chef_g.user_set.add(cuist)

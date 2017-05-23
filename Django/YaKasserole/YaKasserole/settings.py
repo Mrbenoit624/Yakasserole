@@ -100,6 +100,12 @@ TEMPLATES = [
     },
 ]
 
+TIME_INPUT_FORMATS = [
+    '%H:%M:%S',
+    '%H:%M',
+    '%M',
+]
+
 WSGI_APPLICATION = 'YaKasserole.wsgi.application'
 
 

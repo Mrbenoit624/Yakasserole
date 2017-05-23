@@ -11,22 +11,21 @@ class FullNameChoiceField(ModelChoiceField):
 class SubscribeAtelier(ModelForm):
     class Meta:
         model = inscription_log
-        exclude = ['user', 'Date']
+        exclude = ['user', 'Date', 'participants']
 
     def __init__(self, *args, **kwargs):
         super(SubscribeAtelier, self).__init__(*args, **kwargs)
         self.fields['atelier'].widget.attrs['class'] = 'form-control'
-        self.fields['participants'].widget.attrs['class'] = 'form-control'
 
 class AddParticipant(ModelForm):
     class Meta:
         model = Participant
-        fields = ['first_name', 'last_name']
+        exclude = []
 
     def __init__(self, *args, **kwargs):
-        super(AddEtape, self).__init__(*args, **kwargs)
-        self.fields['first_name'].widget.attrs['class'] = 'form-control'
-        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        super(AddParticipant, self).__init__(*args, **kwargs)
+        self.fields['prenom'].widget.attrs['class'] = 'form-control'
+        self.fields['nom'].widget.attrs['class'] = 'form-control'
 
 class CreateAtelier(ModelForm):
 

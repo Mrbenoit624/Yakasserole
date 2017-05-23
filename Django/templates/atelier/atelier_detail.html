@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+
+  <hr>
+
+  <div class="jumbotron">
+    <h1>Atelier</h1>
+  </div>
+
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span6">
+      {{ object.Nom }}
+      <br>
+      {{ object.Lieux }}
+      <br>
+      {{ object.Themes }}
+      <br>
+      {{ object.Chef.first_name }}
+      <br>
+      {{ object.Chef.last_name }}
+      <br>
+      {{ object.Date_inscription }}
+      <br>
+      {{ object.Date_premium }}
+      <br>
+      {{ object.date_atelier }}
+      <br>
+      {{ object.Places }}
+      <br>
+      {{ object.Messages }}
+      <br>
+      {{ object.Commentaires }}
+      <br>
+      <p><img src="{{ object.picture.url }}" width="300px"></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  </div>
+  
+</div> <!-- /container -->
+{% endblock %}

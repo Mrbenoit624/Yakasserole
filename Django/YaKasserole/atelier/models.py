@@ -17,8 +17,8 @@ class Lieu(models.Model):
     def __str__(self): return self.Nom
 
 class Participant(models.Model):
-    first_name = models.CharField(max_length=65)
-    last_name = models.CharField(max_length=65)
+    prenom = models.CharField(max_length=65)
+    nom = models.CharField(max_length=65)
     def __str__(self): return self.first_name + self.last_name
 
 class Atelier(models.Model):

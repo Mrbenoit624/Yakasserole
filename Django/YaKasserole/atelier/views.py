@@ -15,8 +15,8 @@ from django.forms.formsets import formset_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
-from .models import Atelier, ateliers_lieux, ateliers_themes, participants_atelier, Participant
-from .forms import *
+from .models import Atelier, ateliers_lieux, ateliers_themes, participants_atelier
+from .forms import AddParticipant, SubscribeAtelier, CreateAtelier
 
 @permission_required('auth.cpa')
 def ajout_atelier(request):
@@ -46,15 +46,17 @@ def reponse_ajout(request, atelier_id):
 @login_required
 def inscription_atelier(request):
     form = SubscribeAtelier()
-    ParticipantsFormSet = formset_factory(Participant, min_num=1)
+   
+    ParticipantsFormSet = formset_factory(AddParticipant, min_num=1, max_num=4, extra=0)
+    participants_formset = ParticipantsFormSet()
+    
     if request.method == 'POST':
         form = SubscribeAtelier(request.POST)
-        form.instance.user = request.user
         participants_formset = ParticipantsFormSet(request.POST)
+        
         if form.is_valid():
             saved_form = form.save(commit=False)
             saved_form.save()
-
             for participant_form in participants_formset:
                 participant_save = participant_form.save()
                 p = participants_atelier(
@@ -63,8 +65,7 @@ def inscription_atelier(request):
                 p.save()
 
             return HttpResponseRedirect('/')
-    return render(request, 'atelier/inscription.html', {'form': form,
-                'participants_formset' : participants_formset});
+    return render(request, 'atelier/inscription.html', {'form': form,'participants_formset' : participants_formset});
 
 class AffichageAtelier(DetailView):
     model = Atelier

@@ -22,7 +22,7 @@ def ajout_atelier(request):
     form = CreateAtelier()
     ParticipantsFormSet = formset_factory(Participant, min_num=1)
     if request.method == 'POST':
-        form = CreateAtelier(request.POST)
+        form = CreateAtelier(request.POST, request.FILES)
         form.instance.user = request.user
         participants_formset = ParticipantsFormSet(request.POST)
         if form.is_valid():

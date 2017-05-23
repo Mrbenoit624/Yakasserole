@@ -163,6 +163,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, '../static')]
 
+MEDIA_ROOT = [os.path.join(BASE_DIR, '../pictures')]
+
 # FormSetFactories require this for the django multiple formset plugin
 
 AJAX_LOOKUP_CHANNELS = {

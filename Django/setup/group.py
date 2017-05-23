@@ -162,6 +162,7 @@ if Permission.objects.filter(codename='cpa').count()==0:
     cpa_p = Permission.objects.create(codename='cpa',
         name='creation de page d\'atelier',
         content_type=ct)
+    rda_g.permissions.add(cpr_p)
     print('    - creation de page d\'atelier... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
 else:
     print('    - creation de page d\'atelier... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')

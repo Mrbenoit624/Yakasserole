@@ -21,8 +21,8 @@
 
   <div class="row-fluid marketing">
     <div class="span6">
-      {% for i in model %}
-        {{ i }}
+      {% for atelier in object_list %}
+        <a href="/{{ atelier.id }}">{{ atelier }}</a>
       {% endfor %}
     </div>
   </div>

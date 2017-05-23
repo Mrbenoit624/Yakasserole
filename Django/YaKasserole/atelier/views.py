@@ -8,6 +8,8 @@ from django.shortcuts import render_to_response
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
+import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
@@ -59,5 +61,9 @@ class AffichageAtelier(DetailView):
     exclude = []
 
 class AffichageAteliers(ListView):
+    def get_queryset(self):
+        now = datetime.datetime.now()
+        return Atelier.objects.filter(Date_premium__gte = now.strftime('%Y-%m-%d'))
+
     model = Atelier
     exclude = []

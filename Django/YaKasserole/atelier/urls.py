@@ -1,5 +1,6 @@
 from django.conf.urls import *
 from django.contrib.auth.urls import *
+
 from .views import AffichageAteliers, AffichageAtelier
 from . import views
 

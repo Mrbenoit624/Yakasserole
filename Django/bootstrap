@@ -16,8 +16,9 @@ else
 fi
 
 # Install django and his modules
+echo -e '\e[1;36mInstallation des packages python supplementaire:\e[0m'
 pip install --user -e django/ >/dev/null
-pip install --user -r setup/REQUIREMENT.txt >/dev/null
+pip install --user -r setup/REQUIREMENT.txt
 
 #Correct unstable versions
 to_modify="$HOME/.local/lib/python3.6/site-packages/payments/models.py"
@@ -28,6 +29,7 @@ fi
 sed -r 's/(from )(.*)( import reverse)/\1django.urls\3/' "$to_modify" > /tmp/tmp
 cat /tmp/tmp > "$to_modify"
 
+echo -e '\e[1;36mNettoyage ou creation de la base de donnée:\e[0m'
 #Setup Users
 psql -h localhost postgres -f setup/setup_user.sql
 

@@ -22,7 +22,7 @@ else:
 
 ############################# CUISTOTS ########################################
 cuist = None
-if User.objects.filter(username=username).count()==0:
+if User.objects.filter(username='dummy_cuistot').count()==0:
     cuist = User.objects.create_user('dummy_cuistot', 'cuistot@yakasserole.fr', 'cuistot1234')
     cuist.first_name = "Cuisse"
     cuist.last_name = "Tot"

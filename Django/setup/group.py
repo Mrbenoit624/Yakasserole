@@ -22,8 +22,8 @@ else:
 
 ############################# CUISTOTS ########################################
 cuist = None
-if User.objects.filter(username='dummy_cuistot').count()==0:
-    cuist = User.objects.create_user('dummy_cuistot', 'cuistot@yakasserole.fr', 'cuistot1234')
+if User.objects.filter(username='cuisse.tot@yakasserole.fr').count()==0:
+    cuist = User.objects.create_user('cuisse.tot@yakasserole.fr', 'cuistot@yakasserole.fr', 'cuistot1234')
     cuist.first_name = "Cuisse"
     cuist.last_name = "Tot"
     cuist.save()
@@ -43,6 +43,10 @@ print('\x1b[1;39m' + '  création de groupes: ' + '\x1b[0m')
 
 client_g, created = Group.objects.get_or_create(name='client')
 print('    - client created... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
+
+pclient_g, created = Group.objects.get_or_create(
+        name='client premium')
+print('    - client premium created... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
 
 rda_g, created = Group.objects.get_or_create(
         name='Responsable des ateliers')
@@ -67,6 +71,7 @@ if Permission.objects.filter(codename='ccc').count()==0:
         content_type=ct)
     rdu_g.permissions.add(ccc_p)
     client_g.permissions.add(ccc_p)
+    pclient_g.permissions.add(ccc_p)
     print('    - creation de compte client... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
 else:
     print('    - creation de compte client... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
@@ -85,7 +90,6 @@ if Permission.objects.filter(codename='scu').count()==0:
         name='suppression de compte utilisateurs',
         content_type=ct)
     rdu_g.permissions.add(scu_p)
-    client_g.permissions.add(scu_p)
     print('    - supression de compte utilisateurs... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
 else:
     print('    - supression de compte utilisateurs... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
@@ -135,6 +139,7 @@ if Permission.objects.filter(codename='cpr').count()==0:
         name='creation de page recette',
         content_type=ct)
     client_g.permissions.add(cpr_p)
+    pclient_g.permissions.add(cpr_p)
     rda_g.permissions.add(cpr_p)
     rdu_g.permissions.add(cpr_p)
     chef_g.permissions.add(cpr_p)
@@ -154,6 +159,7 @@ if Permission.objects.filter(codename='vv').count()==0:
     vv_p = Permission.objects.create(codename='vv',
         name='visionage de video',
         content_type=ct)
+    pclient_g.permissions.add(cpr_p)
     print('    - visionage de video... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
 else:
     print('    - visionage de video... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')

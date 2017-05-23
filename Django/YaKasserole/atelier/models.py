@@ -16,6 +16,11 @@ class Lieu(models.Model):
     Ville = models.CharField(max_length=65)
     def __str__(self): return self.Nom
 
+class Participant(models.Model):
+    first_name = models.CharField(max_length=65)
+    last_name = models.CharField(max_length=65)
+    def __str__(self): return self.first_name + self.last_name
+
 class Atelier(models.Model):
     Nom = models.CharField(max_length=65)
     Lieux = models.ManyToManyField(
@@ -31,6 +36,7 @@ class Atelier(models.Model):
     Chef = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     Date_inscription = models.DateTimeField(default=timezone.now)
     Date_premium = models.DateTimeField(default=timezone.now)
+    date_atelier = models.DateTimeField(default=timezone.now)
     Places = models.PositiveIntegerField(default=0)
     Messages = models.TextField()
     Commentaires = models.ManyToManyField(
@@ -51,14 +57,14 @@ class inscription_log(models.Model):
             related_name='logs'
     )
     participants = models.ManyToManyField(
-        'auth.User',
-        through='paricipants_atelier',
-        through_fields=('inscription_logs', 'user')
+        Participant,
+        through='participants_atelier',
+        through_fields=('inscription_logs', 'participant')
     )
     Date = models.DateTimeField(default=timezone.now)
 
-class paricipants_atelier(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+class participants_atelier(models.Model):
+    participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
     inscription_logs = models.ForeignKey(inscription_log, on_delete=models.CASCADE)
 
 class ateliers_commentaires(models.Model):

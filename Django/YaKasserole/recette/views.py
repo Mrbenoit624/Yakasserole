@@ -8,10 +8,13 @@ from django.shortcuts import render_to_response
 from django.forms.formsets import formset_factory
 from django.utils import timezone
 
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
-from . models import recettes_ustensiles, recettes_electromenager, recettes_ingredients, recettes_etapes
+from . models import recettes_ustensiles, recettes_electromenager, recettes_ingredients, recettes_etapes, Recette
 
 from . forms import *
 
@@ -25,7 +28,7 @@ def ajout_recette(request):
         form.instance.user = request.user
         etapes_formset = EtapesFormSet(request.POST)
         if form.is_valid() and etapes_formset.is_valid():
-            
+
             recette_save = form.save(commit=False)
             recette_save.save()
 
@@ -48,9 +51,10 @@ def ajout_recette(request):
     return render(request, 'recette/ajout.html', {'form': form,
         'etapes_formset' : etapes_formset});
 
-def page(request, page):
-    try:
-        template = loader.get_template('recette/{}.html'.format(page))
-        return HttpResponse(template.render({}, request))
-    except:
-        raise Http404('Page not found {}'.format(page))
+class AffichageRecette(DetailView):
+    model = Recette
+    exclude = []
+
+class AffichageRecettes(ListView):
+    model = Recette
+    exclude = []

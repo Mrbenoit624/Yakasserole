@@ -14,23 +14,35 @@ import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
-from .models import Atelier, ateliers_lieux, ateliers_themes, paricipants_atelier
+from .models import Atelier, ateliers_lieux, ateliers_themes, participants_atelier, Participant
 from .forms import *
 
 @permission_required('auth.cpa')
 def ajout_atelier(request):
     form = CreateAtelier()
+    ParticipantsFormSet = formset_factory(Participant, min_num=1)
     if request.method == 'POST':
         form = CreateAtelier(request.POST)
+        form.instance.user = request.user
+        participants_formset = ParticipantsFormSet(request.POST)
         if form.is_valid():
             saved_form = form.save(commit=False)
             saved_form.save()
+
+            for participant_form in participants_formset:
+                participant_save = participant_form.save()
+                p = participants_atelier(
+                        participant=participant_save,
+                        inscription_logs=saved_form)
+                p.save()
+
             for lieu in form.cleaned_data.get('Lieux'):
                 atelier_lieu = ateliers_lieux(ateliers=saved_form, lieux=lieu)
                 atelier_lieu.save()
             for theme in form.cleaned_data.get('Themes'):
                 atelier_theme = ateliers_themes(ateliers=saved_form, themes=theme)
                 atelier_theme.save()
+
             return reponse_ajout(request, saved_form.id)
     return render(request, 'atelier/ajout.html', {'form': form});
 
@@ -62,8 +74,12 @@ class AffichageAtelier(DetailView):
 
 class AffichageAteliers(ListView):
     def get_queryset(self):
-        now = datetime.datetime.now()
-        return Atelier.objects.filter(Date_premium__gte = now.strftime('%Y-%m-%d'))
+        now = datetime.datetime.now().strftime('%Y-%m-%d')
+        if self.request.user.groups.filter(name='client').exists():
+            return Atelier.objects.filter(Date_inscription__gte = now, date_atelier__gte = now)
+        elif self.request.user.groups.filter(name='pclient').exists():
+            return Atelier.objects.filter(Date_premium__gte = now, date_atelier__gte = now)
+        return Atelier.objects.filter(date_atelier__gte = now)
 
     model = Atelier
     exclude = []

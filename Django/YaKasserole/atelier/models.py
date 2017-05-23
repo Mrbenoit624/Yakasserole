@@ -44,7 +44,7 @@ class Atelier(models.Model):
         through='Ateliers_commentaires',
         through_fields=('ateliers', 'commentaires'),
     )
-    picture = models.FileField(upload_to='ateliers/%m/')
+    picture = models.ImageField(upload_to='ateliers/%m/')
     def __str__(self): return self.Nom
 
 class ateliers_themes(models.Model):

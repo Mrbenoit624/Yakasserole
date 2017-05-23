@@ -1,3 +1,5 @@
 django
+pictures
 *.pyc
 *.pid
+

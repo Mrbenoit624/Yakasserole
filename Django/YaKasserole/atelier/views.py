@@ -26,7 +26,6 @@ def ajout_atelier(request):
         if form.is_valid():
             saved_form = form.save(commit=False)
             saved_form.save()
-            
             for lieu in form.cleaned_data.get('Lieux'):
                 atelier_lieu = ateliers_lieux(ateliers=saved_form, lieux=lieu)
                 atelier_lieu.save()

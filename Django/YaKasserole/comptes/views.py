@@ -12,6 +12,10 @@ from payments import get_payment_model
 from payments import FraudStatus, PaymentStatus
 from payments.urls import process_data
 
+from atelier.models import inscription_log
+from recette.models import Recette
+from community.models import Commentaire
+
 from . forms import *
 
 from pprint import pprint
@@ -39,8 +43,14 @@ def connect(request):
     return render(request, 'comptes/connect.html', {'form': form})
 
 def profile(request):
+    ateliers = len(inscription_log.objects.filter(user=request.user.id))
+    recettes = len(Recette.objects.filter(user=request.user.id))
+    commentaires = len(Commentaire.objects.filter(user=request.user.id))
     if request.user.is_authenticated:
-        return HttpResponse(render(request, 'registration/account.html', {}));
+        return HttpResponse(render(request, 'registration/account.html',
+            {'nb_atelier': ateliers,
+             'nb_recettes': recettes,
+             'nb_commentaires':commentaires}));
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');
 

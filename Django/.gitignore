@@ -1,5 +1,5 @@
 django
-pictures
+media
 *.pyc
 *.pid
-
+*.log

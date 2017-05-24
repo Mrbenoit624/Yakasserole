@@ -42,7 +42,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #paiement sécurisé
 PAYMENT_HOST = 'localhost:8080'
-PAYMENT_USES_SSL = False
+PAYMENT_USES_SSL = True
 PAYMENT_MODEL = 'comptes.Payment'
 PAYMENT_VARIANTS = {
     'default': ('payments.dummy.DummyProvider', {'capture': False})}
@@ -163,7 +163,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, '../static')]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '../pictures')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+MEDIA_URL = '/media/'
 
 # FormSetFactories require this for the django multiple formset plugin
 

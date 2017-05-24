@@ -44,6 +44,9 @@
       {% endfor %}
       <br>
       <p><img src="{{ object.picture.url }}" width="300px"></p>
+      {% if user.is_staff%}
+      <a href="{% url 'modifier_atelier' pk=object.id %}">Modifier l'atelier</a>
+      {% endif %}
     </div>
   </div>
 

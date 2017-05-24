@@ -38,13 +38,16 @@
           <li>titre:{{ etape.Titre }} contenu:{{ etape.Contenu }}</li>
           {% endfor %}
       </ul>
-    </div>
+  </div>
+
 
   <div class="preparation">
-    <h2>Préparation</h2>
-    <!-- TODO, make it dynamic -->
-    nope
+      <h2>Préparation</h2>
+      <!-- TODO, make it dynamic -->
+      nope
   </div>
+
+  <a href="{% url 'modifier_recette' pk=object.id %}">Modifier la recette</a>
 
   <div class="comments">
     <h2>Commentaires</h2>

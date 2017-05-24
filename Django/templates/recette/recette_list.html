@@ -20,7 +20,7 @@
   <div class="row-fluid marketing">
     <div class="span6">
       {% for recette in object_list %}
-      <a href="{% url 'recettes' %}/{{ recette.id }}">{{ recette }}</a>
+      <a href="{% url 'recettes' %}/{{ recette.id }}">{{ recette.Titre }}</a>
       {% endfor %}
     </div>
   </div>

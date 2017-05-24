@@ -16,12 +16,16 @@
     <div class="span6">
       {{ object.Nom }}
       <br>
-      {{ object.Lieux }}
-      <br>
-      {{ object.Themes }}
-      <br>
+      {% for lieu in object.Lieux.all %}
+        {{ lieu }}
+        <br>
+      {% endfor %}
+      {% for theme in object.Themes.all %}
+        {{ theme }}
+        <br>
+      {% endfor %}
+
       {{ object.Chef.first_name }}
-      <br>
       {{ object.Chef.last_name }}
       <br>
       {{ object.Date_inscription }}
@@ -34,7 +38,10 @@
       <br>
       {{ object.Messages }}
       <br>
-      {{ object.Commentaires }}
+
+      {% for comment in object.Commentaires.all %}
+        {{ comment }}
+      {% endfor %}
       <br>
       <p><img src="{{ object.picture.url }}" width="300px"></p>
     </div>

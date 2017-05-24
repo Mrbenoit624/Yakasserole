@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+
+  <hr>
+
+  <div class="jumbotron">
+    <h1>Les recettes Yakasseroles</h1>
+    <p class="lead">
+        cest la classe lead
+    </p>
+    <a class="btn btn-large btn-success"
+       href="{% url 'ajout' %}"><span class="glyphicon glyphicon-cutlery"></span> &nbsp; Ajouter une recette</a>
+  </div>
+
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span6">
+      {% for recette in object_list %}
+      <a href="{% url 'recettes' %}/{{ recette.id }}">{{ recette }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    <p>&copy; Copyright <a href="/">YaKasserole company 2017</a></p>
+  </div>
+  
+</div> <!-- /container -->
+{% endblock %}

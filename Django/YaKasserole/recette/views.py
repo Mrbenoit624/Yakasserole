@@ -21,7 +21,7 @@ from . forms import *
 @permission_required('auth.cpr')
 def ajout_recette(request):
     form = AddRecette()
-    EtapesFormSet = formset_factory(AddEtape, min_num=1)
+    EtapesFormSet = formset_factory(AddEtape, min_num=1, extra=0)
     etapes_formset = EtapesFormSet()
     if request.method == 'POST':
         form = AddRecette(request.POST)
@@ -47,7 +47,7 @@ def ajout_recette(request):
                 r_i = recettes_ingredients(recettes=recette_save, ingredients=ingredient)
                 r_i.save()
 
-            return HttpResponseRedirect('/ajout')
+            return HttpResponseRedirect('/recette/recettes')
     return render(request, 'recette/ajout.html', {'form': form,
         'etapes_formset' : etapes_formset});
 

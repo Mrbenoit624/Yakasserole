@@ -7,7 +7,7 @@ import datetime
 class Commentaire(models.Model):
     Titre = models.CharField(max_length=65)
     Messages = models.TextField()
-    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
 register = template.Library()
 @register.filter(name='addcss')

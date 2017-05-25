@@ -7,43 +7,47 @@
   <hr>
 
   <div class="jumbotron">
-    <h1>Atelier {{ object.Nom }}</h1>
+    <h1>Atelier "{{ object.Nom }}"</h1>
   </div>
-
-  <hr>
 
   <div class="row-fluid marketing">
     <div class="span6">
       <hr>
       <h4>Les lieux:</h4>
       <p>
-      {% for lieu in object.Lieux.all %}
-      Cet atelier est présent à {{ lieu }}!
-      <br>
-      {% endfor %}
+        {% for lieu in object.Lieux.all %}
+        Cet atelier est présent à {{ lieu }}!
+        <br>
+        {% endfor %}
       </p>
       <hr>
-      {% for theme in object.Themes.all %}
-      {{ theme }}
-      <hr>
-      {% endfor %}
-
-      {{ object.Chef.first_name }}
-      {{ object.Chef.last_name }}
-      <hr>
-      <h4>Les dates:</h4>
+      <h4>Les thèmes:</h4>
+      
       <p>
-        Inscription ouverte à partir du {{ object.Date_inscription }}
+        {% for theme in object.Themes.all %}
+        L'un des thèmes de cet atelier est {{ theme }}.
         <br>
-        date premium TODO: {{ object.Date_premium }}
-        <br>
-        l'atelier commence le {{ object.date_atelier }}
+        {% endfor %}
       </p>
       
       <hr>
-      
-      {{ object.Places }}
+      <h4>Et tout cela sera dirigé par {{ object.Chef.first_name }} {{ object.Chef.last_name }}, notre chef sur place!</h4>
       <hr>
+      <h4>l'atelier commence le {{ object.date_atelier }}</h4>
+
+      {% if user.is_staff%}
+      <p>
+        date premium : {{ object.Date_premium }}
+        <br>
+        Inscription ouverte à partir du {{ object.Date_inscription }}
+      </p>
+      {% endif %}
+      <hr>
+      
+      <h4>Il reste {{ object.Places }} places.</h4>
+      
+      <hr>
+      <h4>Une petite description pour vous faire envie:</h4>
       {{ object.Messages }}
       <hr>
 
@@ -51,9 +55,12 @@
       {{ comment }}
       {% endfor %}
       <hr>
-      <p><img src="{{ object.picture.url }}" width="300px"></p>
+      <p><img src="{{ object.picture.url }}" width="200 px"></p>
       {% if user.is_staff%}
-      <a href="{% url 'modifier_atelier' pk=object.id %}">Modifier l'atelier</a>
+      <hr>
+      <a class="btn btn-large btn-success" href="{% url 'modifier_atelier'
+      pk=object.id %}"><span class="glyphicon glyphicon-wrench"
+      aria-hidden="true"></span> Modifier l'atelier</a>
       {% endif %}
     </div>
   </div>

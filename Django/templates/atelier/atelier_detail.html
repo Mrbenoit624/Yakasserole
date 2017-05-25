@@ -7,42 +7,50 @@
   <hr>
 
   <div class="jumbotron">
-    <h1>Atelier</h1>
+    <h1>Atelier {{ object.Nom }}</h1>
   </div>
 
   <hr>
 
   <div class="row-fluid marketing">
     <div class="span6">
-      {{ object.Nom }}
-      <br>
+      <hr>
+      <h4>Les lieux:</h4>
+      <p>
       {% for lieu in object.Lieux.all %}
-        {{ lieu }}
-        <br>
+      Cet atelier est présent à {{ lieu }}!
+      <br>
       {% endfor %}
+      </p>
+      <hr>
       {% for theme in object.Themes.all %}
-        {{ theme }}
-        <br>
+      {{ theme }}
+      <hr>
       {% endfor %}
 
       {{ object.Chef.first_name }}
       {{ object.Chef.last_name }}
-      <br>
-      {{ object.Date_inscription }}
-      <br>
-      {{ object.Date_premium }}
-      <br>
-      {{ object.date_atelier }}
-      <br>
+      <hr>
+      <h4>Les dates:</h4>
+      <p>
+        Inscription ouverte à partir du {{ object.Date_inscription }}
+        <br>
+        date premium TODO: {{ object.Date_premium }}
+        <br>
+        l'atelier commence le {{ object.date_atelier }}
+      </p>
+      
+      <hr>
+      
       {{ object.Places }}
-      <br>
+      <hr>
       {{ object.Messages }}
-      <br>
+      <hr>
 
       {% for comment in object.Commentaires.all %}
-        {{ comment }}
+      {{ comment }}
       {% endfor %}
-      <br>
+      <hr>
       <p><img src="{{ object.picture.url }}" width="300px"></p>
       {% if user.is_staff%}
       <a href="{% url 'modifier_atelier' pk=object.id %}">Modifier l'atelier</a>

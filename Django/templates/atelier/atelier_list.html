@@ -23,7 +23,7 @@
     <div class="span6">
       {% for atelier in object_list %}
       <a href="{% url 'ateliers' %}/{{ atelier.id }}">
-        <div data-content="{{ atelier }}" class="atelier_img">
+        <div data-content="{{ atelier.Nom }}" class="atelier_img">
           <img src="{{ atelier.picture.url }}" alt="">
         </div>
       </a>

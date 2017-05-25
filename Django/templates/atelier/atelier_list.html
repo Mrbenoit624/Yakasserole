@@ -22,11 +22,15 @@
   <div class="row-fluid marketing">
     <div class="span6">
       {% for atelier in object_list %}
-      <a href="{% url 'ateliers' %}/{{ atelier.id }}">{{ atelier }}</a>
+      <a href="{% url 'ateliers' %}/{{ atelier.id }}">
+        <div data-content="{{ atelier }}" class="atelier_img">
+          <img src="{{ atelier.picture.url }}" alt="">
+        </div>
+      </a>
       {% endfor %}
     </div>
   </div>
-
+  
   <hr>
 
   <div class="footer">
@@ -34,4 +38,5 @@
   </div>
   
 </div> <!-- /container -->
+
 {% endblock %}

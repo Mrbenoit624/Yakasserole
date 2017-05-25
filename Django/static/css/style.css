@@ -216,3 +216,54 @@ button {
     background-image: url("../img/bg-01.jpg");
 
 }
+
+.atelier_img {
+    position:relative;
+    width:200px;
+    height:200px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}
+
+.atelier_img img {
+    width:100%;
+    height:100%;
+    vertical-align:top;
+}
+
+.atelier_img:after, .atelier_img:before
+{
+    position:absolute;
+    opacity:0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.atelier_img:after
+{
+    content:'\A';
+    width:100%; height:100%;
+    top:0; left:0;
+    background:rgba(0,0,0,0.5);
+}
+
+.atelier_img:before
+{
+    content: attr(data-content);
+    width:100%;
+    color:#fff;
+    z-index:1;
+    bottom:0;
+    padding:4px 10px;
+    text-align:center;
+    background:red;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+.atelier_img:hover:after, .atelier_img:hover:before
+{
+    opacity:1;
+}

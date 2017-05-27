@@ -44,7 +44,7 @@
       {% endif %}
       <hr>
       
-      <h4>Il reste {{ object.Places }} places.</h4>
+      <h4>Il reste {{ object.LastPlaces }} places.</h4>
       
       <hr>
       <h4>Une petite description pour vous faire envie:</h4>
@@ -75,10 +75,9 @@
       {% endif %}
 
       <a class="btn btn-large btn-success"
-               href="/atelier/inscription"><span class="glyphicon                                                                                                                                                    
+         href="{% url 'inscription_atelier' atelier_id=object.id %}"><span class="glyphicon
                                                         glyphicon-ok"></span>
                     &nbsp; S'inscrire à un atelier</a>
-      
     </div>
   </div>
 

@@ -3,6 +3,7 @@ from .models import Atelier, inscription_log, Participant
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.forms import ModelChoiceField
+from django.forms.widgets import HiddenInput
 
 from django.forms.widgets import SelectDateWidget
 
@@ -13,11 +14,16 @@ class FullNameChoiceField(ModelChoiceField):
 class SubscribeAtelier(ModelForm):
     class Meta:
         model = inscription_log
-        exclude = ['user', 'Date', 'participants']
+        exclude = ['Date', 'participants']
 
     def __init__(self, *args, **kwargs):
+        self.user_id = kwargs.pop('user_id',None)
+        self.atelier_id = kwargs.pop('atelier_id',None)
         super(SubscribeAtelier, self).__init__(*args, **kwargs)
-        self.fields['atelier'].widget.attrs['class'] = 'form-control'
+        self.fields['atelier'].widget = HiddenInput()
+        self.initial['atelier'] = self.atelier_id
+        self.fields['user'].widget = HiddenInput()
+        self.initial['user'] = self.user_id
 
 class AddParticipant(ModelForm):
     class Meta:

@@ -80,7 +80,9 @@ MIDDLEWARE = [
 MIDDLEWARE_CLASSES = [
     # active https
     'djangosecure.middleware.SecurityMiddleware',
-        ]
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+]
 
 ROOT_URLCONF = 'YaKasserole.urls'
 
@@ -98,6 +100,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+TEMPLATE_CONTEXT_PROCESSORS = [
+    "django.core.context_processors.auth",
+    "django.core.context_processors.i18n",
 ]
 
 TIME_INPUT_FORMATS = [
@@ -146,7 +153,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+gettext = lambda x: x
+
+LANGUAGE_CODE = 'fr-FR'
+LANGUAGES = (
+    ('fr', gettext('French')),
+)
 
 TIME_ZONE = 'UTC'
 

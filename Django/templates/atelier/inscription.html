@@ -14,14 +14,15 @@
 
   <div class="row-fluid marketing">
     <div class="span6">
+
       <form method="post" action="{% url 'inscription_atelier' %}">
         {% csrf_token %}
         {{ form }}
-        {% for participant in participants_formset.forms %}
+        {% with participants_formset.empty_form as participant %}
         <div class="participants-formset">
-          {{ participant }}
+            {{ participant }}
         </div>
-        {% endfor %}
+        {% endwith %}
 
         {{ participants_formset.management_form }}
 

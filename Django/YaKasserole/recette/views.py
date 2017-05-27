@@ -14,9 +14,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from django.contrib.auth.decorators import login_required
+
 from django.contrib.auth.decorators import permission_required
 
-from . models import recettes_ustensiles, recettes_electromenager, recettes_ingredients, recettes_etapes, Recette, Etape
+from . models import *
 
 from . forms import *
 
@@ -92,9 +93,20 @@ def modifier_recette(request, pk):
     return render(request, 'recette/modification.html', {'form': form,
         'etapes_formset' : etapes_formset});
 
-class AffichageRecette(DetailView):
-    model = Recette
-    exclude = []
+@login_required
+def affichage_recette(request, pk):
+    recette = get_object_or_404(Recette, id=pk)
+    form = AddComment()
+    if request.method == 'POST':
+        form = AddComment(request.POST)
+        form.instance.user = request.user
+
+        if form.is_valid():
+            saved_comment = form.save()
+            r_c = recettes_commentaires(recettes=recette, commentaires=saved_comment)
+            r_c.save()
+
+    return render(request, 'recette/recette_detail.html', { 'form': form, 'object': recette })
 
 class AffichageRecettes(ListView):
     model = Recette

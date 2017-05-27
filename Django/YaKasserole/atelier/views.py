@@ -15,7 +15,8 @@ from django.forms.formsets import formset_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
-from .models import Atelier, ateliers_lieux, ateliers_themes, participants_atelier
+from recette.forms import AddComment
+from .models import *
 from .forms import AddParticipant, SubscribeAtelier, CreateAtelier
 
 @permission_required('auth.cpa')
@@ -66,25 +67,55 @@ def reponse_ajout(request, atelier_id):
 def inscription_atelier(request):
     form = SubscribeAtelier()
 
-    ParticipantsFormSet = formset_factory(AddParticipant, min_num=1, max_num=4, extra=0)
+    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=4, extra=0)
     participants_formset = ParticipantsFormSet()
 
     if request.method == 'POST':
         form = SubscribeAtelier(request.POST)
+        form.instance.user = request.user
         participants_formset = ParticipantsFormSet(request.POST)
 
-        if form.is_valid():
-            saved_form = form.save(commit=False)
-            saved_form.save()
-            for participant_form in participants_formset:
-                participant_save = participant_form.save()
-                p = participants_atelier(
-                        participant=participant_save,
-                        inscription_logs=saved_form)
-                p.save()
+        done = False
+        valid = True
+        for p_f in participants_formset:
+            if not(p_f.is_valid()) and not(done):
+                done = True
+            elif done:
+                valid = False
 
-            return HttpResponseRedirect('/')
+        if form.is_valid() and valid:
+            atelier_id = form.cleaned_data.get('atelier').pk
+            atelier = get_object_or_404(Atelier, id=atelier_id)
+            places = atelier.Places - inscription_log.objects.filter(atelier=atelier).count()
+            if places > 0:
+                saved_form = form.save(commit=False)
+                saved_form.save()
+                for participant_form in participants_formset:
+                    if participant_form.is_valid():
+                        participant_save = participant_form.save()
+                        p = participants_atelier(
+                                participant=participant_save,
+                                inscription_logs=saved_form)
+                        p.save()
+
+                return HttpResponseRedirect('/atelier/ateliers/' + str(atelier_id))
     return render(request, 'atelier/inscription.html', {'form': form,'participants_formset' : participants_formset});
+
+
+@login_required
+def affichage_atelier(request, pk):
+    atelier = get_object_or_404(Atelier, id=pk)
+    form = AddComment()
+    if request.method == 'POST':
+        form = AddComment(request.POST)
+        form.instance.user = request.user
+
+        if form.is_valid():
+            saved_comment = form.save()
+            a_c = ateliers_commentaires(ateliers=atelier, commentaires=saved_comment)
+            a_c.save()
+
+    return render(request, 'atelier/atelier_detail.html', { 'form': form, 'object': atelier })
 
 class AffichageAtelier(DetailView):
     model = Atelier

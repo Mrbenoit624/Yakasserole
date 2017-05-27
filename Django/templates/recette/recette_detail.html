@@ -64,14 +64,10 @@
     {% endfor %}
     <div class="new comment">
       <h2>Poster un commentaire</h2>
-      <form>
-        <div class="form-group">
-          <label for="InputNickname">Pseudonyme</label>
-          <input type="text" class="form-control"
-                 id="InputNickname" placeholder="Pseudonyme">
-        </div>
-        <textarea class="form-control" rows="6">Message</textarea>
-        <button type="submit" class="btn btn-default">Publier</button>
+      <form method="post" action="{% url 'recette' pk=object.id %}">
+          {% csrf_token %}
+          {{ form }}
+          <button type="submit" class="btn btn-default">Publier</button>
       </form>
     </div>
   </div>

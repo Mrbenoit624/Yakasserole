@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Recette, Etape
 from django.contrib.auth.models import User
+from community.models import Commentaire
 
 from django.utils.html import mark_safe
 
@@ -50,3 +51,14 @@ class AddEtape(ModelForm):
         super(AddEtape, self).__init__(*args, **kwargs)
         self.fields['Titre'].widget.attrs['class'] = 'form-control'
         self.fields['Contenu'].widget.attrs['class'] = 'form-control'
+
+
+class AddComment(ModelForm):
+    class Meta:
+        model = Commentaire
+        exclude = ['user']
+
+    def __init__(self, *args, **kwargs):
+        super(AddComment, self).__init__(*args, **kwargs)
+        self.fields['Titre'].widget.attrs['class'] = 'form-control'
+        self.fields['Messages'].widget.attrs['class'] = 'form-control'

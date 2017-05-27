@@ -52,10 +52,21 @@
       <hr>
 
       {% for comment in object.Commentaires.all %}
-      {{ comment }}
+      {{ comment.Titre }}
+      {{ comment.Messages }}
       {% endfor %}
       <hr>
       <p><img src="{{ object.picture.url }}" width="200 px"></p>
+
+      <div class="new comment">
+          <h2>Poster un commentaire</h2>
+          <form method="post" action="{% url 'atelier' pk=object.id %}">
+              {% csrf_token %}
+              {{ form }}
+              <button type="submit" class="btn btn-default">Publier</button>
+          </form>
+      </div>
+
       {% if user.is_staff%}
       <hr>
       <a class="btn btn-large btn-success" href="{% url 'modifier_atelier'

@@ -4,6 +4,8 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.forms import ModelChoiceField
 
+from django.forms.widgets import SelectDateWidget
+
 class FullNameChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
          return obj.get_full_name()
@@ -30,6 +32,9 @@ class AddParticipant(ModelForm):
 class CreateAtelier(ModelForm):
 
     Chef = FullNameChoiceField(queryset = User.objects.filter(groups__name='Chef cuisinier'))
+    Date_inscription = forms.DateField(widget=SelectDateWidget())
+    Date_premium = forms.DateField(widget=SelectDateWidget())
+    date_atelier = forms.DateField(widget=SelectDateWidget())
 
     class Meta:
         model = Atelier

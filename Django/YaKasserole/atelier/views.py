@@ -60,7 +60,9 @@ def get_atelier_model(atelier_id):
     return Atelier.objects.filter(id=atelier_id)
 
 def get_place_atelier(atelier_id):
-    return Atelier.objects.filter(id=atelier_id)[0].Places - len(inscription_log.objects.filter(atelier_id=atelier_id))
+    logs = inscription_log.objects.filter(atelier_id=atelier_id)
+    participants = participants_atelier.objects.filter(inscription_logs__in=logs)
+    return Atelier.objects.filter(id=atelier_id)[0].Places - logs.count() - participants.count()
 
 @login_required
 def reponse_ajout(request, atelier_id):
@@ -75,7 +77,7 @@ def inscription_atelier(request, atelier_id):
     max_additionnel = max(min(4, places - 1), 0)
     if request.user.groups.filter(name='client').exists():
         max_additionnel = 0
-    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max_additionnel, extra=0)
+    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max_additionnel, extra=1)
     participants_formset = ParticipantsFormSet()
 
     if request.method == 'POST' and not(inscrit):
@@ -104,6 +106,8 @@ def inscription_atelier(request, atelier_id):
 def desinscription_atelier(request, atelier_id):
     inscription = inscription_log.objects.filter(atelier=atelier_id, user=request.user)
     if inscription.exists():
+        p_a = participants_atelier.objects.filter(inscription_logs = inscription[0])
+        Participant.objects.filter(id__in=p_a).delete()
         inscription.delete()
     return HttpResponseRedirect('/atelier/ateliers/' + atelier_id)
 

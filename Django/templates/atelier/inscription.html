@@ -15,16 +15,16 @@
   <div class="row-fluid marketing">
     <div class="span6">
       {% if not inscrit %}
-      {% if LastPlaces > 0 %}
+      {% if places > 0 %}
       <form method="post" action="#">
         {% csrf_token %}
         {{ form }}
-        {% if LastPlaces > 1 %}
-        {% with participants_formset.empty_form as participant %}
+        {% if max > 0 %}
+        {% for participant in participants_formset.forms %}
         <div class="participants-formset">
             {{ participant }}
         </div>
-        {% endwith %}
+        {% endfor %}
         {% endif %}
 
         {{ participants_formset.management_form }}

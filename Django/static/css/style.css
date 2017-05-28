@@ -86,9 +86,6 @@ p, div {
    z-index: 1;
 }
 
-.navbar-brand {   padding: 0px; }
-.navbar-brand>img {   height: 100%;   padding: 15px;   width: auto; }
-
 .navbar li { color: #000 }
 
 /* Form */

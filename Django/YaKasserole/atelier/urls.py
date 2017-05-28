@@ -11,4 +11,5 @@ urlpatterns = [
     url('^ateliers$', AffichageAteliers.as_view(), name='ateliers'),
     url('^ateliers/(?P<pk>\d+)/$', views.affichage_atelier, name='atelier'),
     url('^modifier/(?P<pk>\d+)/$', views.modifier_atelier, name='modifier_atelier'),
+    url('^supprimer/(?P<pk>\d+)/$', views.supprimer_atelier, name='supprimer_atelier'),
 ]

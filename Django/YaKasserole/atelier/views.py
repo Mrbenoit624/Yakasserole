@@ -38,6 +38,13 @@ def ajout_atelier(request):
     return render(request, 'atelier/ajout.html', {'form': form});
 
 @permission_required('auth.cpa')
+def supprimer_atelier(request, pk):
+    atelier = Atelier.objects.filter(id=pk)
+    if atelier.exists():
+        atelier.delete()
+    return HttpResponseRedirect('/atelier/ateliers')
+
+@permission_required('auth.cpa')
 def modifier_atelier(request, pk):
     atelier = get_object_or_404(Atelier, id=pk)
     form = CreateAtelier(request.POST or None, request.FILES or None, instance=atelier)

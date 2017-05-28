@@ -19,6 +19,11 @@
       <h4>Vous avez participé à: {{nb_atelier}} ateliers</h4>
       <h4>Vous avez publié: {{nb_recettes}} recettes</h4>
       <h4>Vous avez posté: {{nb_commentaires}} commentaires</h4>
+      {% if user.groups.all.exists %}
+      <h4>Vous êtes {{ user.groups.all.0 }}</h4>
+      {% else %}
+      <h4> Vous êtes un administrateur</h4>
+      {% endif %}
     </div>
   </div>
 

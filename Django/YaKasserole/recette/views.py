@@ -57,39 +57,38 @@ def ajout_recette(request):
 @permission_required('auth.cpr')
 def modifier_recette(request, pk):
     recette = get_object_or_404(Recette, id=pk)
-    form = AddRecette()
     EtapesFormSet = modelformset_factory(Etape, form = AddEtape, min_num = 1, extra = 0)
-    etapes_formset = EtapesFormSet()
     if recette.user != request.user:
         return HttpResponseRedirect('/recette/recettes/' + pk)
     r_etapes = recettes_etapes.objects.filter(recettes=pk).values_list('etapes')
     etapes = Etape.objects.filter(id__in = r_etapes)
-    form = AddRecette(instance=recette)
-    etapes_formset = EtapesFormSet(queryset = etapes)
-    if request.method == 'POST':
-        form = AddRecette(request.POST, instance=recette)
-        etapes_formset = EtapesFormSet(request.POST)
+    form = AddRecette(request.POST or None, instance=recette)
+    etapes_formset = EtapesFormSet(request.POST or None)
 
-        if form.is_valid() and etapes_formset.is_valid():
-            recette_save = form.update(commit=False)
-            recette_save.update()
+    if form.is_valid() and etapes_formset.is_valid():
+        recette_save = form.save(commit=False)
+        recette_save.save()
 
-            for etape_form in etapes_formset:
-                etape_save = etape_form.update()
-                r_e = recettes_etapes(recettes=recette_save, etapes=etape_save)
-                r_e.update()
+        recettes_etapes.objects.filter(recettes=recette).delete()
+        for etape_form in etapes_formset:
+            etape_save = etape_form.save()
+            r_e = recettes_etapes(recettes=recette, etapes=etape_save)
+            r_e.save()
 
-            for ustensile in form.cleaned_data.get('Ustensiles'):
-                r_u = recettes_ustensiles(recettes=recette_save, ustensiles=ustensile)
-                r_u.update()
-            for electro in form.cleaned_data.get('Electromenager'):
-                r_e = recettes_electromenager(recettes=recette_save, electromenagers=electro)
-                r_e.update()
-            for ingredient in form.cleaned_data.get('Ingredients'):
-                r_i = recettes_ingredients(recettes=recette_save, ingredients=ingredient)
-                r_i.update()
+        recettes_ustensiles.objects.filter(recettes=recette).delete()
+        for ustensile in form.cleaned_data.get('Ustensiles'):
+            r_u = recettes_ustensiles(recettes=recette, ustensiles=ustensile)
+            r_u.save()
+        recettes_electromenager.objects.filter(recettes=recette).delete()
+        for electro in form.cleaned_data.get('Electromenager'):
+            r_e = recettes_electromenager(recettes=recette, electromenagers=electro)
+            r_e.save()
+        recettes_ingredients.objects.filter(recettes=recette).delete()
+        for ingredient in form.cleaned_data.get('Ingredients'):
+            r_i = recettes_ingredients(recettes=recette, ingredients=ingredient)
+            r_i.save()
 
-            return HttpResponseRedirect('/recette/recettes/' + str(recette_save.id))
+        return HttpResponseRedirect('/recette/recettes/' + str(recette_save.id))
 
     return render(request, 'recette/modification.html', {'form': form,
         'etapes_formset' : etapes_formset});

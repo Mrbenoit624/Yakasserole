@@ -29,6 +29,15 @@
           {% endfor %}
       </ul>
     </div>
+
+    <div class="electromenager">
+      <h3>Ustensiles</h3>
+      <ul>
+          {% for el in object.Electromenager.all %}
+          <li>{{ el }}</li>
+          {% endfor %}
+      </ul>
+    </div>
   </div>
 
   <div class="cooking">

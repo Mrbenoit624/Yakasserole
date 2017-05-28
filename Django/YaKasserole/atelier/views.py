@@ -40,20 +40,22 @@ def ajout_atelier(request):
 @permission_required('auth.cpa')
 def modifier_atelier(request, pk):
     atelier = get_object_or_404(Atelier, id=pk)
-    form = CreateAtelier(instance=atelier)
-    if request.method == 'POST':
-        form = CreateAtelier(request.POST, request.FILES, instance=atelier)
-        if form.is_valid():
-            saved_form = form.update(commit=False)
-            saved_form.update()
-            for lieu in form.cleaned_data.get('Lieux'):
-                atelier_lieu = ateliers_lieux(ateliers=saved_form, lieux=lieu)
-                atelier_lieu.update()
-            for theme in form.cleaned_data.get('Themes'):
-                atelier_theme = ateliers_themes(ateliers=saved_form, themes=theme)
-                atelier_theme.update()
+    form = CreateAtelier(request.POST or None, request.FILES or None, instance=atelier)
+    if form.is_valid():
+        saved_form = form.save(commit=False)
+        saved_form.save()
 
-            return HttpResponseRedirect('/atelier/ateliers/' + str(saved_form.id))
+        ateliers_lieux.objects.filter(ateliers=atelier).delete()
+        for lieu in form.cleaned_data.get('Lieux'):
+            atelier_lieu = ateliers_lieux(ateliers=atelier, lieux=lieu)
+            atelier_lieu.save()
+
+        ateliers_themes.objects.filter(ateliers=atelier).delete()
+        for theme in form.cleaned_data.get('Themes'):
+            atelier_theme = ateliers_themes(ateliers=atelier, themes=theme)
+            atelier_theme.save()
+
+        return HttpResponseRedirect('/atelier/ateliers/' + str(atelier.id))
     return render(request, 'atelier/modification.html', {'form': form});
 
 def get_atelier_model(atelier_id):

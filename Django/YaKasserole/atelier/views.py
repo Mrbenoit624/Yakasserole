@@ -77,7 +77,7 @@ def inscription_atelier(request, atelier_id):
     max_additionnel = max(min(4, places - 1), 0)
     if request.user.groups.filter(name='client').exists():
         max_additionnel = 0
-    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max_additionnel, extra=1)
+    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max_additionnel, extra=min(max_additionnel, 1))
     participants_formset = ParticipantsFormSet()
 
     if request.method == 'POST' and not(inscrit):

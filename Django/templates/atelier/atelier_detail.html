@@ -52,6 +52,8 @@
       <hr>
 
       {% for comment in object.Commentaires.all %}
+      {{ comment.user.first_name }}
+      {{ comment.user.last_name }}
       {{ comment.Titre }}
       {{ comment.Messages }}
       {% endfor %}

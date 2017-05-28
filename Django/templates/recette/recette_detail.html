@@ -68,10 +68,11 @@
     <div class="comment">
       <!-- TODO, make it dynamic -->
       <div class="comment author">
-          {{ comment.user }}
+          {{ comment.user.first_name }}
+          {{ comment.user.last_name }}
       </div>
       {{ comment.Titre }}
-      {{ comment.Contenu }}
+      {{ comment.Messages }}
     </div>
     {% endfor %}
     <div class="new comment">

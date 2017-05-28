@@ -79,7 +79,7 @@
                                                                                      glyphicon-ok"></span>
         &nbsp; Se désinscrire à l'atelier</a>
       {% else %}
-      {% if object.LastPlaces == 0 %}
+      {% if object.LastPlaces > 0 %}
       <a class="btn btn-large btn-success"
          href="{% url 'inscription_atelier' atelier_id=object.id %}"><span class="glyphicon
                                                                                   glyphicon-ok"></span>

@@ -27,12 +27,11 @@
   <div class="row-fluid marketing">
     <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
-      {% for field in form %}
-      <div class="form-group">
-        {{ field.label_tag }}
-        {{ field }}
-      </div>
-      {% endfor %}
+      <label for="id_username">Adresse mail :</label>
+      {{ form.username }}
+
+      {{ form.password.label_tag }}
+      {{ form.password }}
       <button type="submit" class="btn btn-default" value="login">Se connecter</button>
       <input type="hidden" name="next" value="{{ next }}" />
     </form>

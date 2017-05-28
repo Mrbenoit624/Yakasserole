@@ -71,10 +71,11 @@ def inscription_atelier(request, atelier_id):
     form = SubscribeAtelier(user_id=request.user.id, atelier_id=atelier_id)
 
     inscrit = inscription_log.objects.filter(atelier=atelier_id, user=request.user).exists()
-    max = 4
+    places = get_place_atelier(atelier_id)
+    max_additionnel = max(min(4, places - 1), 0)
     if request.user.groups.filter(name='client').exists():
-        max = 0
-    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max, extra=0)
+        max_additionnel = 0
+    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max_additionnel, extra=0)
     participants_formset = ParticipantsFormSet()
 
     if request.method == 'POST' and not(inscrit):
@@ -83,23 +84,21 @@ def inscription_atelier(request, atelier_id):
         form.user_id = request.user.id
         participants_formset = ParticipantsFormSet(request.POST)
 
-        if form.is_valid():
-            if (get_place_atelier(atelier_id) >= len(participants_formset) + 1):
-                saved_form = form.save(commit=False)
-                saved_form.user_id = request.user.id
-                saved_form.save()
-                if max > 0:
-                    for participant_form in participants_formset:
-                        participant_save = participant_form.save()
-                        participant_save.user_id = request.user.id
-                        p = participants_atelier(
-                            participant=participant_save,
-                            inscription_logs=saved_form)
-                        p.save()
-                return HttpResponseRedirect('/atelier/ateliers/'+atelier_id)
+        if form.is_valid() and (places >= len(participants_formset) + 1):
+            form.user = request.user
+            saved_form = form.save(commit=False)
+            saved_form.save()
+            if max_additionnel > 0:
+                for participant_form in participants_formset:
+                    participant_save = participant_form.save()
+                    p = participants_atelier(
+                        participant=participant_save,
+                        inscription_logs=saved_form)
+                    p.save()
+            return HttpResponseRedirect('/atelier/ateliers/'+atelier_id)
     return render(request, 'atelier/inscription.html', {'form':
-        form,'participants_formset' : participants_formset, 'max' : max,
-        'inscrit': inscrit});
+        form,'participants_formset' : participants_formset, 'max' : max_additionnel,
+        'inscrit': inscrit, 'places': places});
 
 @login_required
 def desinscription_atelier(request, atelier_id):

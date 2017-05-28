@@ -17,7 +17,36 @@
       <form method="post" action="{% url 'ajout_atelier' %}" enctype="multipart/form-data">
 
         {% csrf_token %}
-        {{ form }}
+
+        {{ form.Nom.label_tag }}
+        {{ form.Nom }}
+
+        {{ form.Lieux.label_tag }}
+        {{ form.Lieux }}
+
+        {{ form.Themes.label_tag }}
+        {{ form.Themes }}
+
+        {{ form.Chef.label_tag }}
+        {{ form.Chef }}
+
+        {{ form.Date_inscription.label_tag }}
+        {{ form.Date_inscription }}
+
+        {{ form.Date_premium.label_tag }}
+        {{ form.Date_premium }}
+
+        {{ form.date_atelier.label_tag }}
+        {{ form.date_atelier }}
+
+        {{ form.Places.label_tag }}
+        {{ form.Places }}
+
+        {{ form.Messages.label_tag }}
+        {{ form.Messages }}
+
+        {{ form.picture.label_tag }}
+        {{ form.picture }}
 
         <button type="submit" class="btn btn-default">Ajouter</button>
       </form>

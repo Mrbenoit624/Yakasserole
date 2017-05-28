@@ -34,9 +34,9 @@ class Atelier(models.Model):
         through_fields=('ateliers', 'themes'),
     )
     Chef = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    Date_inscription = models.DateTimeField(default=timezone.now)
-    Date_premium = models.DateTimeField(default=timezone.now)
-    date_atelier = models.DateTimeField(default=timezone.now)
+    Date_inscription = models.DateField(default=timezone.now)
+    Date_premium = models.DateField(default=timezone.now)
+    date_atelier = models.DateField(default=timezone.now)
     Places = models.PositiveIntegerField(default=0)
     Messages = models.TextField()
     Commentaires = models.ManyToManyField(

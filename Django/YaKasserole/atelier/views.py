@@ -99,13 +99,18 @@ def inscription_atelier(request, atelier_id):
             form.user = request.user
             saved_form = form.save(commit=False)
             saved_form.save()
+
+            total = 0
             if max_additionnel > 0:
                 for participant_form in participants_formset:
-                    participant_save = participant_form.save()
-                    p = participants_atelier(
-                        participant=participant_save,
-                        inscription_logs=saved_form)
-                    p.save()
+                    if participant_form.is_valid() and not participant_form.cleaned_data.get('prenom') is None\
+                    and not participant_form.cleaned_data.get('nom') is None and total < max_additionnel:
+                        participant_save = participant_form.save()
+                        p = participants_atelier(
+                            participant=participant_save,
+                            inscription_logs=saved_form)
+                        p.save()
+                        total += 1
             return HttpResponseRedirect('/atelier/ateliers/'+atelier_id)
     return render(request, 'atelier/inscription.html', {'form':
         form,'participants_formset' : participants_formset, 'max' : max_additionnel,

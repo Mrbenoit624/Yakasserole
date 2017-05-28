@@ -14,19 +14,25 @@
 
   <div class="row-fluid marketing">
     <div class="span6">
+      {% if not inscrit %}
       <form method="post" action="#">
         {% csrf_token %}
         {{ form }}
+        {% if max > 0 %}
         {% with participants_formset.empty_form as participant %}
         <div class="participants-formset">
             {{ participant }}
         </div>
         {% endwith %}
+        {% endif %}
 
         {{ participants_formset.management_form }}
 
         <button type="submit" class="btn btn-default">S'inscrire</button>
       </form>
+      {% else %}
+      Vous êtes déjà inscrit à cet atelier!
+      {% endif %}
     </div>
   </div>
 

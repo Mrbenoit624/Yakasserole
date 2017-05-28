@@ -70,10 +70,14 @@ def reponse_ajout(request, atelier_id):
 def inscription_atelier(request, atelier_id):
     form = SubscribeAtelier(user_id=request.user.id, atelier_id=atelier_id)
 
-    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=4, extra=0)
+    inscrit = inscription_log.objects.filter(atelier=atelier_id, user=request.user).exists()
+    max = 4
+    if request.user.groups.filter(name='client').exists():
+        max = 0
+    ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max, extra=0)
     participants_formset = ParticipantsFormSet()
 
-    if request.method == 'POST':
+    if request.method == 'POST' and not(inscrit):
         form = SubscribeAtelier(request.POST, user_id=request.user.id,
                 atelier_id=atelier_id)
         form.user_id = request.user.id
@@ -84,23 +88,32 @@ def inscription_atelier(request, atelier_id):
                 saved_form = form.save(commit=False)
                 saved_form.user_id = request.user.id
                 saved_form.save()
-                for participant_form in participants_formset:
-                    participant_save = participant_form.save()
-                    participant_save.user_id = request.user.id
-                    p = participants_atelier(
-                        participant=participant_save,
-                        inscription_logs=saved_form)
-                    p.save()
+                if max > 0:
+                    for participant_form in participants_formset:
+                        participant_save = participant_form.save()
+                        participant_save.user_id = request.user.id
+                        p = participants_atelier(
+                            participant=participant_save,
+                            inscription_logs=saved_form)
+                        p.save()
                 return HttpResponseRedirect('/atelier/ateliers/'+atelier_id)
     return render(request, 'atelier/inscription.html', {'form':
-        form,'participants_formset' : participants_formset});
+        form,'participants_formset' : participants_formset, 'max' : max,
+        'inscrit': inscrit});
 
+@login_required
+def desinscription_atelier(request, atelier_id):
+    inscription = inscription_log.objects.filter(atelier=atelier_id, user=request.user)
+    if inscription.exists():
+        inscription.delete()
+    return HttpResponseRedirect('/atelier/ateliers/' + atelier_id)
 
 @login_required
 def affichage_atelier(request, pk):
     atelier = get_object_or_404(Atelier, id=pk)
     atelier.LastPlaces = get_place_atelier(atelier.id)
     form = AddComment()
+    inscrit = inscription_log.objects.filter(atelier=atelier, user=request.user).exists()
     if request.method == 'POST':
         form = AddComment(request.POST)
         form.instance.user = request.user
@@ -110,9 +123,21 @@ def affichage_atelier(request, pk):
             a_c = ateliers_commentaires(ateliers=atelier, commentaires=saved_comment)
             a_c.save()
 
-    return render(request, 'atelier/atelier_detail.html', { 'form': form, 'object': atelier })
+    return render(request, 'atelier/atelier_detail.html', { 'form': form, 'object': atelier,
+        'inscrit': inscrit })
+
+def filter_displayable(request):
+        now = datetime.datetime.now().strftime('%Y-%m-%d')
+        if request.user.groups.filter(name='client').exists():
+            return Atelier.objects.filter(Date_inscription__lte = now, date_atelier__gte = now)
+        elif request.user.groups.filter(name='pclient').exists():
+            return Atelier.objects.filter(Date_premium__lte = now, date_atelier__gte = now)
+        return Atelier.objects.filter(date_atelier__gte = now)
 
 class AffichageAtelier(DetailView):
+    def get_queryset(self):
+        return filter_displayable(self.request)
+
     def get_context_data(self, **kwargs):
         context = super(AffichageAtelier, self).get_context_data(**kwargs)
         context['object'].LastPlaces = get_place_atelier(context['object'].id)
@@ -123,12 +148,7 @@ class AffichageAtelier(DetailView):
 
 class AffichageAteliers(ListView):
     def get_queryset(self):
-        now = datetime.datetime.now().strftime('%Y-%m-%d')
-        if self.request.user.groups.filter(name='client').exists():
-            return Atelier.objects.filter(Date_inscription__gte = now, date_atelier__gte = now)
-        elif self.request.user.groups.filter(name='pclient').exists():
-            return Atelier.objects.filter(Date_premium__gte = now, date_atelier__gte = now)
-        return Atelier.objects.filter(date_atelier__gte = now)
+        return filter_displayable(self.request)
 
     model = Atelier
     exclude = []

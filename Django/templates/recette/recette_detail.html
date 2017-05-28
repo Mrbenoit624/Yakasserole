@@ -47,7 +47,10 @@
       nope
   </div>
 
+  {% if own %}
   <a href="{% url 'modifier_recette' pk=object.id %}">Modifier la recette</a>
+  <a href="{% url 'supprimer_recette' pk=object.id %}">Supprimer la recette</a>
+  {% endif %}
 
   <div class="comments">
     <h2>Commentaires</h2>

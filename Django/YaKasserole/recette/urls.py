@@ -8,4 +8,5 @@ urlpatterns = [
     url('^recettes$', AffichageRecettes.as_view(), name='recettes'),
     url('^recettes/(?P<pk>\d+)/$', views.affichage_recette, name='recette'),
     url('^modifier/(?P<pk>\d+)/$', views.modifier_recette, name='modifier_recette'),
+    url('^supprimer/(?P<pk>\d+)/$', views.supprimer_recette, name='supprimer_recette'),
 ]

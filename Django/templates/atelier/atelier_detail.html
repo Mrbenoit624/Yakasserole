@@ -69,15 +69,21 @@
 
       {% if user.is_staff%}
       <hr>
-      <a class="btn btn-large btn-success" href="{% url 'modifier_atelier'
-      pk=object.id %}"><span class="glyphicon glyphicon-wrench"
-      aria-hidden="true"></span> Modifier l'atelier</a>
+      <a class="btn btn-large btn-success" href="{% url 'modifier_atelier' pk=object.id %}">
+      <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Modifier l'atelier</a>
       {% endif %}
 
+      {% if inscrit %}
+      <a class="btn btn-large btn-success"
+         href="{% url 'desinscription_atelier' atelier_id=object.id %}"><span class="glyphicon
+         glyphicon-ok"></span>
+         &nbsp; Se désinscrire à l'atelier</a>
+      {% else %}
       <a class="btn btn-large btn-success"
          href="{% url 'inscription_atelier' atelier_id=object.id %}"><span class="glyphicon
-                                                        glyphicon-ok"></span>
-                    &nbsp; S'inscrire à un atelier</a>
+         glyphicon-ok"></span>
+         &nbsp; S'inscrire à l'atelier</a>
+      {% endif %}
     </div>
   </div>
 

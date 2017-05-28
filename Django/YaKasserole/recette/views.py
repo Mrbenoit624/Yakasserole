@@ -60,43 +60,52 @@ def modifier_recette(request, pk):
     form = AddRecette()
     EtapesFormSet = modelformset_factory(Etape, form = AddEtape, min_num = 1, extra = 0)
     etapes_formset = EtapesFormSet()
-    if recette.user == request.user:
-        r_etapes = recettes_etapes.objects.filter(recettes=pk).values_list('etapes')
-        etapes = Etape.objects.filter(id__in = r_etapes)
-        form = AddRecette(instance=recette)
-        etapes_formset = EtapesFormSet(queryset = etapes)
-        if request.method == 'POST':
-            form = AddRecette(request.POST, instance=recette)
-            etapes_formset = EtapesFormSet(request.POST)
+    if recette.user != request.user:
+        return HttpResponseRedirect('/recette/recettes/' + pk)
+    r_etapes = recettes_etapes.objects.filter(recettes=pk).values_list('etapes')
+    etapes = Etape.objects.filter(id__in = r_etapes)
+    form = AddRecette(instance=recette)
+    etapes_formset = EtapesFormSet(queryset = etapes)
+    if request.method == 'POST':
+        form = AddRecette(request.POST, instance=recette)
+        etapes_formset = EtapesFormSet(request.POST)
 
-            if form.is_valid() and etapes_formset.is_valid():
-                recette_save = form.update(commit=False)
-                recette_save.update()
+        if form.is_valid() and etapes_formset.is_valid():
+            recette_save = form.update(commit=False)
+            recette_save.update()
 
-                for etape_form in etapes_formset:
-                    etape_save = etape_form.update()
-                    r_e = recettes_etapes(recettes=recette_save, etapes=etape_save)
-                    r_e.update()
+            for etape_form in etapes_formset:
+                etape_save = etape_form.update()
+                r_e = recettes_etapes(recettes=recette_save, etapes=etape_save)
+                r_e.update()
 
-                for ustensile in form.cleaned_data.get('Ustensiles'):
-                    r_u = recettes_ustensiles(recettes=recette_save, ustensiles=ustensile)
-                    r_u.update()
-                for electro in form.cleaned_data.get('Electromenager'):
-                    r_e = recettes_electromenager(recettes=recette_save, electromenagers=electro)
-                    r_e.update()
-                for ingredient in form.cleaned_data.get('Ingredients'):
-                    r_i = recettes_ingredients(recettes=recette_save, ingredients=ingredient)
-                    r_i.update()
+            for ustensile in form.cleaned_data.get('Ustensiles'):
+                r_u = recettes_ustensiles(recettes=recette_save, ustensiles=ustensile)
+                r_u.update()
+            for electro in form.cleaned_data.get('Electromenager'):
+                r_e = recettes_electromenager(recettes=recette_save, electromenagers=electro)
+                r_e.update()
+            for ingredient in form.cleaned_data.get('Ingredients'):
+                r_i = recettes_ingredients(recettes=recette_save, ingredients=ingredient)
+                r_i.update()
 
-                return HttpResponseRedirect('/recette/recettes/' + str(recette_save.id))
+            return HttpResponseRedirect('/recette/recettes/' + str(recette_save.id))
 
     return render(request, 'recette/modification.html', {'form': form,
         'etapes_formset' : etapes_formset});
+
+@permission_required('auth.cpr')
+def supprimer_recette(request, pk):
+    recette = Recette.objects.filter(id=pk, user=request.user)
+    if recette.exists():
+        recette.delete()
+    return HttpResponseRedirect('/recette/recettes')
 
 @login_required
 def affichage_recette(request, pk):
     recette = get_object_or_404(Recette, id=pk)
     form = AddComment()
+    own = recette.user == request.user
     if request.method == 'POST':
         form = AddComment(request.POST)
         form.instance.user = request.user
@@ -106,7 +115,8 @@ def affichage_recette(request, pk):
             r_c = recettes_commentaires(recettes=recette, commentaires=saved_comment)
             r_c.save()
 
-    return render(request, 'recette/recette_detail.html', { 'form': form, 'object': recette })
+    return render(request, 'recette/recette_detail.html', { 'form': form, 'object': recette,
+        'own': own})
 
 class AffichageRecettes(ListView):
     model = Recette

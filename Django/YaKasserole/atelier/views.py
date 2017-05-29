@@ -162,8 +162,8 @@ def send_email(description, to):
 def desinscription_atelier(request, atelier_id):
     inscription = inscription_log.objects.filter(atelier=atelier_id, user=request.user)
     if inscription.exists():
-        payment = PaymentLink.objects.get(object_to_pay=inscription).payment
-        payment.refund()
+        #payment = PaymentLink.objects.get(object_to_pay=inscription).payment
+        #payment.refund()
         p_a = participants_atelier.objects.filter(inscription_logs = inscription[0])
         Participant.objects.filter(id__in=p_a).delete()
         inscription.delete()

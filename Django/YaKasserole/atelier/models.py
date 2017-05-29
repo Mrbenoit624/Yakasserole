@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.contrib.auth.models import User
 from django.utils import timezone
 from community.models import Commentaire
+#from django.contrib.contenttypes.models import ContentType
 import datetime
 
 class Theme(models.Model):
@@ -67,6 +68,7 @@ class inscription_log(models.Model):
         through_fields=('inscription_logs', 'participant')
     )
     Date = models.DateTimeField(default=timezone.now)
+#    GenericRelation(PaymentLink, object_id_field="object_id")
 
 class participants_atelier(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)

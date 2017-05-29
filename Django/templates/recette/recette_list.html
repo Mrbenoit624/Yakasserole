@@ -7,9 +7,11 @@
   <hr>
 
   <div class="jumbotron">
-    <h1>Les recettes Yakasseroles</h1>
+    <h1>Les recettes Yakasserole</h1>
     <p class="lead">
-        cest la classe lead
+      Pas de cuisine sans recette, et pas de recette sans cuisine.
+      Avec Yakasserole, vous pourrez maîtriser cet art délicat qu'est
+      la préparation de mets. Bon appétit !
     </p>
     <a class="btn btn-large btn-success"
        href="{% url 'ajout' %}"><span class="glyphicon glyphicon-cutlery"></span> &nbsp; Ajouter une recette</a>
@@ -17,11 +19,19 @@
 
   <hr>
 
+  <h1>Liste des recettes</h1>
   <div class="row-fluid marketing">
     <div class="span6">
-      {% for recette in object_list %}
-      <a href="{% url 'recettes' %}/{{ recette.id }}">{{ recette.Titre }}</a>
-      {% endfor %}
+      <ul class="list-group">
+        {% for recette in object_list %}
+        <li class="list-group-item">
+          <span class="badge">{{ recette.Type }}</span>
+        <a href="{% url 'recettes' %}/{{ recette.id }}">
+          {{ recette.Titre }}
+        </a>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 

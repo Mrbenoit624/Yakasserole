@@ -53,9 +53,9 @@ def profile(request):
         return HttpResponse(render(request, 'registration/account.html',
             {'nb_atelier': ateliers,
              'nb_recettes': recettes,
-             'nb_commentaires':commentaires
+             'nb_commentaires':commentaires,
              'unpaid': len(PaymentLink.objects.filter(user=request.user,
-                 payment.statusi__ne=PaymentStatus.CONFIRMED))
+                 payment__status__ne=PaymentStatus.CONFIRMED))
              }));
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');

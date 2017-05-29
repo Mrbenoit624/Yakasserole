@@ -125,19 +125,19 @@ def inscription_atelier(request, atelier_id):
                     variant='default',
                     # this is the variant from PAYMENT_VARIANTS
                     description='Inscription Atelier',
-                    total=Decimal(120),
+                    total=Decimal(120) * total,
                     tax=Decimal(20),
-                    currency='USD',
+                    currency='EUR',
                     delivery=Decimal(10),
                     billing_first_name=request.user.first_name,
                     billing_last_name=request.user.last_name,
-                    billing_address_1='221B Baker Street',
+                    billing_address_1='',
                     billing_address_2='',
-                    billing_city='London',
-                    billing_postcode='NW1 6XE',
-                    billing_country_code='UK',
-                    billing_country_area='Greater London',
-                    customer_ip_address='127.0.0.1')
+                    billing_city='',
+                    billing_postcode='',
+                    billing_country_code='',
+                    billing_country_area='',
+                    customer_ip_address=request.META.get('REMOTE_ADDR'))
                 payment.save()
                 link = PaymentLink()
                 link.payment = payment

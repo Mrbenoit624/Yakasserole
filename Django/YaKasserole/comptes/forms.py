@@ -7,6 +7,8 @@ from django.template.response import TemplateResponse
 from django.core.validators import RegexValidator
 from payments import get_payment_model, RedirectNeeded
 from django.forms.widgets import HiddenInput
+from django.forms import Widget, Select
+from django.forms.widgets import SelectDateWidget
 
 
 class ConnectForm(forms.Form):
@@ -76,12 +78,21 @@ class PaymentForm(forms.Form):
     billing_country_code = forms.CharField(label='FR')
     billing_country_area = forms.CharField(label='Pays')
 
+
 class CardPayment(forms.Form):
     numbercard = forms.CharField(
             label=('numero de carte'),
             validators = [
                 RegexValidator('^(4\d{12})|(4\d{15})|^5[1-5]\d{14}$',
                 message='card not valid'),
+            ],
+            )
+    expire = forms.DateField(widget=SelectDateWidget())
+    crypto = forms.CharField(
+            label=('crypto'),
+            validators = [
+                RegexValidator('^(\d{3})$',
+                message='crypto not valid'),
             ],
             )
     id_paymentlink = forms.IntegerField()

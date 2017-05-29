@@ -134,7 +134,8 @@ def payment_process(request, process_id):
             paymentlink = PaymentLink.objects.get(id=form.cleaned_data['id_paymentlink'])
             if paymentlink.user == request.user:
                 payment = paymentlink.payment
-                payment.change_status(PaymentStatus.PREAUTH, "only god")
-                payment.capture()
-                return HttpResponse('Paiement Enregistré')
+                if (not payment.status == PaymentStatus.CONFIRMED):
+                    payment.change_status(PaymentStatus.PREAUTH, "only god")
+                    payment.capture()
+                    return HttpResponse('Paiement Enregistré')
     return render(request, 'comptes/payment_process.html', {'form': form})

@@ -121,15 +121,16 @@ def inscription_atelier(request, atelier_id):
                         p.save()
                         total += 1
 
+            atelier = Atelier.objects.filter(id=atelier_id)[0]
             Payment = get_payment_model()
             payment = Payment.objects.create(
                 variant='default',
                 # this is the variant from PAYMENT_VARIANTS
-                description='Inscription Atelier',
-                total=Decimal(120) * total,
+                description="Inscription à l'Atelier " + atelier.Nom,
+                total= atelier.Prix * (total + 1),
                 tax=Decimal(20),
                 currency='EUR',
-                delivery=Decimal(10),
+                delivery=Decimal(0),
                 billing_first_name=request.user.first_name,
                 billing_last_name=request.user.last_name,
                 billing_address_1='',

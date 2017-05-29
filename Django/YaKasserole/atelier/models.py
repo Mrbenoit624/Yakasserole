@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import MinValueValidator
+from decimal import Decimal
 from django.contrib.auth.models import User
 from django.utils import timezone
 from community.models import Commentaire
@@ -34,6 +36,8 @@ class Atelier(models.Model):
         through_fields=('ateliers', 'themes'),
     )
     Chef = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    Prix = models.DecimalField(max_digits=8, decimal_places=2,
+            validators=[MinValueValidator(Decimal('0.01'))], default=Decimal(0))
     Date_inscription = models.DateField(default=timezone.now)
     Date_premium = models.DateField(default=timezone.now)
     date_atelier = models.DateField(default=timezone.now)

@@ -2,11 +2,14 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
-
+from django.core.validators import MinValueValidator
 from decimal import Decimal
 
 from payments import PurchasedItem
 from payments.models import BasePayment
+
+class Prices(models.Model):
+    premium = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))], default=Decimal(3.99))
 
 class Payment(BasePayment):
 

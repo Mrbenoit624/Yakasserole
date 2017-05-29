@@ -49,6 +49,7 @@ class CreateAtelier(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CreateAtelier, self).__init__(*args, **kwargs)
         self.fields['Chef'].widget.attrs['class'] = 'form-control'
+        self.fields['Prix'].widget.attrs['class'] = 'form-control'
         self.fields['Nom'].widget.attrs['class'] = 'form-control'
         self.fields['Date_inscription'].widget.attrs['class'] = 'form-control'
         self.fields['Date_premium'].widget.attrs['class'] = 'form-control'

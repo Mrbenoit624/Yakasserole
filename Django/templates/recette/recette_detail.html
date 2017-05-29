@@ -6,81 +6,46 @@
   <div class="jumbotron">
     <h1>{{ object.Titre }}</h1>
     <h4>
-      <!-- TODO, find a way to make it actually italic -->
       <em>
         Recette de {{ object.Type }} pour {{ object.Nombre_portions }} personnes.
       </em>
     </h4>
 
     <div class="panel-body">
-      <!-- TODO, some unicode character pops in the
-           second row of the table, find a way to fix this -->
       <table class="table table-bordered">
         <tbody>
           <tr>
             <th>Nombre de portions</th>
-            <th>
-              <span class="glyphicon-bold" aria-hidden="true">
-                {{ object.Nombre_portions }} / 5
-              </span>
-            </th>
+            <th>{{ object.Nombre_portions }} / 5</th>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <th>Difficulté</th>
-            <th>
-              <span class="glyphicon-bold" aria-hidden="true">
-                {{ object.Difficulte }} / 5
-              </span>
-            </th>
+            <th>{{ object.Difficulte }} / 5</th>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <th>Coût des ingrédients</th>
-            <th>
-              <span class="glyphicon-bold" aria-hidden="true">
-                {{ object.Cout }} €
-              </span>
-            </th>
+            <th>{{ object.Cout }} €</th>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <th>Temps de préparation</th>
-            <th>
-              <span class="glyphicon-bold" aria-hidden="true">
-                {{ object.Temps_preparation }} heure
-              </span>
-            </th>
+            <th>{{ object.Temps_preparation }} heure</th>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <th>Temps de cuisson</th>
-            <th>
-              <span class="glyphicon-bold" aria-hidden="true">
-                {{ object.Temps_cuisson }} heure
-              </span>
-            </th>
+            <th>{{ object.Temps_cuisson }} heure</th>
           </tr>
         </tbody>
       </table>
     </div><!-- panel-body -->
   </div><!-- jumbotron -->
-
-  <!-- <div class="panel panel-default"> -->
-  <!--   <div class="panel-heading">Informations</div> -->
-  <!--   <table class="table"> -->
-  <!--     lol -->
-  <!--   </table> -->
-  <!-- </div> -->
-
-  <!-- <span class="glyphicon-bold" aria-hidden="true"> -->
-  <!--   Difficulté : {{ object.Difficulte }} / 5 -->
-  <!--   Coût des ingrédients : {{ object.Cout }} / 5 -->
-  <!-- </span> -->
 
   <!-- TODO -->
   <div class="recipe-img">
@@ -94,12 +59,6 @@
     <li>{{ ing }}</li>
     {% endfor %}
   </ol>
-
-  <!-- <ul> -->
-  <!--   {% for ing in object.Ingredients.all %} -->
-  <!--   <li>{{ ing }}</li> -->
-  <!--   {% endfor %} -->
-  <!-- </ul> -->
 
   <h3>Ustensiles</h3>
   <ol class="breadcrumb">
@@ -141,8 +100,9 @@
           {{ comment.Titre }}
         </strong>
         <div class="pull-right">
-          <!-- TODO, italics would be nice here -->
-          Par {{ comment.user.first_name }} {{ comment.user.last_name }}
+          <em>
+            Par {{ comment.user.first_name }} {{ comment.user.last_name }}
+          </em>
         </div>
       </div><!-- panel-title -->
     </div><!-- panel-heading -->

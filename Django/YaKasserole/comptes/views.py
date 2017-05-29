@@ -59,7 +59,7 @@ def profile(request):
              'nb_recettes': recettes,
              'nb_commentaires':commentaires,
              'unpaid': len(PaymentLink.objects.filter(user=request.user,
-                 payment__status__=PaymentStatus.WAITING))
+                 payment__status__startswith='WAITING'))
              }));
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');

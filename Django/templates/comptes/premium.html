@@ -1,6 +1,30 @@
-<form action="{{ form.action }}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p><input type="submit" value="Proceed" /></p>
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 
+<div class="container-narrow">
+
+<hr>
+
+<div class="jumbotron">
+  <h1>Devenir Premium!</h1>
+  <p class="lead">Aujourd'hui, avec Yakasserole devenir premium n'a jamais été
+  aussi simple!</p>
+</div>
+
+<hr>
+
+<div class="row-fluid marketing">
+  <div class="span6">
+    <form action="{{ form.action }}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <p><input type="submit" value="Proceed" /></p>
+      </form>
+  </div>
+</div>
+
+<hr>
+
+</div> <!-- /container -->
+{% endblock %}

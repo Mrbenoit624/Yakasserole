@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+
+  <hr>
+
+  <div class="jumbotron">
+    <h1>Vos payments en cours</h1>
+  </div>
+
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span6">
+      {% for paymentsLink in object_list %}
+      <a href="">
+        <div data-content="{{ paymentsLink.payment.description }}" class="atelier_img">
+        </div>
+        <div>{{ paymentsLink.payment.status }} </div>
+        <div>{{ paymentsLink.payment.variant }} </div>
+        <div>{{ paymentsLink.payment.fraud_status }} </div>
+        <div>{{ paymentsLink.payment.created }} </div>
+        <div>{{ paymentsLink.payment.modified }} </div>
+        <div>{{ paymentsLink.payment.currency }} </div>
+        <div>{{ paymentsLink.payment.total }} </div>
+        <div>{{ paymentsLink.payment.delivery }} </div>
+        <div>{{ paymentsLink.payment.tax }} </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  
+  <hr>
+  
+</div> <!-- /container -->
+
+{% endblock %}

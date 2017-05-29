@@ -1,3 +1,8 @@
+from django.db import models
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
+
+
 from decimal import Decimal
 
 from payments import PurchasedItem
@@ -10,3 +15,22 @@ class Payment(BasePayment):
 
     def get_success_url(self):
         return '../../payment/success/'
+
+class PaymentLink(models.Model):
+    content_type = models.ForeignKey(
+        ContentType,
+        verbose_name=('contents of the product'),
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+    )
+    object_id = models.PositiveIntegerField(
+        verbose_name=('related object'),
+        null=True,
+    )
+    object_to_pay = GenericForeignKey('content_type', 'object_id')
+    payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+            'auth.User', on_delete=models.CASCADE,
+            related_name='payments_log'
+    )

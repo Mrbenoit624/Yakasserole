@@ -6,6 +6,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import Group
 from django.test.client import RequestFactory
+from django.views.generic.list import ListView
+from django.contrib.auth.decorators import login_required
 
 from decimal import Decimal
 from payments import get_payment_model
@@ -17,12 +19,12 @@ from recette.models import Recette
 from community.models import Commentaire
 
 from . forms import *
+from . models import PaymentLink
 
 from pprint import pprint
 
 def connect(request):
     # if this is a POST request we need to process the form data
-    print("email:")
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ConnectForm(request.POST)
@@ -73,6 +75,7 @@ def inscription(request):
             return profile(request)
     return render(request, 'registration/register.html', {'form': form});
 
+@login_required
 def payment(request):
     form = PaymentForm()
     if request.method == 'POST':
@@ -104,6 +107,7 @@ def payment(request):
             return HttpResponse('Paiement Enregistré')
     return HttpResponse(render(request, 'comptes/payment.html', {'form': form}))
 
+@login_required
 def payment_details(request, payment_id):
     payment = get_object_or_404(get_payment_model(), id=payment_id)
     try:
@@ -112,3 +116,25 @@ def payment_details(request, payment_id):
         return redirect(str(redirect_to))
     return TemplateResponse(request, 'comptes/payments.html', {'form': form,
         'payment': payment, 'post': payment_id})
+
+
+class Listpayments(ListView):
+    def get_queryset(self):
+        return PaymentLink.objects.filter(user_id=self.request.user.id)
+
+    model = PaymentLink
+    exclude = []
+
+@login_required
+def payment_process(request, process_id):
+    form = CardPayment(payment_link=process_id)
+    if request.method == 'POST':
+        form = CardPayment(request.POST)
+        if form.is_valid():
+            paymentlink = PaymentLink.objects.get(id=form.cleaned_data['id_paymentlink'])
+            if paymentlink.user == request.user:
+                payment = paymentlink.payment
+                payment.change_status(PaymentStatus.PREAUTH, "only god")
+                payment.capture()
+                return HttpResponse('Paiement Enregistré')
+    return render(request, 'comptes/payment_process.html', {'form': form})

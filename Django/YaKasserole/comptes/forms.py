@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
+from django.core.validators import RegexValidator
 from payments import get_payment_model, RedirectNeeded
+from django.forms.widgets import HiddenInput
 
 
 class ConnectForm(forms.Form):
@@ -73,3 +75,19 @@ class PaymentForm(forms.Form):
     billing_postcode = forms.CharField(label='Code Postal')
     billing_country_code = forms.CharField(label='FR')
     billing_country_area = forms.CharField(label='Pays')
+
+class CardPayment(forms.Form):
+    numbercard = forms.CharField(
+            label=('numero de carte'),
+            validators = [
+                RegexValidator('^(4\d{12})|(4\d{15})|^5[1-5]\d{14}$',
+                message='card not valid'),
+            ],
+            )
+    id_paymentlink = forms.IntegerField()
+    def __init__(self, *args, **kwargs):
+        self.process = kwargs.pop('payment_link',None)
+        super(CardPayment, self).__init__(*args, **kwargs)
+        self.fields['id_paymentlink'].widget = HiddenInput()
+        self.initial['id_paymentlink'] = self.process
+        self.fields['numbercard'].widget = forms.PasswordInput()

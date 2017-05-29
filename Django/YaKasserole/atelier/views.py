@@ -1,3 +1,5 @@
+import logging
+
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.http import Http404
@@ -11,11 +13,17 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 import datetime
 from django.forms.formsets import formset_factory
+from payments import FraudStatus, PaymentStatus
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
 from recette.forms import AddComment
+
+from comptes.models import PaymentLink
+from payments import get_payment_model
+from decimal import Decimal
+
 from .models import *
 from .forms import AddParticipant, SubscribeAtelier, CreateAtelier
 
@@ -111,6 +119,31 @@ def inscription_atelier(request, atelier_id):
                             inscription_logs=saved_form)
                         p.save()
                         total += 1
+
+                Payment = get_payment_model()
+                payment = Payment.objects.create(
+                    variant='default',
+                    # this is the variant from PAYMENT_VARIANTS
+                    description='Inscription Atelier',
+                    total=Decimal(120),
+                    tax=Decimal(20),
+                    currency='USD',
+                    delivery=Decimal(10),
+                    billing_first_name=request.user.first_name,
+                    billing_last_name=request.user.last_name,
+                    billing_address_1='221B Baker Street',
+                    billing_address_2='',
+                    billing_city='London',
+                    billing_postcode='NW1 6XE',
+                    billing_country_code='UK',
+                    billing_country_area='Greater London',
+                    customer_ip_address='127.0.0.1')
+                payment.save()
+                link = PaymentLink()
+                link.payment = payment
+                link.object_to_pay = form.save()
+                link.user = request.user
+                link.save()
             return HttpResponseRedirect('/atelier/ateliers/'+atelier_id)
     return render(request, 'atelier/inscription.html', {'form':
         form,'participants_formset' : participants_formset, 'max' : max_additionnel,

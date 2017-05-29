@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-narrow">
+
+  <hr>
+  <div class="jumbotron">
+    <h1>Payer bande de pute</h1>
+  </div>
+
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span6">
+      <form method="post" action="#">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-default">Payer</button>
+      </form>
+    </div>
+  </div>
+
+  <hr>
+  
+</div> <!-- /container -->
+{% endblock %}

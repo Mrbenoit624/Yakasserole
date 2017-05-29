@@ -3,88 +3,162 @@
 {% block content %}
 
 <div class="container-narrow">
+  <div class="jumbotron">
     <h1>{{ object.Titre }}</h1>
+    <h4>
+      <!-- TODO, find a way to make it actually italic -->
+      <em>
+        Recette de {{ object.Type }} pour {{ object.Nombre_portions }} personnes.
+      </em>
+    </h4>
 
-  <!-- TODO, make it dynamic -->
+    <div class="panel-body">
+      <!-- TODO, some unicode character pops in the
+           second row of the table, find a way to fix this -->
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>Nombre de portions</th>
+            <th>
+              <span class="glyphicon-bold" aria-hidden="true">
+                {{ object.Nombre_portions }} / 5
+              </span>
+            </th>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Difficulté</th>
+            <th>
+              <span class="glyphicon-bold" aria-hidden="true">
+                {{ object.Difficulte }} / 5
+              </span>
+            </th>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Coût des ingrédients</th>
+            <th>
+              <span class="glyphicon-bold" aria-hidden="true">
+                {{ object.Cout }} €
+              </span>
+            </th>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Temps de préparation</th>
+            <th>
+              <span class="glyphicon-bold" aria-hidden="true">
+                {{ object.Temps_preparation }} heure
+              </span>
+            </th>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Temps de cuisson</th>
+            <th>
+              <span class="glyphicon-bold" aria-hidden="true">
+                {{ object.Temps_cuisson }} heure
+              </span>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- panel-body -->
+  </div><!-- jumbotron -->
+
+  <!-- <div class="panel panel-default"> -->
+  <!--   <div class="panel-heading">Informations</div> -->
+  <!--   <table class="table"> -->
+  <!--     lol -->
+  <!--   </table> -->
+  <!-- </div> -->
+
+  <!-- <span class="glyphicon-bold" aria-hidden="true"> -->
+  <!--   Difficulté : {{ object.Difficulte }} / 5 -->
+  <!--   Coût des ingrédients : {{ object.Cout }} / 5 -->
+  <!-- </span> -->
+
+  <!-- TODO -->
   <div class="recipe-img">
-      <!--<img src="{{ object.picture.url }}" alt="Photo de la recette"> -->
+    <!--<img src="{{ object.picture.url }}" alt="Photo de la recette"> -->
   </div>
 
-  <div class="prerequisites">
-    <h2>Prérequis</h2>
-    <div class="ingredients">
-      <h3>Ingrédients</h3>
-      <ul>
-          {% for ing in object.Ingredients.all %}
-          <li>{{ ing }}</li>
-          {% endfor %}
-      </ul>
-    </div>
+  <h2>Prérequis</h2>
+  <h3>Ingrédients</h3>
+  <ol class="breadcrumb">
+    {% for ing in object.Ingredients.all %}
+    <li>{{ ing }}</li>
+    {% endfor %}
+  </ol>
 
-    <div class="utensils">
-      <h3>Ustensiles</h3>
-      <ul>
-          {% for us in object.Ustensiles.all %}
-          <li>{{ us }}</li>
-          {% endfor %}
-      </ul>
-    </div>
+  <!-- <ul> -->
+  <!--   {% for ing in object.Ingredients.all %} -->
+  <!--   <li>{{ ing }}</li> -->
+  <!--   {% endfor %} -->
+  <!-- </ul> -->
 
-    <div class="electromenager">
-      <h3>Ustensiles</h3>
-      <ul>
-          {% for el in object.Electromenager.all %}
-          <li>{{ el }}</li>
-          {% endfor %}
-      </ul>
-    </div>
-  </div>
+  <h3>Ustensiles</h3>
+  <ol class="breadcrumb">
+    {% for us in object.Ustensiles.all %}
+    <li>{{ us }}</li>
+    {% endfor %}
+  </ol>
 
-  <div class="cooking">
-      <h3>Etapes</h3>
-      <ul>
-          {% for etape in object.Etapes.all %}
-          <li>titre:{{ etape.Titre }} contenu:{{ etape.Contenu }}</li>
-          {% endfor %}
-      </ul>
-  </div>
+  <h3>Matériel</h3>
+  <ol class="breadcrumb">
+    {% for el in object.Electromenager.all %}
+    <li>{{ el }}</li>
+    {% endfor %}
+  </ol>
 
+  <h2>Étapes</h2>
+  <ul>
+    {% for etape in object.Etapes.all %}
+    <h3>{{ etape.Titre }}</h3>
+    {{ etape.Contenu }}
+    {% endfor %}
+  </ul>
 
-  <div class="preparation">
-      <h2>Préparation</h2>
-      <!-- TODO, make it dynamic -->
-      nope
-  </div>
+  {% for remarque in object.Remarques.all %}
+  <div class="alert alert-success" role="alert">{{ remarque }}</div>
+  {% endfor %}
 
   {% if own %}
   <a href="{% url 'modifier_recette' pk=object.id %}">Modifier la recette</a>
   <a href="{% url 'supprimer_recette' pk=object.id %}">Supprimer la recette</a>
   {% endif %}
 
-  <div class="comments">
-    <h2>Commentaires</h2>
-    <!-- TODO, make it dynamic -->
-    {% for comment in object.Commentaires.all %}
-    <div class="comment">
-      <!-- TODO, make it dynamic -->
-      <div class="comment author">
-          {{ comment.user.first_name }}
-          {{ comment.user.last_name }}
-      </div>
-      {{ comment.Titre }}
+  <h2>Commentaires</h2>
+  {% for comment in object.Commentaires.all %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <strong>
+          {{ comment.Titre }}
+        </strong>
+        <div class="pull-right">
+          <!-- TODO, italics would be nice here -->
+          Par {{ comment.user.first_name }} {{ comment.user.last_name }}
+        </div>
+      </div><!-- panel-title -->
+    </div><!-- panel-heading -->
+    <div class="panel-body">
       {{ comment.Messages }}
     </div>
-    {% endfor %}
-    <div class="new comment">
-      <h2>Poster un commentaire</h2>
-      <form method="post" action="{% url 'recette' pk=object.id %}">
-          {% csrf_token %}
-          {{ form }}
-          <button type="submit" class="btn btn-default">Publier</button>
-      </form>
-    </div>
   </div>
-  
+  {% endfor %}
+  <div class="new comment">
+    <h2>Poster un commentaire</h2>
+    <form method="post" action="{% url 'recette' pk=object.id %}">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit" class="btn btn-default">Publier</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

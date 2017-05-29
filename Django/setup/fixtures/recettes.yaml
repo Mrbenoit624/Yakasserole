@@ -86,32 +86,32 @@
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name: Pâtes 
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name: Pommes de terre 
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name: Sel et poivre 
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name:  Sucre 
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name: Beurre
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name: Lait
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name: Huile
 
 - model: recette.Ingredient
   fields:
-      Name: Tomate
+      Name: Vinaigre

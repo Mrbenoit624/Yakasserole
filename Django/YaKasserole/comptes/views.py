@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import Group, Permission
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -9,6 +10,7 @@ from django.test.client import RequestFactory
 from django.views.generic.list import ListView
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.decorators import user_passes_test
 from decimal import Decimal
 from payments import get_payment_model
 from payments import FraudStatus, PaymentStatus
@@ -19,10 +21,12 @@ from recette.models import Recette
 from community.models import Commentaire
 from django.core.mail import send_mail, BadHeaderError
 
+from dateutil.relativedelta import relativedelta
 from . forms import *
 from . models import PaymentLink
 
 from pprint import pprint
+import datetime
 
 def connect(request):
     # if this is a POST request we need to process the form data
@@ -121,6 +125,20 @@ def payment_details(request, payment_id):
     return TemplateResponse(request, 'comptes/payments.html', {'form': form,
         'payment': payment, 'post': payment_id})
 
+def is_client(user):
+    return user.groups.filter(name='client').exists()
+
+@user_passes_test(is_client)
+def devenir_premium(request):
+    form = PremiumForm(request.POST or None)
+    if form.is_valid():
+        form.instance.user_id = request.user.id
+        form.date_fin = datetime.date.today() + relativedelta(months=1)
+        form.save()
+        request.user.groups.clear()
+        request.user.groups.add(Group.objects.get_or_create(name='client premium'))
+        return HttpResponse('Now pay up')
+    return render(request, 'comptes/premium.html', {'form': form});
 
 class Listpayments(ListView):
     def get_queryset(self):

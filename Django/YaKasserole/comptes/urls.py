@@ -15,4 +15,5 @@ urlpatterns = [
 #    url('^payments$', views.payment, name='payment'),
     url('^payments$', Listpayments.as_view(), name='payment'),
     url('^payment_process/(?P<process_id>\d+)/$', views.payment_process, name='payment_process'),
+    url('^devenir_premium$', views.devenir_premium, name='devenir_premium'),
 ]

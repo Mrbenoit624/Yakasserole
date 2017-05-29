@@ -9,7 +9,14 @@ from payments import get_payment_model, RedirectNeeded
 from django.forms.widgets import HiddenInput
 from django.forms import Widget, Select
 from django.forms.widgets import SelectDateWidget
+from django.forms import ModelForm
 
+from .models import Premium
+
+class PremiumForm(ModelForm):
+    class Meta:
+        model = Premium
+        fields = []
 
 class ConnectForm(forms.Form):
     username = forms.EmailField(label='Email')

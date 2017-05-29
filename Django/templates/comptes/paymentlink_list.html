@@ -7,7 +7,7 @@
   <hr>
 
   <div class="jumbotron">
-    <h1>Vos payments en cours</h1>
+    <h1>Vos transactions en cours</h1>
   </div>
 
   <hr>
@@ -15,19 +15,22 @@
   <div class="row-fluid marketing">
     <div class="span6">
       {% for paymentsLink in object_list %}
-      <a href="payment_process/{{paymentsLink.id}}">
-        <div data-content="{{ paymentsLink.payment.description }}" class="atelier_img">
-        </div>
-        <div>{{ paymentsLink.payment.status }} </div>
-        <div>{{ paymentsLink.payment.variant }} </div>
-        <div>{{ paymentsLink.payment.fraud_status }} </div>
-        <div>{{ paymentsLink.payment.created }} </div>
-        <div>{{ paymentsLink.payment.modified }} </div>
-        <div>{{ paymentsLink.payment.currency }} </div>
-        <div>{{ paymentsLink.payment.total }} </div>
-        <div>{{ paymentsLink.payment.delivery }} </div>
-        <div>{{ paymentsLink.payment.tax }} </div>
-      </a>
+        <h3>Type: {{ paymentsLink.payment.description }}</h3>
+        <h4>Etat: {{ paymentsLink.payment.status }} </h4>
+        <h4>variante: {{ paymentsLink.payment.variant }} </h4>
+        <h4>demandé le: {{ paymentsLink.payment.created }} </h4>
+        <h4>modifié le: {{ paymentsLink.payment.modified }} </h4>
+        <h4>monnaie: {{ paymentsLink.payment.currency }} </h4>
+        <h4>total à payer: {{ paymentsLink.payment.total }} </h4>
+        <h4>frais de port? {{ paymentsLink.payment.delivery }} </h4>
+        <h4>tax included: {{ paymentsLink.payment.tax }}%</h4>
+        <a href="payment_process/{{paymentsLink.id}}">
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            Effectuer le paiement
+          </button>
+        </a>
+        <hr>
       {% endfor %}
     </div>
   </div>

@@ -22,11 +22,11 @@
         <h4>modifié le: {{ paymentsLink.payment.modified }} </h4>
         <h4>monnaie: {{ paymentsLink.payment.currency }} </h4>
         <h4>total à payer: {{ paymentsLink.payment.total }} </h4>
-        <h4>frais de port? {{ paymentsLink.payment.delivery }} </h4>
-        <h4>tax included: {{ paymentsLink.payment.tax }}%</h4>
+        <h4>frais de port: {{ paymentsLink.payment.delivery }} </h4>
+        <h4>taxes incluses: {{ paymentsLink.payment.tax }}%</h4>
         <a href="payment_process/{{paymentsLink.id}}">
           <button type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
             Effectuer le paiement
           </button>
         </a>

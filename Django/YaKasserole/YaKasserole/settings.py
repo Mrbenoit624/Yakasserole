@@ -28,12 +28,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 #EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/tmp/django'
-#EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
-#EMAIL_HOST = 'mail.example.com'
-#EMAIL_PORT = 465
+#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_FILE_PATH = '/tmp/django'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
 
 #Secure website
 SESSION_COOKIE_SECURE = True

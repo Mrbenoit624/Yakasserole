@@ -15,6 +15,7 @@ import datetime
 from django.forms.formsets import formset_factory
 from payments import FraudStatus, PaymentStatus
 
+from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
@@ -120,34 +121,41 @@ def inscription_atelier(request, atelier_id):
                         p.save()
                         total += 1
 
-                Payment = get_payment_model()
-                payment = Payment.objects.create(
-                    variant='default',
-                    # this is the variant from PAYMENT_VARIANTS
-                    description='Inscription Atelier',
-                    total=Decimal(120) * total,
-                    tax=Decimal(20),
-                    currency='EUR',
-                    delivery=Decimal(10),
-                    billing_first_name=request.user.first_name,
-                    billing_last_name=request.user.last_name,
-                    billing_address_1='',
-                    billing_address_2='',
-                    billing_city='',
-                    billing_postcode='',
-                    billing_country_code='',
-                    billing_country_area='',
-                    customer_ip_address=request.META.get('REMOTE_ADDR'))
-                payment.save()
-                link = PaymentLink()
-                link.payment = payment
-                link.object_to_pay = form.save()
-                link.user = request.user
-                link.save()
+            Payment = get_payment_model()
+            payment = Payment.objects.create(
+                variant='default',
+                # this is the variant from PAYMENT_VARIANTS
+                description='Inscription Atelier',
+                total=Decimal(120) * total,
+                tax=Decimal(20),
+                currency='EUR',
+                delivery=Decimal(10),
+                billing_first_name=request.user.first_name,
+                billing_last_name=request.user.last_name,
+                billing_address_1='',
+                billing_address_2='',
+                billing_city='',
+                billing_postcode='',
+                billing_country_code='',
+                billing_country_area='',
+                customer_ip_address=request.META.get('REMOTE_ADDR'))
+            payment.save()
+            link = PaymentLink()
+            link.payment = payment
+            link.object_to_pay = form.save()
+            link.user = request.user
+            link.save()
+
             return HttpResponseRedirect('/atelier/ateliers/'+atelier_id)
     return render(request, 'atelier/inscription.html', {'form':
         form,'participants_formset' : participants_formset, 'max' : max_additionnel,
         'inscrit': inscrit, 'places': places});
+
+def send_email(description, to):
+    subject = "Desinscription à " + description
+    message = "Votre désinscription à " + description + " est confirmé"
+    from_email = "nepasrepondre@yakasserole.fr"
+    send_mail(subject, message, from_email, [to])
 
 @login_required
 def desinscription_atelier(request, atelier_id):
@@ -156,6 +164,8 @@ def desinscription_atelier(request, atelier_id):
         p_a = participants_atelier.objects.filter(inscription_logs = inscription[0])
         Participant.objects.filter(id__in=p_a).delete()
         inscription.delete()
+        send_email(Atelier.objects.filter(id=atelier_id)[0].Nom,\
+                request.user.email)
     return HttpResponseRedirect('/atelier/ateliers/' + atelier_id)
 
 @login_required

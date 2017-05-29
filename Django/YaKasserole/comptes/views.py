@@ -17,6 +17,7 @@ from payments.urls import process_data
 from atelier.models import inscription_log
 from recette.models import Recette
 from community.models import Commentaire
+from django.core.mail import send_mail, BadHeaderError
 
 from . forms import *
 from . models import PaymentLink
@@ -125,6 +126,12 @@ class Listpayments(ListView):
     model = PaymentLink
     exclude = []
 
+def send_email(description, to):
+    subject = "Confirmation de " + description
+    message = "Votre paiement pour " + description + " est confirmé"
+    from_email = "nepasrepondre@yakasserole.fr"
+    send_mail(subject, message, from_email, [to])
+
 @login_required
 def payment_process(request, process_id):
     form = CardPayment(payment_link=process_id)
@@ -137,5 +144,6 @@ def payment_process(request, process_id):
                 if (not payment.status == PaymentStatus.CONFIRMED):
                     payment.change_status(PaymentStatus.PREAUTH, "only god")
                     payment.capture()
+                    send_email(payment.description, request.user.email)
                     return HttpResponse('Paiement Enregistré')
     return render(request, 'comptes/payment_process.html', {'form': form})

@@ -136,8 +136,8 @@ def devenir_premium(request):
         form.date_fin = datetime.date.today() + relativedelta(months=1)
         form.save()
         request.user.groups.clear()
-        request.user.groups.add(Group.objects.get_or_create(name='client premium'))
-        return HttpResponse('Now pay up')
+        request.user.groups.add(2)
+        return redirect('profile')
     return render(request, 'comptes/premium.html', {'form': form});
 
 class Listpayments(ListView):

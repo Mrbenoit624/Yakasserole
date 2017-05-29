@@ -1,0 +1,75 @@
+<!-- This file is designed to be embedded inside a <form> block -->
+{% csrf_token %}
+
+<!-- Titre = models.CharField(max_length=65) -->
+<div class="form-group">
+  <strong>Titre</strong>
+  {{ form.Titre }}
+</div>
+
+<div class="form-group">
+  <strong>Type</strong>
+  {{ form.Type }}
+</div>
+
+<div class="form-group">
+  <strong>Difficulté</strong>
+  {{ form.Difficulte }}
+</div>
+
+<div class="form-group">
+  <strong>Nombre de personnes</strong>
+  {{ form.Nombre_portions }}
+</div>
+
+<div class="form-group">
+  <strong>Temps de préparation :</strong>
+  {{ form.Temps_preparation }}
+</div>
+
+<div class="form-group">
+  <strong>Temps de cuisson :</strong>
+  {{ form.Temps_cuisson }}
+</div>
+
+<div class="form-group">
+  <strong>Ingrédients</strong>
+  {{ form.Ingredients }}
+</div>
+
+<div class="form-group">
+  <strong>Coût des ingrédients (en euros)</strong>
+  {{ form.Cout }}
+</div>
+
+<div class="form-group">
+  <strong>Ustensiles</strong>
+  {{ form.Ustensiles }}
+</div>
+
+<div class="form-group">
+  <strong>Matériel électromenager</strong>
+  {{ form.Electromenager }}
+</div>
+
+<div class="form-group">
+  <strong>Remarques, notes</strong>
+  {{ form.Remarques }}
+</div>
+
+<hr/>
+
+{% for etape_form in etapes_formset.forms %}
+<div class="form-group">
+  <strong>Titre</strong>
+  {{ etape_form.Titre }}
+</div>
+<div class="form-group">
+  <strong>Contenu</strong>
+  {{ etape_form.Contenu }}
+</div>
+{% endfor %}
+
+{{ etapes_formset.management_form }}
+
+<button type ="submit" class="btn btn-default" value="add">Soumettre</button>

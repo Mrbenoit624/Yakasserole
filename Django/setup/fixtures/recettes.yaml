@@ -1,36 +1,117 @@
 - model: recette.Type
-  pk: 1
   fields:
-    Name: Cassoulet
+    Name: Plat principal
 - model: recette.Type
-  pk: 2
   fields:
-    Name: Patisserie
+    Name: Dessert
 - model: recette.Type
-  pk: 3
   fields:
     Name: Hors d oeuvre
 - model: recette.Type
-  pk: 4
   fields:
-    Name: Gratin
+    Name: Boisson
+- model: recette.Type
+  fields:
+    Name: Accompagnement
+- model: recette.Type
+  fields:
+    Name: Sauce
+- model: recette.Type
+  fields:
+    Name: Amuse-gueule
+- model: recette.Type
+  fields:
+    Name: Confiserie
 
 - model: recette.Ustensile
-  pk: 1
   fields:
-    Name: 'Cuillere'
+    Name: Cuillere
+- model: recette.Ustensile
+  fields:
+    Name: Poêle
+- model: recette.Ustensile
+  fields:
+    Name: Ciseaux de cuisine
+- model: recette.Ustensile
+  fields:
+    Name: Coupe-frites
+- model: recette.Ustensile
+  fields:
+    Name: Couteau à viande
+- model: recette.Ustensile
+  fields:
+    Name: Pinceau à dorer
+- model: recette.Ustensile
+  fields:
+      Name: Moule à tarte
+- model: recette.Ustensile
+  fields:
+      Name: Casse-noix
 
 - model: recette.Electromenager
-  pk: 1
   fields:
     Name: Four
 
 - model: recette.Electromenager
-  pk: 2
   fields:
     Name: Micro-onde
 
+- model: recette.Electromenager
+  fields:
+   Name: Machine à pain
+
+- model: recette.Electromenager
+  fields:
+   Name: Mixeur
+   
+- model: recette.Electromenager
+  fields:
+     Name: Girafe
+
 - model: recette.Ingredient
-  pk: 1
   fields:
     Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Oeufs 
+
+- model: recette.Ingredient
+  fields:
+      Name: Farine
+
+- model: recette.Ingredient
+  fields:
+      Name: Riz
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate
+
+- model: recette.Ingredient
+  fields:
+      Name: Tomate

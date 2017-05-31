@@ -57,13 +57,12 @@ def ajout_recette(request):
 @permission_required('auth.cpr')
 def modifier_recette(request, pk):
     recette = get_object_or_404(Recette, id=pk)
-    EtapesFormSet = modelformset_factory(Etape, form = AddEtape, min_num = 1, extra = 0)
     if recette.user != request.user:
         return HttpResponseRedirect('/recette/recettes/' + pk)
-    r_etapes = recettes_etapes.objects.filter(recettes=pk).values_list('etapes')
-    etapes = Etape.objects.filter(id__in = r_etapes)
+    r_etapes = recettes_etapes.objects.filter(recettes=pk).values_list('etapes', flat=True)
+    EtapesFormSet = modelformset_factory(Etape, form = AddEtape, min_num = 1, extra = 0)
     form = AddRecette(request.POST or None, instance=recette)
-    etapes_formset = EtapesFormSet(request.POST or None)
+    etapes_formset = EtapesFormSet(request.POST or None, queryset=Etape.objects.filter(pk__in = r_etapes))
 
     if form.is_valid() and etapes_formset.is_valid():
         recette_save = form.save(commit=False)

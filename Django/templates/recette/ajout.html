@@ -5,7 +5,7 @@
 <div class="container-narrow">
   <h1>Nouvelle recette</h1>
 
-  <form method="post" action="{% url 'ajout' %}">
+  <form method="post" action="#">
     {% include "recette/form.html" %}
   </form>
 
@@ -19,5 +19,4 @@
         deleteText: 'Supprimer étape'
     });
 </script>
-
 {% endblock %}

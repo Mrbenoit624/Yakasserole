@@ -52,7 +52,6 @@ class AddEtape(ModelForm):
         self.fields['Titre'].widget.attrs['class'] = 'form-control'
         self.fields['Contenu'].widget.attrs['class'] = 'form-control'
 
-
 class AddComment(ModelForm):
     class Meta:
         model = Commentaire

@@ -15,7 +15,7 @@ class Prices(models.Model):
 
 class Premium(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    date_fin = models.DateField(default=timezone.now)
+    date_fin = models.DateField()
 
 class Payment(BasePayment):
 

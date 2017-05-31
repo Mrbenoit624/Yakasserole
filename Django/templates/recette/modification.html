@@ -6,17 +6,7 @@
   <h1>Modifier votre recette</h1>
 
   <form method="post" action="#">
-      {% csrf_token %}
-      {{ form }}
-      {% for etape_form in etapes_formset.forms %}
-      <div class="etapes-formset">
-        {{ etape_form.as_p }}
-      </div>
-      {% endfor %}
-
-      {{ etapes_formset.management_form }}
-
-      <button type ="submit" class="btn btn-default" value="add">Soumettre</button>
+      {% include "recette/form.html" %}
   </form>
 
 </div>
@@ -29,5 +19,4 @@
         deleteText: 'Supprimer étape'
     });
 </script>
-
 {% endblock %}

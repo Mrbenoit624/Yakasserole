@@ -131,9 +131,9 @@ def is_client(user):
 @user_passes_test(is_client)
 def devenir_premium(request):
     form = PremiumForm(request.POST or None)
+    form.instance.user_id = request.user.id
+    form.instance.date_fin = datetime.date.today() + relativedelta(months=1)
     if form.is_valid():
-        form.instance.user_id = request.user.id
-        form.date_fin = datetime.date.today() + relativedelta(months=1)
         form.save()
         request.user.groups.clear()
         request.user.groups.add(2)

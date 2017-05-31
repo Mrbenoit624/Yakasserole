@@ -60,13 +60,18 @@
 <hr/>
 
 {% for etape_form in etapes_formset.forms %}
-<div class="form-group">
-  <strong>Titre</strong>
-  {{ etape_form.Titre }}
-</div>
-<div class="form-group">
-  <strong>Contenu</strong>
-  {{ etape_form.Contenu }}
+<div class="etapes-formset">
+    <div class="form-group">
+      <strong>Titre</strong>
+      {{ etape_form.Titre }}
+    </div>
+    <div class="form-group">
+      <strong>Contenu</strong>
+      {{ etape_form.Contenu }}
+    </div>
+    {% for hidden in etape_form.hidden_fields %}
+    {{ hidden }}
+    {% endfor %}
 </div>
 {% endfor %}
 

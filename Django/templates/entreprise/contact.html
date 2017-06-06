@@ -7,39 +7,27 @@
   
   <div class="jumbotron">
     <h1>Nous contacter</h1>
-    <p class="lead">Vous pouvez nous joindre à contact@yakasserole.fr</p>
+    <p class="lead">Vous pouvez nous joindre à yakasserole2017@gmail.com</p>
   </div>
 
   <hr>
-            <div class="row-fluid marketing">
-                <div class="span6">  
-                  <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Address email</label>
-                          <input type="email" class="form-control"
-                                 id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="InputUsername">Nom/Prénom</label>
-                          <input type="text" class="form-control"
-                                 id="InputUsername" placeholder="Nom Prénom">
-                    </div>
-                    <textarea class="form-control" rows="6">Message</textarea>
-                    <div class="form-group">
-                      <label for="exampleInputFile">Fichier</label>
-                      <input type="file" id="exampleInputFile">
-                          <p class="help-block">Insérez ici un fichier étayant vos propos.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox">Confirmer
-                      </label>
-                    </div>
-                      <button type="submit" class="btn btn-default">Envoyer</button>
-                  </form>
-                </div>
-            </div>
-            
+  <div class="row-fluid marketing">
+    <div class="span6">  
+
+      {% if not confirm %}
+      <form method="post" action="#" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-default">Envoyer</button>
+      </form>
+      {% else %}
+      Votre message a bien été envoyé
+      {% endif %}
+
+    </div>
+  </div>
+
 </div>
-        
+
 {% endblock %}

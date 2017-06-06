@@ -7,23 +7,32 @@
   <hr>
 
   <div class="jumbotron">
-    <h1>Mon compte</h1>
-    <p class="lead">Bienvenue sur votre page de compte!</p>
+    <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
+    <p class="lead">Bienvenue sur ma page de compte!</p>
   </div>
 
   <hr>
   
   <div class="row-fluid marketing">
     <div class="span6">
-      <h4>Bonjour {{request.user.first_name}} {{request.user.last_name}}</h4>
-      <h4>Vous avez participé à: {{nb_atelier}} ateliers</h4>
-      <h4>Vous avez publié: {{nb_recettes}} recettes</h4>
-      <h4>Vous avez posté: {{nb_commentaires}} commentaires</h4>
+      <h4>Prénom</h4>
+      <input class="form-control" id="disabledInput" type="text"
+             placeholder="{{request.user.first_name}}" disabled>
+      <h4>Nom</h4>
+      <input class="form-control" id="disabledInput" type="text"
+                          placeholder="{{request.user.last_name}}" disabled>
+      <h4>Statut</h4>
       {% if user.groups.all.exists %}
-      <h4>Vous êtes {{ user.groups.all.0 }}</h4>
+      <input class="form-control" id="disabledInput" type="text"
+                          placeholder="{{user.groups.all.0}}" disabled>
       {% else %}
-      <h4> Vous êtes un administrateur</h4>
+      <input class="form-control" id="disabledInput" type="text"
+                                       placeholder="Administrateur" disabled>
       {% endif %}
+      <hr>
+      <h4>A participé à: {{nb_atelier}} ateliers</h4>
+      <h4>A publié: {{nb_recettes}} recettes</h4>
+      <h4>A posté: {{nb_commentaires}} commentaires</h4>
     </div>
   </div>
 

@@ -108,4 +108,4 @@ class CardPayment(forms.Form):
         super(CardPayment, self).__init__(*args, **kwargs)
         self.fields['id_paymentlink'].widget = HiddenInput()
         self.initial['id_paymentlink'] = self.process
-        self.fields['numbercard'].widget = forms.PasswordInput()
+        self.fields['crypto'].widget = forms.PasswordInput()

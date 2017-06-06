@@ -132,7 +132,7 @@ def payment_details(request, payment_id):
 def is_client(user):
     return user.groups.filter(name='client').exists()
 
-@user_passes_test(is_client)
+@permission_required('auth.dp')
 def devenir_premium(request):
     form = PremiumForm(request.POST or None)
     form.instance.user_id = request.user.id

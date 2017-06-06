@@ -73,6 +73,7 @@ print('\x1b[1;39m' + '  création des permissions: ' + '\x1b[0m')
 
 #This permission doesn't make much sense
 ccc = add_perm('ccc', 'creation de compte client')
+
 cce = add_perm('cce', 'creation de compte employé')
 scu = add_perm('scu', 'suppression de compte utilisateurs')
 cp_clt = add_perm('cp_clt', 'consultation de profil client')
@@ -85,7 +86,7 @@ spr = add_perm('spr', 'suppression de page recette')
 vv = add_perm('vv', 'visionage de video')
 cpa = add_perm('cpa', 'creation de page d\'atelier')
 ass = add_perm('ass', 'acces au statistique du site')
-
+dp = add_perm('dp', 'devenir premium')
 
 ########################### GROUPE PERMISSION #################################
 def add_permissions_to_all(perm):
@@ -118,9 +119,12 @@ if cp_clt is not None:
 
 if cp_resp is not None:
     add_permissions(cp_resp, [rda_g, rdu_g, chef_g])
+
 #if cp_admin is not None:
-#if pdc is not None:
-#if sdc is not None:
+if pdc is not None:
+    add_permissions_to_all(pdc)
+if sdc is not None:
+    add_permissions(sdc, [rdu_g])
 
 if cpr is not None:
     add_permissions_to_all(cpr)
@@ -128,12 +132,15 @@ if cpr is not None:
 #if spr is not None:
 
 if vv is not None:
-    pclient_g.permissions.add(cpr)
+    add_permissions(vv, [pclient_g, rda_g, rdu_g, chef_g])
 
 if cpa is not None:
     rda_g.permissions.add(cpr)
 
 #if ass is not None:
+
+if dp is not None:
+    add_permissions(dp, [client_g])
 
 ############################# ADDING TO GROUPS ################################
 if cuist:

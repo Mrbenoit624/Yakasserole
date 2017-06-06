@@ -7,7 +7,7 @@
   <hr>
 
   <div class="jumbotron">
-    <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
     <p class="lead">Bienvenue sur ma page de compte!</p>
   </div>
 
@@ -17,10 +17,10 @@
     <div class="span6">
       <h4>Prénom</h4>
       <input class="form-control" id="disabledInput" type="text"
-             placeholder="{{request.user.first_name}}" disabled>
+             placeholder="{{user.first_name}}" disabled>
       <h4>Nom</h4>
       <input class="form-control" id="disabledInput" type="text"
-                          placeholder="{{request.user.last_name}}" disabled>
+                          placeholder="{{user.last_name}}" disabled>
       <h4>Statut</h4>
       {% if user.groups.all.exists %}
       <input class="form-control" id="disabledInput" type="text"

@@ -1,6 +1,4 @@
 from django.contrib.auth.models import Group, Permission
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User;
 
 ############################# ADDING USERS ####################################
@@ -32,11 +30,6 @@ else:
     print('  cuistot creation skipped... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
 
 
-################################# CONTEXT #####################################
-
-
-ct = ContentType.objects.get(app_label="auth", model="user")
-
 ################################# GROUPE ######################################
 
 print('\x1b[1;39m' + '  création de groupes: ' + '\x1b[0m')
@@ -62,134 +55,85 @@ print('    - Chef cuisinier created... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
 
 ############################### PERMISSION ####################################
 
+def add_perm(pcodename, pname):
+    from django.contrib.auth.models import Permission
+    from django.contrib.contenttypes.models import ContentType
+    ct = ContentType.objects.get(app_label="auth", model="user")
+    if Permission.objects.filter(codename=pcodename).count()==0:
+        perm = Permission.objects.create(codename=pcodename,
+            name=pname,
+            content_type=ct)
+        print('    - ' + pname + '... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
+        return perm
+    else:
+        print('    - ' + pname + '... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
+    return None
 
 print('\x1b[1;39m' + '  création des permissions: ' + '\x1b[0m')
 
-if Permission.objects.filter(codename='ccc').count()==0:
-    ccc_p = Permission.objects.create(codename='ccc',
-        name='creation de compte client',
-        content_type=ct)
-    rdu_g.permissions.add(ccc_p)
-    client_g.permissions.add(ccc_p)
-    pclient_g.permissions.add(ccc_p)
-    print('    - creation de compte client... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - creation de compte client... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='cce').count()==0:
-    cce_p = Permission.objects.create(codename='cce',
-        name='creation de compte employé',
-        content_type=ct)
-    rdu_g.permissions.add(cce_p)
-    print('    - creation de compte employé... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - creation de compte employé... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='scu').count()==0:
-    scu_p = Permission.objects.create(codename='scu',
-        name='suppression de compte utilisateurs',
-        content_type=ct)
-    rdu_g.permissions.add(scu_p)
-    print('    - supression de compte utilisateurs... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - supression de compte utilisateurs... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='cp_clt').count()==0:
-    cp_clt_p = Permission.objects.create(codename='cp_clt',
-        name='consultation de profil client',
-        content_type=ct)
-    print('    - consultation de profil client... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - consultation de profil client... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='cp_resp').count()==0:
-    cp_resp_p = Permission.objects.create(codename='cp_resp',
-        name='consultation de profil responsable',
-        content_type=ct)
-    print('    - consultation de profil responsable... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - consultation de profil responsable... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='cp_admin').count()==0:
-    cp_admin_p = Permission.objects.create(codename='cp_admin',
-        name='consultation de profil admin',
-        content_type=ct)
-    print('    - consultation de profil admin... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - consultation de profil admin... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='pdc').count()==0:
-    pdc_p = Permission.objects.create(codename='pdc',
-        name='publication de commentaire',
-        content_type=ct)
-    print('    - publication de commentaire... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - publication de commentaire... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='sdc').count()==0:
-    sdc_p = Permission.objects.create(codename='sdc',
-        name='suppression de commentaire',
-        content_type=ct)
-    print('    - suppression de commentaire... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - suppression de commentaire... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='cpr').count()==0:
-    cpr_p = Permission.objects.create(codename='cpr',
-        name='creation de page recette',
-        content_type=ct)
-    client_g.permissions.add(cpr_p)
-    pclient_g.permissions.add(cpr_p)
-    rda_g.permissions.add(cpr_p)
-    rdu_g.permissions.add(cpr_p)
-    chef_g.permissions.add(cpr_p)
-    print('    - creation de page recette... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - creation de page recette... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='spr').count()==0:
-    spr_p = Permission.objects.create(codename='spr',
-        name='suppression de page recette',
-        content_type=ct)
-    print('    - suppression de page recette... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - suppression de page recette... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='vv').count()==0:
-    vv_p = Permission.objects.create(codename='vv',
-        name='visionage de video',
-        content_type=ct)
-    pclient_g.permissions.add(cpr_p)
-    print('    - visionage de video... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - visionage de video... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='cpa').count()==0:
-    cpa_p = Permission.objects.create(codename='cpa',
-        name='creation de page d\'atelier',
-        content_type=ct)
-    rda_g.permissions.add(cpr_p)
-    print('    - creation de page d\'atelier... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - creation de page d\'atelier... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
-if Permission.objects.filter(codename='ass').count()==0:
-    cpa_p = Permission.objects.create(codename='ass',
-        name='acces au statistique du site',
-        content_type=ct)
-    print('    - acces au statistique du site... ' + '\x1b[1;32m' + 'OK' + '\x1b[0m')
-else:
-    print('    - acces au statistique du site... ' + '\x1b[1;31m' + 'SKIP' + '\x1b[0m')
-
+#This permission doesn't make much sense
+ccc = add_perm('ccc', 'creation de compte client')
+cce = add_perm('cce', 'creation de compte employé')
+scu = add_perm('scu', 'suppression de compte utilisateurs')
+cp_clt = add_perm('cp_clt', 'consultation de profil client')
+cp_resp = add_perm('cp_resp', 'consultation de profil responsable')
+cp_admin = add_perm('cp_admin', 'consultation de profil admin')
+pdc = add_perm('pdc', 'publication de commentaire')
+sdc = add_perm('sdc', 'suppression de commentaire')
+cpr = add_perm('cpr', 'creation de page recette')
+spr = add_perm('spr', 'suppression de page recette')
+vv = add_perm('vv', 'visionage de video')
+cpa = add_perm('cpa', 'creation de page d\'atelier')
+ass = add_perm('ass', 'acces au statistique du site')
 
 
 ########################### GROUPE PERMISSION #################################
+def add_permissions_to_all(perm):
+    global client_g
+    global pclient_g
+    global rda_g
+    global rdu_g
+    global chef_g
+    client_g.permissions.add(perm)
+    pclient_g.permissions.add(perm)
+    rda_g.permissions.add(perm)
+    rdu_g.permissions.add(perm)
+    chef_g.permissions.add(perm)
 
+def add_permissions(perm, groups):
+    for g in groups:
+        g.permissions.add(perm)
 
-#client_g.permissions.add(client_p)
-#rda_g.permissions.add(rda_p)
-#rdu_g.permissions.add(rdu_p)
-#chef_g.permissions.add(chef_p)
+if ccc is not None:
+    rdu_g.permissions.add(ccc)
+
+if cce is not None:
+    rdu_g.permissions.add(cce)
+
+if scu is not None:
+    rdu_g.permissions.add(scu)
+
+if cp_clt is not None:
+    add_permissions_to_all(cp_clt)
+
+if cp_resp is not None:
+    add_permissions(cp_resp, [rda_g, rdu_g, chef_g])
+#if cp_admin is not None:
+#if pdc is not None:
+#if sdc is not None:
+
+if cpr is not None:
+    add_permissions_to_all(cpr)
+
+#if spr is not None:
+
+if vv is not None:
+    pclient_g.permissions.add(cpr)
+
+if cpa is not None:
+    rda_g.permissions.add(cpr)
+
+#if ass is not None:
 
 ############################# ADDING TO GROUPS ################################
 if cuist:

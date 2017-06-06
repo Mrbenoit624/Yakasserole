@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.models import Group, Permission, User
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -50,16 +50,20 @@ def connect(request):
     return render(request, 'comptes/connect.html', {'form': form})
 
 def profile(request):
-    ateliers = len(inscription_log.objects.filter(user=request.user.id))
-    recettes = len(Recette.objects.filter(user=request.user.id))
-    commentaires = len(Commentaire.objects.filter(user=request.user.id))
+    return public_profile(request, request.user.id)
+
+def public_profile(request, user_id):
+    ateliers = len(inscription_log.objects.filter(user=user_id))
+    recettes = len(Recette.objects.filter(user=user_id))
+    commentaires = len(Commentaire.objects.filter(user=user_id))
     if request.user.is_authenticated:
         return HttpResponse(render(request, 'registration/account.html',
             {'nb_atelier': ateliers,
              'nb_recettes': recettes,
              'nb_commentaires':commentaires,
              'unpaid': len(PaymentLink.objects.filter(user=request.user,
-                 payment__status__startswith='WAITING'))
+                 payment__status__startswith='WAITING')),
+             'user': User.objects.get(pk=user_id)
              }));
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');

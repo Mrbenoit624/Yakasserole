@@ -24,12 +24,14 @@
         <h4>total à payer: {{ paymentsLink.payment.total }} </h4>
         <h4>frais de port: {{ paymentsLink.payment.delivery }} </h4>
         <h4>taxes incluses: {{ paymentsLink.payment.tax }}%</h4>
+        {% if not paymentsLink.payment.status == "confirmed" %}
         <a href="payment_process/{{paymentsLink.id}}">
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
             Effectuer le paiement
           </button>
         </a>
+        {% endif %}
         <hr>
       {% endfor %}
     </div>

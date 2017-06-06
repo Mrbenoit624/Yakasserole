@@ -166,5 +166,5 @@ def payment_process(request, process_id):
                     payment.change_status(PaymentStatus.PREAUTH, "only god")
                     payment.capture()
                     send_email(payment.description, request.user.email)
-                    return HttpResponse('Paiement Enregistré')
+                    return redirect('/accounts/payments')
     return render(request, 'comptes/payment_process.html', {'form': form})

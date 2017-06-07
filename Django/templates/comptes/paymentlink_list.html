@@ -15,6 +15,7 @@
   <div class="row-fluid marketing">
     <div class="span6">
       {% for paymentsLink in object_list %}
+      <p><img src="{{ paymentsLink.atelier.atelier.picture.url }}" width="200 px"></p>
         <h3>Type: {{ paymentsLink.payment.description }}</h3>
         <h4>Etat: {{ paymentsLink.payment.status }} </h4>
         <h4>variante: {{ paymentsLink.payment.variant }} </h4>

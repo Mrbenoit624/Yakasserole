@@ -54,9 +54,9 @@ PAYMENT_VARIANTS = {
 # Application definition
 
 INSTALLED_APPS = [
-    'atelier.apps.AtelierConfig',
     'community.apps.CommunityConfig',
     'recette.apps.RecetteConfig',
+    'atelier.apps.AtelierConfig',
     'comptes.apps.ComptesConfig',
     'django.contrib.admin',
     'django.contrib.auth',

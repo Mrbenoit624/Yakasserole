@@ -12,7 +12,7 @@ then
   cd django && git pull && cd -;
 else
   echo -e '\e[1;32mInstallation de Django:\e[0m'
-  git clone git://github.com/django/django.git
+  git clone --depth 1 git://github.com/django/django.git
 fi
 
 # Install django and his modules

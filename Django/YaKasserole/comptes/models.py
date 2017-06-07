@@ -10,6 +10,7 @@ from decimal import Decimal
 from payments import PurchasedItem
 from payments.models import BasePayment
 
+
 class Prices(models.Model):
     premium = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))], default=Decimal(0))
 
@@ -26,18 +27,8 @@ class Payment(BasePayment):
         return '../../payment/success/'
 
 class PaymentLink(models.Model):
-    content_type = models.ForeignKey(
-        ContentType,
-        verbose_name=('contents of the product'),
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-    )
-    object_id = models.PositiveIntegerField(
-        verbose_name=('related object'),
-        null=True,
-    )
-    object_to_pay = GenericForeignKey('content_type', 'object_id')
+    #premium = models.ForeignKey(, on_delete=models.CASCADE)
+    atelier = models.ForeignKey('atelier.inscription_log', on_delete=models.CASCADE)
     payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
     user = models.ForeignKey(
             'auth.User', on_delete=models.CASCADE,

@@ -138,7 +138,7 @@ def inscription_atelier(request, atelier_id):
             payment.save()
             link = PaymentLink()
             link.payment = payment
-            link.object_to_pay = form.save()
+            link.atelier = form.save()
             link.user = request.user
             link.save()
 
@@ -156,9 +156,10 @@ def send_email(description, to):
 @login_required
 def desinscription_atelier(request, atelier_id):
     inscription = inscription_log.objects.filter(atelier=atelier_id, user=request.user)
-    if inscription.exists():
-        #payment = PaymentLink.objects.get(object_to_pay=inscription).payment
-        #payment.refund()
+    if inscription.exists:
+        payment = PaymentLink.objects.get(atelier=inscription)
+        payment = payment.payment
+        payment.refund()
         p_a = participants_atelier.objects.filter(inscription_logs = inscription[0])
         Participant.objects.filter(id__in=p_a).delete()
         inscription.delete()

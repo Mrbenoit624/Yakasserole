@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^recette/', include('recette.urls')),
     url(r'^atelier/', include('atelier.urls')),
     url(r'^accounts/', include('comptes.urls')),
+    url(r'^community/', include('community.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

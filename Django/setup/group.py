@@ -86,6 +86,7 @@ spr = add_perm('spr', 'suppression de page recette')
 vv = add_perm('vv', 'visionage de video')
 cpa = add_perm('cpa', 'creation de page d\'atelier')
 ia = add_perm('ia', 'inscription à un atelier')
+iaa = add_perm('iaa', 'inscription en avance à un atelier')
 ass = add_perm('ass', 'acces au statistique du site')
 
 ########################### GROUPE PERMISSION #################################
@@ -140,6 +141,8 @@ if cpa is not None:
 if ia is not None:
     add_permissions(ia, [client_g, pclient_g])
 
+if iaa is not None:
+    add_permissions(iaa, [pclient_g])
 #if ass is not None:
 
 

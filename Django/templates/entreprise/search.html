@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-narrow">
+  <h1>Recherche</h1>
+
+  Ateliers
+  <br>
+  {% for atelier in ateliers %}
+  <a href="{% url 'atelier' pk=atelier.id %}">
+      {{ atelier.Nom }}
+  </a>
+  <br>
+  {% endfor %}
+  <br>
+
+  Recettes
+  <br>
+  {% for recette in recettes %}
+  <a href="{% url 'recette' pk=recette.id %}">
+      {{ recette.Titre }}
+  </a>
+  <br>
+  {% endfor %}
+  <br>
+
+  Users
+  <br>
+  {% for user in users %}
+  <a href="{% url 'public_profile' user_id=user.id %}">
+      {{ user.first_name }} {{ user.last_name }}
+  </a>
+  <br>
+  {% endfor %}
+  
+</div>
+
+{% endblock %}

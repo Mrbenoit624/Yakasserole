@@ -93,7 +93,10 @@ def inscription_atelier(request, atelier_id):
     ParticipantsFormSet = formset_factory(AddParticipant, min_num=0, max_num=max_additionnel, extra=min(max_additionnel, 1))
     participants_formset = ParticipantsFormSet()
 
-    if request.method == 'POST' and not(inscrit):
+    atelier = get_object_or_404(Atelier, id=atelier_id)
+    on_time = datetime.datetime.now().date() >\
+        (atelier.Date_premium if request.user.has_perm('auth.iaa') else atelier.Date_inscription)
+    if request.method == 'POST' and not(inscrit) and on_time:
         form = SubscribeAtelier(request.POST, user_id=request.user.id,
                 atelier_id=atelier_id)
         form.user_id = request.user.id
@@ -116,7 +119,6 @@ def inscription_atelier(request, atelier_id):
                         p.save()
                         total += 1
 
-            atelier = Atelier.objects.filter(id=atelier_id)[0]
             Payment = get_payment_model()
             payment = Payment.objects.create(
                 variant='default',
@@ -142,7 +144,7 @@ def inscription_atelier(request, atelier_id):
             link.user = request.user
             link.save()
 
-            return HttpResponseRedirect('/atelier/ateliers/'+atelier_id)
+            return HttpResponseRedirect('/atelier/ateliers/' + atelier_id)
     return render(request, 'atelier/inscription.html', {'form':
         form,'participants_formset' : participants_formset, 'max' : max_additionnel,
         'inscrit': inscrit, 'places': places});

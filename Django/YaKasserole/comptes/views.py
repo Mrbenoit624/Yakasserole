@@ -85,7 +85,7 @@ def public_profile(request, user_id):
     user = User.objects.get(pk=user_id)
     if user.groups.filter(name__in=['client', 'client premium']).exists() and request.user.has_perm('auth.cp_clt')\
     or user.groups.filter(name__in=['Responsable des ateliers',\
-    'Responsable des utilisateurs', 'Chef cuisinier']).exists() and request.user.has_perm('auth.cp_clt')\
+    'Responsable des utilisateurs', 'Chef cuisinier']).exists() and request.user.has_perm('auth.cp_resp')\
     or user.is_superuser and request.user.has_perm('auth.cp_admin'):
         ateliers = len(inscription_log.objects.filter(user=user_id))
         recettes = len(Recette.objects.filter(user=user_id))

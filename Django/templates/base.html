@@ -60,9 +60,10 @@
                 <li><a href="/atelier/ateliers">Nos ateliers</a></li>
                 {% endif %}
               </ul>
-              <form class="navbar-form navbar-left">
+              <form type="get" action="{% url 'search' %}" class="navbar-form navbar-left">
                 <div class="form-group">
-                  <input type="text"
+                  <input name="q"
+                         type="text"
                          class="form-control"
                          placeholder="Chercher">
                 </div>

@@ -6,7 +6,7 @@ class ContactForm(forms.Form):
     fullname = forms.CharField(label='Nom complet')
     sujet = forms.CharField()
     message = forms.CharField(widget=forms.Textarea)
-    file = forms.FileField()
+    file = forms.FileField(label='Pièce jointe')
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)

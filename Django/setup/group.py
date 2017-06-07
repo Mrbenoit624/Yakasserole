@@ -85,8 +85,8 @@ cpr = add_perm('cpr', 'creation de page recette')
 spr = add_perm('spr', 'suppression de page recette')
 vv = add_perm('vv', 'visionage de video')
 cpa = add_perm('cpa', 'creation de page d\'atelier')
+ia = add_perm('ia', 'inscription à un atelier')
 ass = add_perm('ass', 'acces au statistique du site')
-dp = add_perm('dp', 'devenir premium')
 
 ########################### GROUPE PERMISSION #################################
 def add_permissions_to_all(perm):
@@ -137,10 +137,11 @@ if vv is not None:
 if cpa is not None:
     rda_g.permissions.add(cpr)
 
+if ia is not None:
+    add_permissions(ia, [client_g, pclient_g])
+
 #if ass is not None:
 
-if dp is not None:
-    add_permissions(dp, [client_g])
 
 ############################# ADDING TO GROUPS ################################
 if cuist:

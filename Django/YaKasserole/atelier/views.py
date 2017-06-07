@@ -1,32 +1,26 @@
-import logging
-
-from django.http import HttpResponseRedirect
-from django.http import HttpResponse
-from django.http import Http404
-from django.shortcuts import render
-from django.template import loader
+from django.contrib.auth.decorators import login_required, permission_required
+from django.core.mail import send_mail, BadHeaderError
+from django.forms.formsets import formset_factory
+from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, render_to_response
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.template import loader
+from django.utils import timezone
+from django.utils.decorators import method_decorator
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.shortcuts import get_object_or_404
-from django.utils import timezone
-import datetime
-from django.forms.formsets import formset_factory
-from payments import FraudStatus, PaymentStatus
-
-from django.core.mail import send_mail, BadHeaderError
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import permission_required
-
-from recette.forms import AddComment
 
 from comptes.models import PaymentLink
-from payments import get_payment_model
 from decimal import Decimal
+from payments import FraudStatus, PaymentStatus, get_payment_model
 
-from .models import *
 from .forms import AddParticipant, SubscribeAtelier, CreateAtelier
+from .models import *
+from comptes.views import end_premium
+from recette.forms import AddComment
+
+import datetime
+import logging
 
 @permission_required('auth.cpa')
 def ajout_atelier(request):
@@ -86,8 +80,9 @@ def get_place_atelier(atelier_id):
 def reponse_ajout(request, atelier_id):
     return HttpResponse(get_object_or_404(get_atelier_model(atelier_id)))
 
-@login_required
+@permission_required('auth.ia')
 def inscription_atelier(request, atelier_id):
+    end_premium(request)
     form = SubscribeAtelier(user_id=request.user.id, atelier_id=atelier_id)
 
     inscrit = inscription_log.objects.filter(atelier=atelier_id, user=request.user).exists()
@@ -190,12 +185,12 @@ def affichage_atelier(request, pk):
         'inscrit': inscrit })
 
 def filter_displayable(request):
-        now = datetime.datetime.now().strftime('%Y-%m-%d')
-        if request.user.groups.filter(name='client').exists():
-            return Atelier.objects.filter(Date_inscription__lte = now, date_atelier__gte = now)
-        elif request.user.groups.filter(name='pclient').exists():
-            return Atelier.objects.filter(Date_premium__lte = now, date_atelier__gte = now)
-        return Atelier.objects.filter(date_atelier__gte = now)
+    now = datetime.datetime.now().strftime('%Y-%m-%d')
+    if request.user.groups.filter(name='client').exists():
+        return Atelier.objects.filter(Date_inscription__lte = now, date_atelier__gte = now)
+    elif request.user.groups.filter(name='client premium').exists():
+        return Atelier.objects.filter(Date_premium__lte = now, date_atelier__gte = now)
+    return Atelier.objects.filter(date_atelier__gte = now)
 
 class AffichageAtelier(DetailView):
     def get_queryset(self):
@@ -206,12 +201,20 @@ class AffichageAtelier(DetailView):
         context['object'].LastPlaces = get_place_atelier(context['object'].id)
         return context
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AffichageAtelier, self).dispatch(*args, **kwargs)
+
     model = Atelier
     exclude = []
 
 class AffichageAteliers(ListView):
     def get_queryset(self):
         return filter_displayable(self.request)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AffichageAteliers, self).dispatch(*args, **kwargs)
 
     model = Atelier
     exclude = []

@@ -1,25 +1,16 @@
-from django.http import HttpResponseRedirect
-from django.http import HttpResponse
-from django.http import Http404
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render
-from django.template import loader
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-from django.forms.formsets import formset_factory
+from django.contrib.auth.decorators import login_required, permission_required
 from django.forms import modelformset_factory
+from django.forms.formsets import formset_factory
+from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, render_to_response
+from django.template import RequestContext, loader
 from django.utils import timezone
-
+from django.utils.decorators import method_decorator
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from django.contrib.auth.decorators import login_required
-
-from django.contrib.auth.decorators import permission_required
-
-from . models import *
-
-from . forms import *
+from .models import *
+from .forms import *
 
 @permission_required('auth.cpr')
 def ajout_recette(request):
@@ -57,7 +48,7 @@ def ajout_recette(request):
 @permission_required('auth.cpr')
 def modifier_recette(request, pk):
     recette = get_object_or_404(Recette, id=pk)
-    if recette.user != request.user:
+    if recette.user != request.user and not request.user.has_perm('auth.spr'):
         return HttpResponseRedirect('/recette/recettes/' + pk)
     r_etapes = recettes_etapes.objects.filter(recettes=pk).values_list('etapes', flat=True)
     EtapesFormSet = modelformset_factory(Etape, form = AddEtape, min_num = 1, extra = 0)
@@ -94,16 +85,16 @@ def modifier_recette(request, pk):
 
 @permission_required('auth.cpr')
 def supprimer_recette(request, pk):
-    recette = Recette.objects.filter(id=pk, user=request.user)
-    if recette.exists():
+    recette = get_object_or_404(Recette, id=pk)
+    if (recette.user == request.user or request.user.has_perm('auth.spr')) and recette.exists():
         recette.delete()
-    return HttpResponseRedirect('/recette/recettes')
+    return HttpResponseRedirect('/recette/recettes/' + pk)
 
 @login_required
 def affichage_recette(request, pk):
     recette = get_object_or_404(Recette, id=pk)
     form = AddComment()
-    own = recette.user == request.user
+    own = recette.user == request.user or request.user.has_perm('auth.spr')
     if request.method == 'POST':
         form = AddComment(request.POST)
         form.instance.user = request.user
@@ -117,5 +108,9 @@ def affichage_recette(request, pk):
         'own': own})
 
 class AffichageRecettes(ListView):
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AffichageRecettes, self).dispatch(*args, **kwargs)
+
     model = Recette
     exclude = []

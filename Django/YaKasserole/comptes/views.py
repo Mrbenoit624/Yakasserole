@@ -1,32 +1,28 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group, Permission, User
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-from django.shortcuts import render_to_response
-from django.contrib.auth.models import Group
 from django.test.client import RequestFactory
+from django.utils.decorators import method_decorator
 from django.views.generic.list import ListView
-from django.contrib.auth.decorators import login_required
 
-from django.contrib.auth.decorators import user_passes_test
 from decimal import Decimal
-from payments import get_payment_model
-from payments import FraudStatus, PaymentStatus
+from payments import FraudStatus, PaymentStatus, get_payment_model
 from payments.urls import process_data
 
 from atelier.models import inscription_log
-from recette.models import Recette
 from community.models import Commentaire
-from django.core.mail import send_mail, BadHeaderError
+from recette.models import Recette
 
-from dateutil.relativedelta import relativedelta
 from . forms import *
-from . models import PaymentLink
-
+from . models import PaymentLink, Premium
 from pprint import pprint
+
 import datetime
+from dateutil.relativedelta import relativedelta
 
 def connect(request):
     # if this is a POST request we need to process the form data
@@ -49,13 +45,29 @@ def connect(request):
       form = ConnectForm()
     return render(request, 'comptes/connect.html', {'form': form})
 
-def profile(request):
-    return public_profile(request, request.user.id)
+def is_premium(user):
+    return user.groups.filter(name='client premium').exists()
 
-def public_profile(request, user_id):
-    ateliers = len(inscription_log.objects.filter(user=user_id))
-    recettes = len(Recette.objects.filter(user=user_id))
-    commentaires = len(Commentaire.objects.filter(user=user_id))
+@user_passes_test(is_premium)
+def end_premium(request):
+    prems = Premium.objects.filter(user=request.user).order_by('-date_fin')
+    if prems.exists() and datetime.date.today() >= prems[0].date_fin:
+        request.user.groups.clear()
+        request.user.groups.add(1)
+
+@user_passes_test(is_premium)
+def warn_premium(request):
+    prems = Premium.objects.filter(user=request.user).order_by('-date_fin')
+    #if prems.exists() and datetime.date.today() >= (prems[0].date_fin - relativedelta(days=10)):
+        #warn here
+
+@login_required
+def profile(request):
+    end_premium(request)
+    warn_premium(request)
+    ateliers = len(inscription_log.objects.filter(user=request.user))
+    recettes = len(Recette.objects.filter(user=request.user.id))
+    commentaires = len(Commentaire.objects.filter(user=request.user))
     if request.user.is_authenticated:
         return HttpResponse(render(request, 'registration/account.html',
             {'nb_atelier': ateliers,
@@ -63,11 +75,31 @@ def public_profile(request, user_id):
              'nb_commentaires':commentaires,
              'unpaid': len(PaymentLink.objects.filter(user=request.user,
                  payment__status__startswith='WAITING')),
-             'user': User.objects.get(pk=user_id)
+             'user': User.objects.get(pk=request.user.id)
              }));
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');
 
+@login_required
+def public_profile(request, user_id):
+    user = User.objects.get(pk=user_id)
+    if user.groups.filter(name__in=['client', 'client premium']).exists() and request.user.has_perm('auth.cp_clt')\
+    or user.groups.filter(name__in=['Responsable des ateliers',\
+    'Responsable des utilisateurs', 'Chef cuisinier']).exists() and request.user.has_perm('auth.cp_clt')\
+    or user.is_superuser and request.user.has_perm('auth.cp_admin'):
+        ateliers = len(inscription_log.objects.filter(user=user_id))
+        recettes = len(Recette.objects.filter(user=user_id))
+        commentaires = len(Commentaire.objects.filter(user=user_id))
+        if request.user.is_authenticated:
+            return HttpResponse(render(request, 'registration/account.html',
+                {'nb_atelier': ateliers,
+                 'nb_recettes': recettes,
+                 'nb_commentaires':commentaires,
+                 'unpaid': len(PaymentLink.objects.filter(user=request.user,
+                     payment__status__startswith='WAITING')),
+                 'user': user
+                 }));
+    return redirect('profile');
 
 def inscription(request):
     form = InscriptionForm()
@@ -129,10 +161,27 @@ def payment_details(request, payment_id):
     return TemplateResponse(request, 'comptes/payments.html', {'form': form,
         'payment': payment, 'post': payment_id})
 
+@login_required
+def payment_process(request, process_id):
+    form = CardPayment(payment_link=process_id)
+    if request.method == 'POST':
+        # Shouldn't you pass payment_link here as well?
+        form = CardPayment(request.POST)
+        if form.is_valid():
+            paymentlink = PaymentLink.objects.get(id=form.cleaned_data['id_paymentlink'])
+            if paymentlink.user == request.user:
+                payment = paymentlink.payment
+                if (not payment.status == PaymentStatus.CONFIRMED):
+                    payment.change_status(PaymentStatus.PREAUTH, "only god")
+                    payment.capture()
+                    send_email(payment.description, request.user.email)
+                    return redirect('/accounts/payments')
+    return render(request, 'comptes/payment_process.html', {'form': form})
+
 def is_client(user):
     return user.groups.filter(name='client').exists()
 
-@permission_required('auth.dp')
+@user_passes_test(is_client)
 def devenir_premium(request):
     form = PremiumForm(request.POST or None)
     form.instance.user_id = request.user.id
@@ -148,6 +197,10 @@ class Listpayments(ListView):
     def get_queryset(self):
         return PaymentLink.objects.filter(user_id=self.request.user.id)
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(Listpayments, self).dispatch(*args, **kwargs)
+
     model = PaymentLink
     exclude = []
 
@@ -156,19 +209,3 @@ def send_email(description, to):
     message = "Votre paiement pour " + description + " est confirmé"
     from_email = "nepasrepondre@yakasserole.fr"
     send_mail(subject, message, from_email, [to])
-
-@login_required
-def payment_process(request, process_id):
-    form = CardPayment(payment_link=process_id)
-    if request.method == 'POST':
-        form = CardPayment(request.POST)
-        if form.is_valid():
-            paymentlink = PaymentLink.objects.get(id=form.cleaned_data['id_paymentlink'])
-            if paymentlink.user == request.user:
-                payment = paymentlink.payment
-                if (not payment.status == PaymentStatus.CONFIRMED):
-                    payment.change_status(PaymentStatus.PREAUTH, "only god")
-                    payment.capture()
-                    send_email(payment.description, request.user.email)
-                    return redirect('/accounts/payments')
-    return render(request, 'comptes/payment_process.html', {'form': form})

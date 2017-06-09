@@ -10,7 +10,6 @@ urlpatterns = [
     url('^profile/(?P<user_id>\d+)/$', views.public_profile, name='public_profile'),
     url(r'^register/$', views.inscription, name='inscription'),
     url('^connect/', views.connect, name='connect'),
-    url('^login/$', views.connect, name='connect'),
     url('^payments/', include('payments.urls')),
     url('^detail_payments/(?P<payment_id>.*)/$', views.payment_details, name='payment_details'),
 #    url('^payments$', views.payment, name='payment'),

@@ -136,7 +136,7 @@ if vv is not None:
     add_permissions(vv, [pclient_g, rda_g, rdu_g, chef_g])
 
 if cpa is not None:
-    rda_g.permissions.add(cpr)
+    rda_g.permissions.add(cpa)
 
 if ia is not None:
     add_permissions(ia, [client_g, pclient_g])

@@ -5,6 +5,18 @@
 <div class="container-narrow">
   <h1>Recherche</h1>
 
+  <form method="get" action=".">
+      <div class="checkbox">
+          {{ form.type }}
+      </div>
+      {{ form.q.label }}
+      {{ form.q }}
+
+      {{ rform }}
+      {{ aform }}
+      <button type="submit" class="btn btn-default">Rechercher</button>
+  </form>
+
   Ateliers
   <br>
   {% for atelier in ateliers %}

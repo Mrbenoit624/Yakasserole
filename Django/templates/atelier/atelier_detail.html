@@ -35,13 +35,15 @@
       <hr>
       <h4>l'atelier commence le {{ object.date_atelier }}</h4>
 
-      {% if user.is_staff%}
       <p>
-        date premium : {{ object.Date_premium }}
+        {% if perms.auth.cpa or perms.auth.iaa %}
+        Inscription premium ouverte à partir du {{ object.Date_premium }}
         <br>
+        {% endif %}
+        {% if perms.auth.cpa or perms.auth.ia and not perms.auth.iaa %}
         Inscription ouverte à partir du {{ object.Date_inscription }}
+        {% endif %}
       </p>
-      {% endif %}
       <hr>
       
       <h4>Il reste {{ object.LastPlaces }} places.</h4>
@@ -52,7 +54,7 @@
       <hr>
       <p><img src="{{ object.picture.url }}" width="200 px"></p>
 
-      {% if user.is_staff%}
+      {% if perms.auth.cpa %}
       <hr>
       <a class="btn btn-large btn-success" href="{% url 'modifier_atelier' pk=object.id %}">
       <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Modifier l'atelier</a>
@@ -66,7 +68,7 @@
                                                                                      glyphicon-ok"></span>
         &nbsp; Se désinscrire à l'atelier</a>
       {% else %}
-      {% if object.LastPlaces > 0 %}
+      {% if object.LastPlaces > 0 and perms.auth.ia and not user.is_superuser%}
       <a class="btn btn-large btn-success"
          href="{% url 'inscription_atelier' atelier_id=object.id %}"><span class="glyphicon
                                                                                   glyphicon-ok"></span>

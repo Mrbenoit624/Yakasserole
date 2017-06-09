@@ -124,7 +124,7 @@ def inscription_atelier(request, atelier_id):
                 variant='default',
                 # this is the variant from PAYMENT_VARIANTS
                 description="Inscription à l'Atelier " + atelier.Nom,
-                total= atelier.Prix * (total + 1),
+                total= atelier.Prix * (total + 1) * Decimal((0.9 if request.user.has_perm('auth.iaa') else 1.0)),
                 tax=Decimal(20),
                 currency='EUR',
                 delivery=Decimal(0),

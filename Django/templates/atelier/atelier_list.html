@@ -11,7 +11,7 @@
     <p class="lead">Les ateliers Yakasseroles sont l'opportunité de s'améliorer
     dans ses compétences et de se rapprocher de sa famille et de ses amis, venez
       participer à un atelier dés aujourd'hui!</p>
-    {% if user.is_staff%}
+    {% if perms.auth.cpa %}
     <a class="btn btn-large btn-success"
        href="/atelier/ajout"><span class="glyphicon glyphicon-cutlery"></span>
       &nbsp; Ajouter un atelier</a>

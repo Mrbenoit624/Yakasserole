@@ -1,0 +1,5 @@
+#!/bin/bash
+./daemon_launch.sh start
+sleep 4
+time for (( i=1 ; i <= 100 ; i=i+1)); do t=$(time(curl -qks https://localhost:8080 > /dev/null) 2>&1 >/dev/null); if [ ! $? == 0 ]; then echo $i ;fi;res=$(echo $t | cut -d ' ' -f 2 | cut -d 'm' -f 2 | cut -d 's' -f 1 | cut -d '.' -f 2); if [[ $res < 115 ]]; then echo -ne "\e[32m[OK]\e[39m"; else echo -ne "\e[31m[FAIL]\e[39m";fi; echo -e "\ttest de robustesse $i"; done
+./daemon_launch.sh kill

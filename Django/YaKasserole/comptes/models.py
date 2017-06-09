@@ -27,8 +27,9 @@ class Payment(BasePayment):
         return '../../payment/success/'
 
 class PaymentLink(models.Model):
-    #premium = models.ForeignKey(, on_delete=models.CASCADE)
-    atelier = models.ForeignKey('atelier.inscription_log', on_delete=models.CASCADE)
+    premium = models.ForeignKey(Premium, on_delete=models.CASCADE, null=True)
+    atelier = models.ForeignKey('atelier.inscription_log',
+            on_delete=models.CASCADE, null=True)
     payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
     user = models.ForeignKey(
             'auth.User', on_delete=models.CASCADE,

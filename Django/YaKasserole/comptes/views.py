@@ -196,7 +196,30 @@ def devenir_premium(request):
     form.instance.user_id = request.user.id
     form.instance.date_fin = datetime.date.today() + relativedelta(months=1)
     if form.is_valid():
-        form.save()
+        Payment = get_payment_model()
+        payment = Payment.objects.create(
+            variant='default',
+            # this is the variant from PAYMENT_VARIANTS
+            description="Membre Premium",
+            total=Decimal(3.99),
+            tax=Decimal(20),
+            currency='EUR',
+            delivery=Decimal(0),
+            billing_first_name=request.user.first_name,
+            billing_last_name=request.user.last_name,
+            billing_address_1='',
+            billing_address_2='',
+            billing_city='',
+            billing_postcode='',
+            billing_country_code='',
+            billing_country_area='',
+            customer_ip_address=request.META.get('REMOTE_ADDR'))
+        payment.save()
+        link = PaymentLink()
+        link.payment = payment
+        link.premium = form.save()
+        link.user = request.user
+        link.save()
         request.user.groups.clear()
         request.user.groups.add(2)
         return redirect('profile')

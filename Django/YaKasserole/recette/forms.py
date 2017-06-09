@@ -1,10 +1,10 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Recette, Etape
 from django.contrib.auth.models import User
-from community.models import Commentaire
-
 from django.utils.html import mark_safe
+
+from .models import Recette, Etape
+from community.models import Commentaire
 
 class TimePickerWidget(forms.TimeInput):
     def render(self, name, value, attrs=None):
@@ -17,7 +17,6 @@ class TimePickerWidget(forms.TimeInput):
         return mark_safe(u''.join(htmlString))
 
 class AddRecette(ModelForm):
-
     class Meta:
         model = Recette
         fields = ['Titre', 'Type', 'Ustensiles', 'Electromenager',
@@ -37,6 +36,7 @@ class AddRecette(ModelForm):
         self.fields['Ustensiles'].widget.attrs['class'] = 'form-control'
         self.fields['Electromenager'].widget.attrs['class'] = 'form-control'
         self.fields['Nombre_portions'].widget.attrs['class'] = 'form-control'
+        self.fields['Difficulte'] = forms.ChoiceField(choices=[(i+1,i+1) for i in range(5)])
         self.fields['Difficulte'].widget.attrs['class'] = 'form-control'
         self.fields['Cout'].widget.attrs['class'] = 'form-control'
         self.fields['Ingredients'].widget.attrs['class'] = 'form-control'

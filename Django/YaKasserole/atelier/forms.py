@@ -1,11 +1,13 @@
 from django import forms
-from .models import Atelier, inscription_log, Participant
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.forms import ModelChoiceField
 from django.forms.widgets import HiddenInput
-
 from django.forms.widgets import SelectDateWidget
+
+from .models import Atelier, inscription_log, Participant
+
+import datetime
 
 class FullNameChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
@@ -46,6 +48,12 @@ class CreateAtelier(ModelForm):
         model = Atelier
         exclude = ['Commentaires']
 
+    def clean_date_atelier(self):
+        date_atelier = self.cleaned_data['date_atelier']
+        if date_atelier <= datetime.date.today():
+            raise forms.ValidationError('La date de l\'atelier doit-être supérieur à ajourd\'hui', 'd_a')
+        return date_atelier
+
     def __init__(self, *args, **kwargs):
         super(CreateAtelier, self).__init__(*args, **kwargs)
         self.fields['Chef'].widget.attrs['class'] = 'form-control'
@@ -59,3 +67,4 @@ class CreateAtelier(ModelForm):
         self.fields['Lieux'].widget.attrs['class'] = 'form-control'
         self.fields['Themes'].widget.attrs['class'] = 'form-control'
         self.fields['picture'].widget.attrs['class'] = 'form-control'
+        self.fields['picture'].label = 'Photo de l\'atelier'

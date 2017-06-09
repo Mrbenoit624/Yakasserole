@@ -16,8 +16,9 @@
       <h4>Les lieux:</h4>
       <p>
         {% for lieu in object.Lieux.all %}
-        Cet atelier est présent à {{ lieu }}!
+        Cet atelier est présent au {{ lieu }}!
         <br>
+        Adresse: {{ lieu.Adresse }} {{ lieu.CodePostal }} {{ lieu.Ville }}
         {% endfor %}
       </p>
       <hr>

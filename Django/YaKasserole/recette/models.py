@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from community.models import Commentaire
 import datetime
 from decimal import Decimal
@@ -41,8 +41,9 @@ class Recette(models.Model):
         through='Recettes_Electromenager',
         through_fields=('recettes', 'electromenagers'),
     )
-    Nombre_portions = models.PositiveIntegerField(default=0)
-    Difficulte = models.PositiveIntegerField(default=0)
+    Nombre_portions = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    Difficulte = models.IntegerField(validators=[MaxValueValidator(5)],
+            choices=[(i+1,i+1) for i in range(5)])
     Cout = models.DecimalField(max_digits=8, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))], default=Decimal(1.00))
     Ingredients = models.ManyToManyField(
         Ingredient,

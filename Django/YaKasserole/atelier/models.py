@@ -40,11 +40,11 @@ class Atelier(models.Model):
     )
     Chef = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     Prix = models.DecimalField(max_digits=8, decimal_places=2,
-            validators=[MinValueValidator(Decimal('0.01'))], default=Decimal(0))
+            validators=[MinValueValidator(Decimal('0.01'))])
     Date_inscription = models.DateField(default=timezone.now)
     Date_premium = models.DateField(default=timezone.now)
     date_atelier = models.DateField(default=timezone.now)
-    Places = models.PositiveIntegerField(default=0)
+    Places = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     Messages = models.TextField()
     Commentaires = models.ManyToManyField(
         Commentaire,

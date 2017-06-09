@@ -79,6 +79,7 @@ scu = add_perm('scu', 'suppression de compte utilisateurs')
 cp_clt = add_perm('cp_clt', 'consultation de profil client')
 cp_resp = add_perm('cp_resp', 'consultation de profil responsable')
 cp_admin = add_perm('cp_admin', 'consultation de profil admin')
+cp_chef = add_perm('cp_chef', 'consultation de profil chef cuistot')
 pdc = add_perm('pdc', 'publication de commentaire')
 sdc = add_perm('sdc', 'suppression de commentaire')
 cpr = add_perm('cpr', 'creation de page recette')
@@ -122,6 +123,9 @@ if cp_resp is not None:
     add_permissions(cp_resp, [rda_g, rdu_g, chef_g])
 
 #if cp_admin is not None:
+if cp_chef is not None:
+    add_permissions_to_all(cp_chef)
+
 if pdc is not None:
     add_permissions_to_all(pdc)
 if sdc is not None:

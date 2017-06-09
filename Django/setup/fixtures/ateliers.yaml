@@ -6,8 +6,32 @@
 - model: atelier.Lieu
   pk: 1
   fields:
-    Nom: Site Toulouse
-    Adresse: Addr
-    Telephone: 04
-    CodePostal: 04
+    Nom: Local Toulouse quartier Compans
+    Adresse: métro Compans Caffarelli
+    Telephone: 0442424242
+    CodePostal: 31000
     Ville: Toulouse
+- model: atelier.Lieu
+  pk: 2
+  fields:
+    Nom: Local Paris quartier du Marais
+    Adresse: métro Saint-Paul
+    Telephone: 0442424242
+    CodePostal: 75004
+    Ville: Paris
+- model: atelier.Lieu
+  pk: 3
+  fields:
+    Nom: Local Lille quartier Rihour
+    Adresse: métro Rihour
+    Telephone: 0442424242
+    CodePostal: 59800
+    Ville: Lille
+- model: atelier.Lieu
+  pk: 4
+  fields:
+    Nom: Local Bordeaux quartier Saint-Genès
+    Adresse: métro Navarre
+    Telephone: 0442424242
+    CodePostal: 33000
+    Ville: Bordeaux

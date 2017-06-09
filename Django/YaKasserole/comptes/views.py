@@ -19,6 +19,7 @@ from recette.models import Recette
 
 from . forms import *
 from . models import PaymentLink, Premium
+from atelier.models import Atelier, Theme, ateliers_themes
 from pprint import pprint
 
 import datetime
@@ -83,13 +84,20 @@ def profile(request):
 @login_required
 def public_profile(request, user_id):
     user = User.objects.get(pk=user_id)
-    if user.groups.filter(name__in=['client', 'client premium']).exists() and request.user.has_perm('auth.cp_clt')\
+    if user.groups.filter(name__in=['client', 'client premium']).exists()\
+    and request.user.has_perm('auth.cp_clt')\
     or user.groups.filter(name__in=['Responsable des ateliers',\
-    'Responsable des utilisateurs', 'Chef cuisinier']).exists() and request.user.has_perm('auth.cp_resp')\
+    'Responsable des utilisateurs']).exists() and request.user.has_perm('auth.cp_resp')\
+    or user.groups.filter(name='Chef cuisinier') and request.user.has_perm('auth.cp_chef')\
     or user.is_superuser and request.user.has_perm('auth.cp_admin'):
         ateliers = len(inscription_log.objects.filter(user=user_id))
         recettes = len(Recette.objects.filter(user=user_id))
         commentaires = len(Commentaire.objects.filter(user=user_id))
+        themes = None
+        if user.groups.filter(name='Chef cuisinier').exists() and request.user.has_perm('auth.cp_chef'):
+            ateliers_qs = Atelier.objects.filter(Chef=user.id)
+            a_t = ateliers_themes.objects.filter(id=ateliers_qs.values('id'))
+            themes = Theme.objects.filter(ateliers_themes__in=a_t)
         if request.user.is_authenticated:
             return HttpResponse(render(request, 'registration/account.html',
                 {'nb_atelier': ateliers,
@@ -97,7 +105,8 @@ def public_profile(request, user_id):
                  'nb_commentaires':commentaires,
                  'unpaid': len(PaymentLink.objects.filter(user=request.user,
                      payment__status__startswith='WAITING')),
-                 'user': user
+                 'user': user,
+                 'themes': themes
                  }));
     return redirect('profile');
 

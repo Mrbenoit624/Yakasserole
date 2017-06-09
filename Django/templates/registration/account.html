@@ -33,6 +33,14 @@
       <h4>A participé à: {{nb_atelier}} ateliers</h4>
       <h4>A publié: {{nb_recettes}} recettes</h4>
       <h4>A posté: {{nb_commentaires}} commentaires</h4>
+
+      {% if themes %}
+      Ce chef a encadré des ateliers de type:
+      <br>
+      {% for t in themes %}
+        {{ t }}
+      {% endfor %}
+      {% endif %}
     </div>
   </div>
 

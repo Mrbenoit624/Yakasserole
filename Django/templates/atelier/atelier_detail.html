@@ -31,7 +31,7 @@
       </p>
       
       <hr>
-      <h4>Et tout cela sera dirigé par {{ object.Chef.first_name }} {{ object.Chef.last_name }}, notre chef sur place!</h4>
+      <h4>Et tout cela sera dirigé par <a href="{% url 'public_profile' user_id=object.Chef.id%}">{{ object.Chef.first_name }} {{ object.Chef.last_name }}</a>, notre chef sur place!</h4>
       <hr>
       <h4>l'atelier commence le {{ object.date_atelier }}</h4>
 

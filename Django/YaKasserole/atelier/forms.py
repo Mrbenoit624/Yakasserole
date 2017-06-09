@@ -76,6 +76,7 @@ class CreateAtelier(ModelForm):
         self.fields['date_atelier'].widget.attrs['class'] = 'form-control'
         self.fields['Places'].widget.attrs['class'] = 'form-control'
         self.fields['Messages'].widget.attrs['class'] = 'form-control'
+        self.fields['Messages'].label = 'Descriptif'
         self.fields['Lieux'].widget.attrs['class'] = 'form-control'
         self.fields['Themes'].widget.attrs['class'] = 'form-control'
         self.fields['picture'].widget.attrs['class'] = 'form-control'

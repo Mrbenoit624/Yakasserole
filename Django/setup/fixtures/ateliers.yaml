@@ -1,7 +1,32 @@
 - model: atelier.Theme
   pk: 1
   fields:
-    Name: Enfantin
+    Name: Familial
+- model: atelier.Theme
+  pk: 2
+  fields:
+    Name: Savoyard
+- model: atelier.Theme
+  pk: 3
+  fields:
+    Name: Italien
+- model: atelier.Theme
+  pk: 4
+  fields:
+    Name: Mexicain
+- model: atelier.Theme
+  pk: 5
+  fields:
+    Name: Cassoulet
+- model: atelier.Theme
+  pk: 6
+  fields:
+    Name: Découverte
+- model: atelier.Theme
+  pk: 7
+  fields:
+    Name: Dégustation
+
 
 - model: atelier.Lieu
   pk: 1

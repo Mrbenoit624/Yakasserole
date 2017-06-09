@@ -1,60 +1,97 @@
 <!-- This file is designed to be embedded inside a <form> block -->
 {% csrf_token %}
 
+{% for error in form.non_field_errors %}
+{{ error }}
+{% endfor %}
+
 <!-- Titre = models.CharField(max_length=65) -->
 <div class="form-group">
   <strong>Titre</strong>
   {{ form.Titre }}
+  {% for error in form.Titre.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Type</strong>
   {{ form.Type }}
+  {% for error in form.Type.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Difficulté</strong>
   {{ form.Difficulte }}
+  {% for error in form.Difficulte.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Nombre de personnes</strong>
   {{ form.Nombre_portions }}
+  {% for error in form.Nombre_portions.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Temps de préparation :</strong>
   {{ form.Temps_preparation }}
+  {% for error in form.Temps_preparation.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Temps de cuisson :</strong>
   {{ form.Temps_cuisson }}
+  {% for error in form.Temps_cuisson.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Ingrédients</strong>
   {{ form.Ingredients }}
+  {% for error in form.Ingredients.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Coût des ingrédients (en euros)</strong>
   {{ form.Cout }}
+  {% for error in form.Cout.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Ustensiles</strong>
   {{ form.Ustensiles }}
+  {% for error in form.Ustensiles.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Matériel électromenager</strong>
   {{ form.Electromenager }}
+  {% for error in form.Electromenager.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <div class="form-group">
   <strong>Remarques, notes</strong>
   {{ form.Remarques }}
+  {% for error in form.Remarques.errors %}
+      {{ error }}
+  {% endfor %}
 </div>
 
 <hr/>
@@ -64,10 +101,17 @@
     <div class="form-group">
       <strong>Titre</strong>
       {{ etape_form.Titre }}
+      {% for error in etape_form.Titre.errors %}
+        {{ error }}
+      {% endfor %}
     </div>
     <div class="form-group">
       <strong>Contenu</strong>
       {{ etape_form.Contenu }}
+      {% for error in etape_form.Contenu.errors %}
+        {{ error }}
+      {% endfor %}
+
     </div>
     {% for hidden in etape_form.hidden_fields %}
     {{ hidden }}

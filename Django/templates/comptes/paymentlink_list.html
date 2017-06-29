@@ -7,7 +7,7 @@
   <hr>
 
   <div class="jumbotron">
-    <h1>Vos transactions en cours</h1>
+    <h1>Vos transactions</h1>
   </div>
 
   <hr>
@@ -17,13 +17,9 @@
       {% for paymentsLink in object_list %}
       <p><img src="{{ paymentsLink.atelier.atelier.picture.url }}" width="200 px"></p>
         <h3>Type: {{ paymentsLink.payment.description }}</h3>
-        <h4>Etat: {{ paymentsLink.payment.status }} </h4>
-        <h4>variante: {{ paymentsLink.payment.variant }} </h4>
         <h4>demandé le: {{ paymentsLink.payment.created }} </h4>
-        <h4>modifié le: {{ paymentsLink.payment.modified }} </h4>
         <h4>monnaie: {{ paymentsLink.payment.currency }} </h4>
         <h4>total à payer: {{ paymentsLink.payment.total }} </h4>
-        <h4>frais de port: {{ paymentsLink.payment.delivery }} </h4>
         <h4>taxes incluses: {{ paymentsLink.payment.tax }}%</h4>
         {% if not paymentsLink.payment.status == "confirmed" %}
         <a href="payment_process/{{paymentsLink.id}}">

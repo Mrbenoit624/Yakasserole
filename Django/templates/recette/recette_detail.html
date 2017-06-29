@@ -132,6 +132,13 @@
   <div class="alert alert-success" role="alert">{{ remarque }}</div>
   {% endfor %}
 
+  {% if perms.auth.vv and object.video %}
+  <video width='50%' height='40%' controls>
+      <source src="{{ object.video.url }}" type="video/mp4"/>
+          Votre navigateur n'est pas compatible avec les vidéos.
+  </video>
+  {% endif %}
+
   {% if own %}
   <a href="{% url 'modifier_recette' pk=object.id %}">Modifier la recette</a>
   <a href="{% url 'supprimer_recette' pk=object.id %}">Supprimer la recette</a>

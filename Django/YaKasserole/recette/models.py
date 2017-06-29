@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.utils import timezone
 from django.core.validators import MinValueValidator, MaxValueValidator
 from community.models import Commentaire
@@ -25,6 +26,10 @@ class Ingredient(models.Model):
 class Etape(models.Model):
     Titre = models.CharField(max_length=65)
     Contenu = models.TextField(default='')
+
+def validate_file_extension(val):
+    if not val.name.endswith('.mp4'):
+        raise ValidationError(u'La vidéo doit être au format mp4')
 
 class Recette(models.Model):
     Titre = models.CharField(max_length=65)
@@ -63,7 +68,7 @@ class Recette(models.Model):
     )
     Date = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-
+    video = models.FileField(upload_to='recettes/%m/%d/', blank=True, null=False, validators=[validate_file_extension])
 
 class recettes_ustensiles(models.Model):
     recettes = models.ForeignKey(Recette, on_delete=models.CASCADE)

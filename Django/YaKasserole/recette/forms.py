@@ -21,7 +21,7 @@ class AddRecette(ModelForm):
         model = Recette
         fields = ['Titre', 'Type', 'Ustensiles', 'Electromenager',
                 'Nombre_portions', 'Difficulte', 'Cout', 'Ingredients',
-                'Remarques', 'Temps_preparation', 'Temps_cuisson']
+                'Remarques', 'Temps_preparation', 'Temps_cuisson', 'video']
 
     def __init__(self, *args, **kwargs):
         super(AddRecette, self).__init__(*args, **kwargs)
@@ -41,6 +41,9 @@ class AddRecette(ModelForm):
         self.fields['Cout'].widget.attrs['class'] = 'form-control'
         self.fields['Ingredients'].widget.attrs['class'] = 'form-control'
         self.fields['Remarques'].widget.attrs['class'] = 'form-control'
+        self.fields['video'].widget.attrs['class'] = 'form-control'
+        self.fields['video'].label = 'Vidéo (MP3)'
+        self.fields['video'].required = False
 
 class AddEtape(ModelForm):
     class Meta:

@@ -94,6 +94,15 @@
   {% endfor %}
 </div>
 
+{% if perms.auth.vv %}
+<div class="form-group">
+  <strong>Vidéo de la recette</strong>
+  {{ form.video }}
+  {% for error in form.video.errors %}
+    {{ error }}
+  {% endfor %}
+</div>
+{% endif %}
 <hr/>
 
 {% for etape_form in etapes_formset.forms %}

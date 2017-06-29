@@ -18,8 +18,10 @@ def ajout_recette(request):
     EtapesFormSet = formset_factory(AddEtape, min_num=1, extra=0)
     etapes_formset = EtapesFormSet()
     if request.method == 'POST':
-        form = AddRecette(request.POST)
+        form = AddRecette(request.POST, request.FILES)
         form.instance.user = request.user
+        if not request.user.has_perm('auth.vv'):
+            form.instance.video = None
         etapes_formset = EtapesFormSet(request.POST)
         if form.is_valid() and etapes_formset.is_valid():
 

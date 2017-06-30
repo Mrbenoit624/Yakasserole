@@ -50,19 +50,19 @@ class CreateAtelier(ModelForm):
 
     def clean_Date_premium(self):
         date = self.cleaned_data['Date_premium']
-        if date <= datetime.date.today():
+        if date < datetime.date.today():
             raise forms.ValidationError('La date d\'inscription premium doit-être supérieure à ajourd\'hui', 'd_p')
         return date
 
     def clean_Date_inscription(self):
         date = self.cleaned_data['Date_inscription']
-        if date <= datetime.date.today():
+        if date < datetime.date.today():
             raise forms.ValidationError('La date d\'inscription doit-être supérieure à ajourd\'hui', 'd_i')
         return date
 
     def clean_date_atelier(self):
         date_atelier = self.cleaned_data['date_atelier']
-        if date_atelier <= datetime.date.today():
+        if date_atelier < datetime.date.today():
             raise forms.ValidationError('La date de l\'atelier doit-être supérieure à ajourd\'hui', 'd_a')
         return date_atelier
 

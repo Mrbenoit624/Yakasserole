@@ -18,7 +18,9 @@ if [ $# -eq 1 ] && [ "$1" == "test" ]; then
   ./benchmark
   echo -n "mda to put:"
   md5sum YaKasserole-golbl_a.tar.bz2 | cut -d ' ' -f1
-  rm -rf test YaKasserole-golbl_a.bz2
+  cd ..
+  rm -rf test
+  rm -rf YaKasserole-golbl_a.bz2
   echo "The tar test works"
 else
   tar -cjf YaKasserole-golbl_a.tar.bz2 --exclude django --exclude migration --exclude "*.bz2" --exclude "*.log" --exclude "*/migrations" .

@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django.test.client import RequestFactory
 from django.utils.decorators import method_decorator
 from django.views.generic.list import ListView
+from datetime import datetime
 
 from decimal import Decimal
 from payments import FraudStatus, PaymentStatus, get_payment_model
@@ -71,7 +72,7 @@ def profile(request):
     commentaires = len(Commentaire.objects.filter(user=request.user))
     nb_recettes = len(Recette.objects.all())
     nb_inscription = len(inscription_log.objects.all())
-    nb_atelier = len(Atelier.object.all())
+    nb_atelier = len(Atelier.objects.all())
     if request.user.is_authenticated:
         return HttpResponse(render(request, 'registration/account.html',
             {'nb_atelier': ateliers,
@@ -83,7 +84,7 @@ def profile(request):
              'nb_recettes_admin': nb_recettes,
              'nb_inscription': nb_inscription,
              'nb_atelier': nb_atelier,
-             'now': datetime.now()
+             'now': datetime.datetime.now()
              }));
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');

@@ -34,6 +34,27 @@
       <h4>A publié: {{nb_recettes}} recettes</h4>
       <h4>A posté: {{nb_commentaires}} commentaires</h4>
 
+      {% if user.is_superuser %} 
+      <h2>Statisques administrateurs</h2>
+      <hr>
+      <h3>Statistique du  {{now}} :</h3>
+      <h4>Nombres de connexions uniques: {{1}} connexion(s)</h4>
+      <h4>Nombres de recettes postées: {{nb_recettes_admin}} recette(s)</h4>
+      <h4>Nombres d'inscription: {{nb_inscription}} inscription(s)</h4>
+      <h4>Nombres d'atelier: {{nb_atelier}} atelier(s)</h4>
+      <hr>
+      <h3>Statistique de ce mois :</h3>
+      <h4>Nombres de connexions uniques:{{1}} connexion(s)</h4>
+      <h4>Nombres de recettes postées: {{nb_recettes_admin}} recette(s)</h4>
+      <h4>Nombres d'inscription: {{nb_inscription}} inscription(s)</h4>
+      <h4>Nombres d'atelier: {{nb_atelier}} atelier(s)</h4>
+      <hr>
+      <h3>Statistique du  trimestre :</h3>
+      <h4>Nombres de connexions uniques:{{1}} connexion(s)</h4>
+      <h4>Nombres de recettes postées: {{nb_recettes_admin}} recette(s)</h4>
+      <h4>Nombres d'inscription: {{nb_inscription}} inscription(s)</h4>
+      <h4>Nombres d'atelier: {{nb_atelier}} atelier(s)</h4>
+      {% endif %}
       {% if themes %}
       Ce chef a encadré des ateliers de type:
       <br>

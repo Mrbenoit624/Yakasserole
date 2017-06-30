@@ -69,6 +69,9 @@ def profile(request):
     ateliers = len(inscription_log.objects.filter(user=request.user))
     recettes = len(Recette.objects.filter(user=request.user.id))
     commentaires = len(Commentaire.objects.filter(user=request.user))
+    nb_recettes = len(Recette.objects.all())
+    nb_inscription = len(inscription_log.objects.all())
+    nb_atelier = len(Atelier.object.all())
     if request.user.is_authenticated:
         return HttpResponse(render(request, 'registration/account.html',
             {'nb_atelier': ateliers,
@@ -76,7 +79,11 @@ def profile(request):
              'nb_commentaires':commentaires,
              'unpaid': len(PaymentLink.objects.filter(user=request.user,
                  payment__status__startswith='WAITING')),
-             'user': User.objects.get(pk=request.user.id)
+             'user': User.objects.get(pk=request.user.id),
+             'nb_recettes_admin': nb_recettes,
+             'nb_inscription': nb_inscription,
+             'nb_atelier': nb_atelier,
+             'now': datetime.now()
              }));
     else:
         return HttpResponse('Vous avez fait une erreur dans votre connexion');

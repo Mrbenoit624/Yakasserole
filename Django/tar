@@ -3,8 +3,8 @@
 set -e
 
 if [ $# -eq 1 ] && [ "$1" == "test" ]; then
-  rm -rf test
-  tar -cjf YaKasserole-golbl_a.tar.bz2 --exclude django --exclude migration --exclude "*.bz2" --exclude "*.log" --exclude "*/migrations" .
+    rm -rf test
+  tar -cjf YaKasserole-golbl_a.tar.bz2 --exclude django --exclude migration --exclude 'YaKasserole-golbl_a.tar.bz2' --exclude "*.log" --exclude "*/migrations" --exclude media .
   echo "Tar Done"
   mkdir test
   mv YaKasserole-golbl_a.tar.bz2 test
@@ -23,6 +23,6 @@ if [ $# -eq 1 ] && [ "$1" == "test" ]; then
   rm -rf YaKasserole-golbl_a.bz2
   echo "The tar test works"
 else
-  tar -cjf YaKasserole-golbl_a.tar.bz2 --exclude django --exclude migration --exclude "*.bz2" --exclude "*.log" --exclude "*/migrations" .
+  tar -cjf YaKasserole-golbl_a.tar.bz2 --exclude django --exclude migration --exclude 'YaKasserole-golbl_a.tar.bz2' --exclude "*.log" --exclude "*/migrations" --exclude media .
   md5sum YaKasserole-golbl_a.tar.bz2 | cut -d ' ' -f1
 fi
